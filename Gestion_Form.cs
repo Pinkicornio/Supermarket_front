@@ -8,6 +8,7 @@ namespace Gestion
 {
     public partial class Gestion_Form : Form
     {
+        private Data_class dataClass = new Data_class();
         private DB db = new DB();
         public Gestion_Form()
         {
@@ -18,8 +19,9 @@ namespace Gestion
            
             loadpropietiesLeftPanel();
             
-            loadpropietiesCombobox();
-            LoadUsers("","");
+            //loadpropietiesCombobox();
+            
+            //LoadUsers("","");
         
 
         }
@@ -218,15 +220,23 @@ namespace Gestion
 
             if (string.IsNullOrEmpty(userUsername.Text) && string.IsNullOrEmpty(userPassword.Text) && string.IsNullOrEmpty(emailUser.Text))
             {
-                string user = userUsername.Text;
-                string pwd = userPassword.Text;
-                string email = emailUser.Text;
-                //string rol = Roles.SelectedItem.ToString();
-
-
+                MessageBox.Show("Fields can't be empty!");          
             }
             else {
-                MessageBox.Show("Fields can't be empty!");
+                string email = emailUser.Text;
+                if (dataClass.IsValidEmail(email))
+                {
+                    string user = userUsername.Text;
+                    string rol = Roles.SelectedItem.ToString();
+                    db.userInsert(user, userPassword.Text, email, rol);
+                    MessageBox.Show("USER " + user + " INSERTED");
+                    LoadUsers("", "");
+                }
+                else
+                {
+                    MessageBox.Show("Email can't");
+                }
+
             }
 
 
@@ -241,40 +251,21 @@ namespace Gestion
         {
             if (string.IsNullOrEmpty(nameProduct.Text) && string.IsNullOrEmpty(stokbox.Text) && string.IsNullOrEmpty(brandbox.Text) && string.IsNullOrEmpty(pricebox.Text)){ 
             
+
+
+
             }
 
         }
 
         private void stockPressed(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-              (e.KeyChar != ','))
-            {
-                e.Handled = true;
-
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
-            {
-                e.Handled = true;
-            }
+            dataClass.check_onlynumbers(sender, e);
         }
 
         private void pricePressed(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-              (e.KeyChar != ','))
-            {
-                e.Handled = true;
-
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
-            {
-                e.Handled = true;
-            }
+            dataClass.check_onlynumbers(sender, e);
         }
 
         private void buttonCreateUsers_Click(object sender, EventArgs e)
@@ -313,6 +304,11 @@ namespace Gestion
         }
 
         private void rowSelected(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
