@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using ShopfyDBLibrary;
+using MySql.Data.MySqlClient;
 
 
 namespace Gestion
@@ -18,9 +19,9 @@ namespace Gestion
 
            
             loadpropietiesLeftPanel();
-            
-            //loadpropietiesCombobox();
-            
+
+            userCurrentlabel.Text = Data_class.currentUser;
+           // loadpropietiesCombobox();         
             //LoadUsers("","");
         
 
@@ -50,10 +51,8 @@ namespace Gestion
             comboboxCategory.DisplayMember = "NAME";
             comboboxCategory.ValueMember = "CATEGORY_ID";
 
-
             comboboxSubcategory.DataSource = db.subcategorySelection("", "");
             comboboxSubcategory.DisplayMember = "NAME";
-
             comboboxSubcategory.ValueMember = "SUBCATEGORY_ID";
 
             dataGridView1.DataSource = db.userSelection("", "");
@@ -66,12 +65,8 @@ namespace Gestion
         {
             try
             {
-                
-               
                 db.startConnection();
                 userUsername.Text = "funciona";
-
-             
             }
             catch (Exception ex)
             {
@@ -94,15 +89,7 @@ namespace Gestion
             panelSales.Visible = false;
 
 
-            //buttonusers.Image = Image.FromFile("C:\\Proyectos\\Proyecto_Final\\Gestion\\Gestion\\Resources\\users_icon.ico");
-            buttonusers.ImageAlign = ContentAlignment.MiddleLeft;
-           //   buttonusers.TextAlign = ContentAlignment.MiddleCenter;         
-           // productsButton.Image = Image.FromFile("C:\\Proyectos\\Proyecto_Final\\Gestion\\Gestion\\Resources\\product.ico");
-            productsButton.ImageAlign = ContentAlignment.MiddleLeft;
-            productsButton.TextAlign = ContentAlignment.MiddleCenter;
-           // salesButton.Image = Image.FromFile("C:\\Proyectos\\Proyecto_Final\\Gestion\\Gestion\\Resources\\sales.ico");
-            salesButton.ImageAlign = ContentAlignment.MiddleLeft;
-            salesButton.TextAlign = ContentAlignment.MiddleCenter;
+  
 
             //db.userInsert("CARLESPASFER", "Monlau2020", "CARLESPASFER@gmail.com", "admin");
             //                campo    -  where    
@@ -143,17 +130,12 @@ namespace Gestion
 
         }
 
-
-
         private void adminbutton_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void Gestion_Form_Load(object sender, EventArgs e)
-        {
-
-        }
+  
 
         private void close_Click(object sender, EventArgs e)
         {
@@ -162,15 +144,10 @@ namespace Gestion
 
         private void buttonDeleteUsers_Click(object sender, EventArgs e)
         {
-
+            userButon.Text = "Delete";
         }
 
       
-        private void mouseleaveUsers(object sender, EventArgs e)
-        {
-         //   buttonusers.BackColor = SystemColors.ButtonFace;
-        }
-
         private void Gestion_Form_Load_1(object sender, EventArgs e)
         {
 
@@ -180,31 +157,7 @@ namespace Gestion
             
         }
 
-        private void mouseEnters(object sender, EventArgs e)
-        {
-        //    buttonusers.BackColor = Color.Red;
-        }
-
-        private void mouseenterbutonProduct(object sender, EventArgs e)
-        {
-          //  buttonusers.BackColor = Color.Red;
-        }
-
-        private void mouseleaveProduct(object sender, EventArgs e)
-        {
-        //    buttonusers.BackColor = Color.Red;
-        }
-
-        private void mouseEnterSales(object sender, EventArgs e)
-        {
-         //   buttonusers.BackColor = Color.Red;
-        }
-
-        private void mouseLeaveSales(object sender, EventArgs e)
-        {
-        //    buttonusers.BackColor = Color.Red;
-        }
-
+      
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
@@ -218,26 +171,63 @@ namespace Gestion
         private void createUser_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(userUsername.Text) && string.IsNullOrEmpty(userPassword.Text) && string.IsNullOrEmpty(emailUser.Text))
-            {
-                MessageBox.Show("Fields can't be empty!");          
-            }
-            else {
-                string email = emailUser.Text;
-                if (dataClass.IsValidEmail(email))
-                {
-                    string user = userUsername.Text;
-                    string rol = Roles.SelectedItem.ToString();
-                    db.userInsert(user, userPassword.Text, email, rol);
-                    MessageBox.Show("USER " + user + " INSERTED");
-                    LoadUsers("", "");
-                }
-                else
-                {
-                    MessageBox.Show("Email can't");
-                }
+            switch (userButon.Text) {
 
+                case "Create":
+                    if (string.IsNullOrEmpty(userUsername.Text) && string.IsNullOrEmpty(userPassword.Text) && string.IsNullOrEmpty(emailUser.Text))
+                    {
+                        MessageBox.Show("Fields can't be empty!");
+                    }
+                    else
+                    {
+                        string email = emailUser.Text;
+                        if (dataClass.IsValidEmail(email))
+                        {
+                            string user = userUsername.Text;
+                            string rol = Roles.SelectedItem.ToString();
+                            db.userInsert(user, userPassword.Text, email, rol);
+                            MessageBox.Show("USER " + user + " INSERTED");
+                            LoadUsers("", "");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Email can't");
+                        }
+
+                    }
+                    break;
+                case "Modify":
+                    if (string.IsNullOrEmpty(userUsername.Text) && string.IsNullOrEmpty(userPassword.Text) && string.IsNullOrEmpty(emailUser.Text))
+                    {
+                        MessageBox.Show("Fields can't be empty!");
+                    }
+                    else
+                    {
+                        string email = emailUser.Text;
+                        if (dataClass.IsValidEmail(email))
+                        {
+                            string user = userUsername.Text;
+                            string rol = Roles.SelectedItem.ToString();
+                            db.userUpdate(1,user, userPassword.Text, email, rol);
+                            MessageBox.Show("USER " + user + " UPDATED");
+                            LoadUsers("","");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Email can't");
+                        }
+
+                    }
+                    break;              
+
+                case "Delete":
+                    db.productDelete(1);
+                    break;
+
+            
+            
             }
+        
 
 
         }
@@ -249,11 +239,45 @@ namespace Gestion
 
         private void createProduct_onClick(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(nameProduct.Text) && string.IsNullOrEmpty(stokbox.Text) && string.IsNullOrEmpty(brandbox.Text) && string.IsNullOrEmpty(pricebox.Text)){ 
-            
 
+            switch (butonProduct.Text)
+            {
 
+                case "Create":
+                    if (string.IsNullOrEmpty(nameProduct.Text) && string.IsNullOrEmpty(stokbox.Text) && string.IsNullOrEmpty(brandbox.Text) && string.IsNullOrEmpty(pricebox.Text))
+                    {
+                        MessageBox.Show("Fields can't be empty!");
 
+                    }
+                  
+                    else
+                    {
+
+                        db.productInsert(nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text),Int32.Parse(stokbox.Text) , comboboxCategory.SelectedIndex, comboboxSubcategory.SelectedIndex);
+                            MessageBox.Show("PRODUCT " + nameProduct + " INSERTED");
+                            LoadProducts("", "");
+                      
+
+                    }
+                    break;
+                case "Modify":
+                    if (string.IsNullOrEmpty(nameProduct.Text) && string.IsNullOrEmpty(stokbox.Text) && string.IsNullOrEmpty(brandbox.Text) && string.IsNullOrEmpty(pricebox.Text))
+                    
+                        {
+                        MessageBox.Show("Fields can't be empty!");
+                    }
+                    else
+                    {
+                        db.productUpdate(1,nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex, comboboxSubcategory.SelectedIndex);
+                        MessageBox.Show("PRODUCT " + nameProduct + " INSERTED");
+                        LoadProducts("", "");
+
+                    }
+                    break;
+
+                case "Delete":
+                    db.userDelete(1);
+                    break;
             }
 
         }
@@ -270,27 +294,30 @@ namespace Gestion
 
         private void buttonCreateUsers_Click(object sender, EventArgs e)
         {
+            userButon.Text = "Create";
 
         }
 
         private void buttonModifyUsers_Click(object sender, EventArgs e)
         {
+            userButon.Text = "Modify";
 
         }
 
         private void buttonCreateProduct_Click(object sender, EventArgs e)
         {
-
+            butonProduct.Text = "Create";
         }
 
         private void buttonModifyProduct_Click(object sender, EventArgs e)
         {
+            butonProduct.Text = "Modify";
 
         }
 
         private void buttonDeleteProduct_Click(object sender, EventArgs e)
         {
-
+            butonProduct.Text = "Delete";
         }
 
         private void buttonSalesModify_Click(object sender, EventArgs e)

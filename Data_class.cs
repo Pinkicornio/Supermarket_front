@@ -5,7 +5,7 @@ namespace Gestion
     class Data_class
     {
         public static bool  admin = false;
-
+        public static string currentUser = "user_test";
 
 
         public void check_onlynumbers(object sender, KeyPressEventArgs e) {

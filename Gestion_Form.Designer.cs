@@ -29,7 +29,7 @@ namespace Gestion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.userbuttona = new System.Windows.Forms.Button();
             this.adminbutton = new System.Windows.Forms.Button();
             this.close = new System.Windows.Forms.Button();
@@ -53,7 +53,7 @@ namespace Gestion
             this.panel2 = new System.Windows.Forms.Panel();
             this.userPassword = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.createUser = new System.Windows.Forms.Button();
+            this.userButon = new System.Windows.Forms.Button();
             this.Roles = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.emailUser = new System.Windows.Forms.TextBox();
@@ -68,7 +68,7 @@ namespace Gestion
             this.label17 = new System.Windows.Forms.Label();
             this.comboboxSubcategory = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.createProduct = new System.Windows.Forms.Button();
+            this.butonProduct = new System.Windows.Forms.Button();
             this.comboboxCategory = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.stokbox = new System.Windows.Forms.TextBox();
@@ -80,6 +80,8 @@ namespace Gestion
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.userCurrentlabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelSales.SuspendLayout();
             this.panelProducts.SuspendLayout();
@@ -95,7 +97,7 @@ namespace Gestion
             // 
             // userbuttona
             // 
-            this.userbuttona.Location = new System.Drawing.Point(863, 901);
+            this.userbuttona.Location = new System.Drawing.Point(811, 980);
             this.userbuttona.Name = "userbuttona";
             this.userbuttona.Size = new System.Drawing.Size(66, 29);
             this.userbuttona.TabIndex = 0;
@@ -106,7 +108,7 @@ namespace Gestion
             // adminbutton
             // 
             this.adminbutton.Enabled = false;
-            this.adminbutton.Location = new System.Drawing.Point(704, 899);
+            this.adminbutton.Location = new System.Drawing.Point(697, 980);
             this.adminbutton.Name = "adminbutton";
             this.adminbutton.Size = new System.Drawing.Size(108, 33);
             this.adminbutton.TabIndex = 1;
@@ -116,13 +118,16 @@ namespace Gestion
             // 
             // close
             // 
+            this.close.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.close.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.close.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.close.Location = new System.Drawing.Point(1854, 6);
+            this.close.Location = new System.Drawing.Point(1874, 3);
             this.close.Name = "close";
             this.close.Size = new System.Drawing.Size(34, 22);
             this.close.TabIndex = 2;
             this.close.Text = "X";
-            this.close.UseVisualStyleBackColor = true;
+            this.close.UseVisualStyleBackColor = false;
             this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // panel1
@@ -144,13 +149,13 @@ namespace Gestion
             // 
             // panelSales
             // 
-            this.panelSales.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panelSales.BackColor = System.Drawing.Color.Tomato;
             this.panelSales.Controls.Add(this.buttonSalesSelect);
             this.panelSales.Controls.Add(this.buttonSalesModify);
             this.panelSales.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSales.Location = new System.Drawing.Point(0, 865);
             this.panelSales.Name = "panelSales";
-            this.panelSales.Size = new System.Drawing.Size(386, 165);
+            this.panelSales.Size = new System.Drawing.Size(386, 181);
             this.panelSales.TabIndex = 6;
             // 
             // buttonSalesSelect
@@ -189,21 +194,23 @@ namespace Gestion
             this.salesButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.salesButton.FlatAppearance.BorderSize = 0;
             this.salesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.salesButton.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.salesButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.salesButton.Image = global::Gestion.Properties.Resources.circulo_negro50px;
+            this.salesButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.salesButton.Location = new System.Drawing.Point(0, 795);
             this.salesButton.Name = "salesButton";
+            this.salesButton.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.salesButton.Size = new System.Drawing.Size(386, 70);
             this.salesButton.TabIndex = 5;
-            this.salesButton.Text = "      SALES";
+            this.salesButton.Text = "          SALES";
             this.salesButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.salesButton.UseVisualStyleBackColor = false;
             this.salesButton.Click += new System.EventHandler(this.salesButton_Click);
-            this.salesButton.MouseEnter += new System.EventHandler(this.mouseEnterSales);
-            this.salesButton.MouseLeave += new System.EventHandler(this.mouseLeaveSales);
             // 
             // panelProducts
             // 
-            this.panelProducts.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panelProducts.BackColor = System.Drawing.Color.Tomato;
             this.panelProducts.Controls.Add(this.buttonDeleteProduct);
             this.panelProducts.Controls.Add(this.buttonModifyProduct);
             this.panelProducts.Controls.Add(this.buttonCreateProduct);
@@ -264,21 +271,23 @@ namespace Gestion
             this.productsButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.productsButton.FlatAppearance.BorderSize = 0;
             this.productsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.productsButton.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.productsButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.productsButton.Image = global::Gestion.Properties.Resources.circulo_negro50px;
+            this.productsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.productsButton.Location = new System.Drawing.Point(0, 525);
             this.productsButton.Name = "productsButton";
+            this.productsButton.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.productsButton.Size = new System.Drawing.Size(386, 70);
             this.productsButton.TabIndex = 3;
-            this.productsButton.Text = "      PRODUCT";
+            this.productsButton.Text = "          PRODUCT";
             this.productsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.productsButton.UseVisualStyleBackColor = false;
             this.productsButton.Click += new System.EventHandler(this.productsButton_Click);
-            this.productsButton.MouseEnter += new System.EventHandler(this.mouseenterbutonProduct);
-            this.productsButton.MouseLeave += new System.EventHandler(this.mouseleaveProduct);
             // 
             // panelUsers
             // 
-            this.panelUsers.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.panelUsers.BackColor = System.Drawing.Color.Tomato;
             this.panelUsers.Controls.Add(this.buttonDeleteUsers);
             this.panelUsers.Controls.Add(this.buttonModifyUsers);
             this.panelUsers.Controls.Add(this.buttonCreateUsers);
@@ -290,7 +299,7 @@ namespace Gestion
             // 
             // buttonDeleteUsers
             // 
-            this.buttonDeleteUsers.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.buttonDeleteUsers.BackColor = System.Drawing.Color.Tomato;
             this.buttonDeleteUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonDeleteUsers.FlatAppearance.BorderSize = 0;
             this.buttonDeleteUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -336,7 +345,7 @@ namespace Gestion
             // 
             // buttonusers
             // 
-            this.buttonusers.BackColor = System.Drawing.Color.LightSalmon;
+            this.buttonusers.BackColor = System.Drawing.Color.IndianRed;
             this.buttonusers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonusers.FlatAppearance.BorderSize = 0;
             this.buttonusers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -346,16 +355,13 @@ namespace Gestion
             this.buttonusers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonusers.Location = new System.Drawing.Point(0, 259);
             this.buttonusers.Name = "buttonusers";
-            this.buttonusers.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
+            this.buttonusers.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.buttonusers.Size = new System.Drawing.Size(386, 70);
             this.buttonusers.TabIndex = 1;
-            this.buttonusers.Text = "      USERS";
+            this.buttonusers.Text = "          USERS";
             this.buttonusers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonusers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonusers.UseVisualStyleBackColor = false;
             this.buttonusers.Click += new System.EventHandler(this.Users_Click);
-            this.buttonusers.MouseEnter += new System.EventHandler(this.mouseEnters);
-            this.buttonusers.MouseLeave += new System.EventHandler(this.mouseleaveUsers);
             // 
             // panelLogin
             // 
@@ -382,7 +388,7 @@ namespace Gestion
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel2.Controls.Add(this.userPassword);
             this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.createUser);
+            this.panel2.Controls.Add(this.userButon);
             this.panel2.Controls.Add(this.Roles);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.emailUser);
@@ -390,7 +396,7 @@ namespace Gestion
             this.panel2.Controls.Add(this.userUsername);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(641, 60);
+            this.panel2.Location = new System.Drawing.Point(453, 202);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(352, 708);
             this.panel2.TabIndex = 8;
@@ -417,17 +423,17 @@ namespace Gestion
             this.label11.TabIndex = 8;
             this.label11.Text = "password:";
             // 
-            // createUser
+            // userButon
             // 
-            this.createUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.userButon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.createUser.Location = new System.Drawing.Point(222, 659);
-            this.createUser.Name = "createUser";
-            this.createUser.Size = new System.Drawing.Size(101, 31);
-            this.createUser.TabIndex = 7;
-            this.createUser.Text = "Create";
-            this.createUser.UseVisualStyleBackColor = true;
-            this.createUser.Click += new System.EventHandler(this.createUser_Click);
+            this.userButon.Location = new System.Drawing.Point(222, 659);
+            this.userButon.Name = "userButon";
+            this.userButon.Size = new System.Drawing.Size(101, 31);
+            this.userButon.TabIndex = 7;
+            this.userButon.Text = "Create";
+            this.userButon.UseVisualStyleBackColor = true;
+            this.userButon.Click += new System.EventHandler(this.createUser_Click);
             // 
             // Roles
             // 
@@ -520,7 +526,7 @@ namespace Gestion
             this.panel3.Controls.Add(this.label17);
             this.panel3.Controls.Add(this.comboboxSubcategory);
             this.panel3.Controls.Add(this.label15);
-            this.panel3.Controls.Add(this.createProduct);
+            this.panel3.Controls.Add(this.butonProduct);
             this.panel3.Controls.Add(this.comboboxCategory);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.stokbox);
@@ -528,7 +534,7 @@ namespace Gestion
             this.panel3.Controls.Add(this.nameProduct);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.label10);
-            this.panel3.Location = new System.Drawing.Point(1048, 60);
+            this.panel3.Location = new System.Drawing.Point(913, 202);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(335, 708);
             this.panel3.TabIndex = 9;
@@ -587,15 +593,15 @@ namespace Gestion
             this.label15.TabIndex = 8;
             this.label15.Text = "Subcategory:";
             // 
-            // createProduct
+            // butonProduct
             // 
-            this.createProduct.Location = new System.Drawing.Point(224, 659);
-            this.createProduct.Name = "createProduct";
-            this.createProduct.Size = new System.Drawing.Size(84, 31);
-            this.createProduct.TabIndex = 7;
-            this.createProduct.Text = "Create";
-            this.createProduct.UseVisualStyleBackColor = true;
-            this.createProduct.Click += new System.EventHandler(this.createProduct_onClick);
+            this.butonProduct.Location = new System.Drawing.Point(222, 659);
+            this.butonProduct.Name = "butonProduct";
+            this.butonProduct.Size = new System.Drawing.Size(84, 31);
+            this.butonProduct.TabIndex = 7;
+            this.butonProduct.Text = "Create";
+            this.butonProduct.UseVisualStyleBackColor = true;
+            this.butonProduct.Click += new System.EventHandler(this.createProduct_onClick);
             // 
             // comboboxCategory
             // 
@@ -664,7 +670,7 @@ namespace Gestion
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.BackColor = System.Drawing.Color.Maroon;
+            this.panel4.BackColor = System.Drawing.SystemColors.GrayText;
             this.panel4.Controls.Add(this.close);
             this.panel4.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -695,8 +701,8 @@ namespace Gestion
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(316, 234);
@@ -711,11 +717,30 @@ namespace Gestion
             this.panel6.Size = new System.Drawing.Size(394, 59);
             this.panel6.TabIndex = 13;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(453, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 15);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Welcome";
+            // 
+            // userCurrentlabel
+            // 
+            this.userCurrentlabel.AutoSize = true;
+            this.userCurrentlabel.Location = new System.Drawing.Point(516, 87);
+            this.userCurrentlabel.Name = "userCurrentlabel";
+            this.userCurrentlabel.Size = new System.Drawing.Size(0, 15);
+            this.userCurrentlabel.TabIndex = 15;
+            // 
             // Gestion_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1061);
+            this.Controls.Add(this.userCurrentlabel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -742,6 +767,7 @@ namespace Gestion
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -766,7 +792,7 @@ namespace Gestion
         private System.Windows.Forms.Button buttonSalesSelect;
         private System.Windows.Forms.Button salesButton;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button createUser;
+        private System.Windows.Forms.Button userButon;
         private System.Windows.Forms.ComboBox Roles;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox emailUser;
@@ -777,7 +803,7 @@ namespace Gestion
         private System.Windows.Forms.TextBox userPassword;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button createProduct;
+        private System.Windows.Forms.Button butonProduct;
         private System.Windows.Forms.ComboBox comboboxCategory;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox stokbox;
@@ -797,5 +823,8 @@ namespace Gestion
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonSalesModify;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button user;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label userCurrentlabel;
     }
 }
