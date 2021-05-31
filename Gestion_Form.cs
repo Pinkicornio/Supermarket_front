@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using ShopfyDBLibrary;
-using MySql.Data.MySqlClient;
+
 
 
 namespace Gestion
@@ -336,6 +336,11 @@ namespace Gestion
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

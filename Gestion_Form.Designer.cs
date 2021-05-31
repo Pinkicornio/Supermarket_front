@@ -29,7 +29,8 @@ namespace Gestion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gestion_Form));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.userbuttona = new System.Windows.Forms.Button();
             this.adminbutton = new System.Windows.Forms.Button();
             this.close = new System.Windows.Forms.Button();
@@ -82,6 +83,7 @@ namespace Gestion
             this.panel6 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.userCurrentlabel = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panelSales.SuspendLayout();
             this.panelProducts.SuspendLayout();
@@ -149,7 +151,7 @@ namespace Gestion
             // 
             // panelSales
             // 
-            this.panelSales.BackColor = System.Drawing.Color.Tomato;
+            this.panelSales.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panelSales.Controls.Add(this.buttonSalesSelect);
             this.panelSales.Controls.Add(this.buttonSalesModify);
             this.panelSales.Dock = System.Windows.Forms.DockStyle.Top;
@@ -160,57 +162,59 @@ namespace Gestion
             // 
             // buttonSalesSelect
             // 
+            this.buttonSalesSelect.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonSalesSelect.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonSalesSelect.FlatAppearance.BorderSize = 0;
             this.buttonSalesSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesSelect.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonSalesSelect.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonSalesSelect.Location = new System.Drawing.Point(0, 61);
             this.buttonSalesSelect.Name = "buttonSalesSelect";
             this.buttonSalesSelect.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
             this.buttonSalesSelect.Size = new System.Drawing.Size(386, 61);
             this.buttonSalesSelect.TabIndex = 2;
             this.buttonSalesSelect.Text = "SALES SELECT";
-            this.buttonSalesSelect.UseVisualStyleBackColor = true;
+            this.buttonSalesSelect.UseVisualStyleBackColor = false;
             this.buttonSalesSelect.Click += new System.EventHandler(this.buttonSalesSelect_Click);
             // 
             // buttonSalesModify
             // 
+            this.buttonSalesModify.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonSalesModify.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonSalesModify.FlatAppearance.BorderSize = 0;
             this.buttonSalesModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesModify.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonSalesModify.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonSalesModify.Location = new System.Drawing.Point(0, 0);
             this.buttonSalesModify.Name = "buttonSalesModify";
             this.buttonSalesModify.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
             this.buttonSalesModify.Size = new System.Drawing.Size(386, 61);
             this.buttonSalesModify.TabIndex = 1;
             this.buttonSalesModify.Text = "SALES MODIFY";
-            this.buttonSalesModify.UseVisualStyleBackColor = true;
+            this.buttonSalesModify.UseVisualStyleBackColor = false;
             this.buttonSalesModify.Click += new System.EventHandler(this.buttonSalesModify_Click);
             // 
             // salesButton
             // 
-            this.salesButton.BackColor = System.Drawing.Color.LightSalmon;
+            this.salesButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.salesButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.salesButton.FlatAppearance.BorderSize = 0;
             this.salesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.salesButton.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.salesButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.salesButton.Image = global::Gestion.Properties.Resources.circulo_negro50px;
+            this.salesButton.Image = ((System.Drawing.Image)(resources.GetObject("salesButton.Image")));
             this.salesButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.salesButton.Location = new System.Drawing.Point(0, 795);
             this.salesButton.Name = "salesButton";
             this.salesButton.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.salesButton.Size = new System.Drawing.Size(386, 70);
             this.salesButton.TabIndex = 5;
-            this.salesButton.Text = "          SALES";
+            this.salesButton.Text = "          BILLS";
             this.salesButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.salesButton.UseVisualStyleBackColor = false;
             this.salesButton.Click += new System.EventHandler(this.salesButton_Click);
             // 
             // panelProducts
             // 
-            this.panelProducts.BackColor = System.Drawing.Color.Tomato;
+            this.panelProducts.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panelProducts.Controls.Add(this.buttonDeleteProduct);
             this.panelProducts.Controls.Add(this.buttonModifyProduct);
             this.panelProducts.Controls.Add(this.buttonCreateProduct);
@@ -222,58 +226,61 @@ namespace Gestion
             // 
             // buttonDeleteProduct
             // 
+            this.buttonDeleteProduct.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonDeleteProduct.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonDeleteProduct.FlatAppearance.BorderSize = 0;
             this.buttonDeleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDeleteProduct.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonDeleteProduct.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonDeleteProduct.Location = new System.Drawing.Point(0, 122);
             this.buttonDeleteProduct.Name = "buttonDeleteProduct";
             this.buttonDeleteProduct.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
             this.buttonDeleteProduct.Size = new System.Drawing.Size(386, 61);
             this.buttonDeleteProduct.TabIndex = 3;
             this.buttonDeleteProduct.Text = "DELETE PRODUCT";
-            this.buttonDeleteProduct.UseVisualStyleBackColor = true;
+            this.buttonDeleteProduct.UseVisualStyleBackColor = false;
             this.buttonDeleteProduct.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
             // 
             // buttonModifyProduct
             // 
+            this.buttonModifyProduct.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonModifyProduct.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonModifyProduct.FlatAppearance.BorderSize = 0;
             this.buttonModifyProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModifyProduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonModifyProduct.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonModifyProduct.Location = new System.Drawing.Point(0, 61);
             this.buttonModifyProduct.Name = "buttonModifyProduct";
             this.buttonModifyProduct.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
             this.buttonModifyProduct.Size = new System.Drawing.Size(386, 61);
             this.buttonModifyProduct.TabIndex = 1;
             this.buttonModifyProduct.Text = "MODIFY PRODUCT";
-            this.buttonModifyProduct.UseVisualStyleBackColor = true;
+            this.buttonModifyProduct.UseVisualStyleBackColor = false;
             this.buttonModifyProduct.Click += new System.EventHandler(this.buttonModifyProduct_Click);
             // 
             // buttonCreateProduct
             // 
+            this.buttonCreateProduct.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonCreateProduct.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonCreateProduct.FlatAppearance.BorderSize = 0;
             this.buttonCreateProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCreateProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonCreateProduct.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonCreateProduct.Location = new System.Drawing.Point(0, 0);
             this.buttonCreateProduct.Name = "buttonCreateProduct";
             this.buttonCreateProduct.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
             this.buttonCreateProduct.Size = new System.Drawing.Size(386, 61);
             this.buttonCreateProduct.TabIndex = 0;
             this.buttonCreateProduct.Text = "CREATE PRODUCT";
-            this.buttonCreateProduct.UseVisualStyleBackColor = true;
+            this.buttonCreateProduct.UseVisualStyleBackColor = false;
             this.buttonCreateProduct.Click += new System.EventHandler(this.buttonCreateProduct_Click);
             // 
             // productsButton
             // 
-            this.productsButton.BackColor = System.Drawing.Color.LightSalmon;
+            this.productsButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.productsButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.productsButton.FlatAppearance.BorderSize = 0;
             this.productsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.productsButton.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.productsButton.Font = new System.Drawing.Font("Lato", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.productsButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.productsButton.Image = global::Gestion.Properties.Resources.circulo_negro50px;
+            this.productsButton.Image = ((System.Drawing.Image)(resources.GetObject("productsButton.Image")));
             this.productsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.productsButton.Location = new System.Drawing.Point(0, 525);
             this.productsButton.Name = "productsButton";
@@ -287,7 +294,7 @@ namespace Gestion
             // 
             // panelUsers
             // 
-            this.panelUsers.BackColor = System.Drawing.Color.Tomato;
+            this.panelUsers.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panelUsers.Controls.Add(this.buttonDeleteUsers);
             this.panelUsers.Controls.Add(this.buttonModifyUsers);
             this.panelUsers.Controls.Add(this.buttonCreateUsers);
@@ -299,11 +306,11 @@ namespace Gestion
             // 
             // buttonDeleteUsers
             // 
-            this.buttonDeleteUsers.BackColor = System.Drawing.Color.Tomato;
+            this.buttonDeleteUsers.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonDeleteUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonDeleteUsers.FlatAppearance.BorderSize = 0;
             this.buttonDeleteUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDeleteUsers.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonDeleteUsers.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonDeleteUsers.Location = new System.Drawing.Point(0, 122);
             this.buttonDeleteUsers.Name = "buttonDeleteUsers";
             this.buttonDeleteUsers.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
@@ -315,43 +322,45 @@ namespace Gestion
             // 
             // buttonModifyUsers
             // 
+            this.buttonModifyUsers.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonModifyUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonModifyUsers.FlatAppearance.BorderSize = 0;
             this.buttonModifyUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModifyUsers.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonModifyUsers.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonModifyUsers.Location = new System.Drawing.Point(0, 61);
             this.buttonModifyUsers.Name = "buttonModifyUsers";
             this.buttonModifyUsers.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
             this.buttonModifyUsers.Size = new System.Drawing.Size(386, 61);
             this.buttonModifyUsers.TabIndex = 1;
             this.buttonModifyUsers.Text = "MODIFY USER";
-            this.buttonModifyUsers.UseVisualStyleBackColor = true;
+            this.buttonModifyUsers.UseVisualStyleBackColor = false;
             this.buttonModifyUsers.Click += new System.EventHandler(this.buttonModifyUsers_Click);
             // 
             // buttonCreateUsers
             // 
+            this.buttonCreateUsers.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonCreateUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonCreateUsers.FlatAppearance.BorderSize = 0;
             this.buttonCreateUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCreateUsers.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonCreateUsers.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonCreateUsers.Location = new System.Drawing.Point(0, 0);
             this.buttonCreateUsers.Name = "buttonCreateUsers";
             this.buttonCreateUsers.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
             this.buttonCreateUsers.Size = new System.Drawing.Size(386, 61);
             this.buttonCreateUsers.TabIndex = 0;
             this.buttonCreateUsers.Text = "CREATE USER";
-            this.buttonCreateUsers.UseVisualStyleBackColor = true;
+            this.buttonCreateUsers.UseVisualStyleBackColor = false;
             this.buttonCreateUsers.Click += new System.EventHandler(this.buttonCreateUsers_Click);
             // 
             // buttonusers
             // 
-            this.buttonusers.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonusers.BackColor = System.Drawing.Color.CornflowerBlue;
             this.buttonusers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonusers.FlatAppearance.BorderSize = 0;
             this.buttonusers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonusers.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonusers.Font = new System.Drawing.Font("Beatrice", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonusers.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonusers.Image = global::Gestion.Properties.Resources.circulo_negro50px;
+            this.buttonusers.Image = ((System.Drawing.Image)(resources.GetObject("buttonusers.Image")));
             this.buttonusers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonusers.Location = new System.Drawing.Point(0, 259);
             this.buttonusers.Name = "buttonusers";
@@ -365,7 +374,7 @@ namespace Gestion
             // 
             // panelLogin
             // 
-            this.panelLogin.BackColor = System.Drawing.Color.LightCoral;
+            this.panelLogin.BackColor = System.Drawing.Color.RoyalBlue;
             this.panelLogin.Controls.Add(this.pictureBox1);
             this.panelLogin.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogin.Location = new System.Drawing.Point(0, 0);
@@ -376,16 +385,17 @@ namespace Gestion
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(11, 10);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 8);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(352, 232);
+            this.pictureBox1.Size = new System.Drawing.Size(358, 245);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel2.Controls.Add(this.userPassword);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.userButon);
@@ -519,7 +529,7 @@ namespace Gestion
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel3.Controls.Add(this.pricebox);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Controls.Add(this.brandbox);
@@ -534,9 +544,9 @@ namespace Gestion
             this.panel3.Controls.Add(this.nameProduct);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.label10);
-            this.panel3.Location = new System.Drawing.Point(913, 202);
+            this.panel3.Location = new System.Drawing.Point(883, 287);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(335, 708);
+            this.panel3.Size = new System.Drawing.Size(323, 714);
             this.panel3.TabIndex = 9;
             // 
             // pricebox
@@ -681,12 +691,12 @@ namespace Gestion
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel5.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel5.Controls.Add(this.dataGridView1);
             this.panel5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel5.Location = new System.Drawing.Point(1458, 202);
+            this.panel5.Location = new System.Drawing.Point(1450, 287);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(396, 349);
+            this.panel5.Size = new System.Drawing.Size(402, 625);
             this.panel5.TabIndex = 12;
             // 
             // dataGridView1
@@ -701,8 +711,8 @@ namespace Gestion
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(316, 234);
@@ -711,34 +721,44 @@ namespace Gestion
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel6.Location = new System.Drawing.Point(1458, 104);
+            this.panel6.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel6.Location = new System.Drawing.Point(948, 193);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(394, 59);
+            this.panel6.Size = new System.Drawing.Size(904, 59);
             this.panel6.TabIndex = 13;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(453, 87);
+            this.label1.Location = new System.Drawing.Point(453, 145);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 15);
             this.label1.TabIndex = 14;
             this.label1.Text = "Welcome";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // userCurrentlabel
             // 
             this.userCurrentlabel.AutoSize = true;
-            this.userCurrentlabel.Location = new System.Drawing.Point(516, 87);
+            this.userCurrentlabel.Location = new System.Drawing.Point(516, 145);
             this.userCurrentlabel.Name = "userCurrentlabel";
             this.userCurrentlabel.Size = new System.Drawing.Size(0, 15);
             this.userCurrentlabel.TabIndex = 15;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(838, 93);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(8, 23);
+            this.textBox1.TabIndex = 16;
             // 
             // Gestion_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1924, 1061);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.userCurrentlabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel6);
@@ -826,5 +846,6 @@ namespace Gestion
         private System.Windows.Forms.Button user;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label userCurrentlabel;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
