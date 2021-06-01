@@ -64,7 +64,6 @@ G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\Gestion.dll
 G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\Gestion.pdb
 G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\ShopfyDBLibrary.dll
 G:\Proyecto_final\Supermarket_front\obj\Debug\netcoreapp3.1\Gestion.csprojAssemblyReference.cache
-G:\Proyecto_final\Supermarket_front\obj\Debug\netcoreapp3.1\Gestion.Form1.resources
 G:\Proyecto_final\Supermarket_front\obj\Debug\netcoreapp3.1\Gestion.Gestion_Form.resources
 G:\Proyecto_final\Supermarket_front\obj\Debug\netcoreapp3.1\Gestion.Login_Form.resources
 G:\Proyecto_final\Supermarket_front\obj\Debug\netcoreapp3.1\Gestion.Properties.Resources.resources
@@ -77,14 +76,6 @@ G:\Proyecto_final\Supermarket_front\obj\Debug\netcoreapp3.1\Gestion.dll
 G:\Proyecto_final\Supermarket_front\obj\Debug\netcoreapp3.1\Gestion.pdb
 G:\Proyecto_final\Supermarket_front\obj\Debug\netcoreapp3.1\Gestion.genruntimeconfig.cache
 G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\MySql.Data.dll
-G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
-G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
-G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
-G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
-G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
-G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
-G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
-G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\MySql.Data.xml
 E:\DAM-2\Proyecto_final\Supermarket_front\obj\Debug\netcoreapp3.1\Gestion.csprojAssemblyReference.cache
 E:\DAM-2\Proyecto_final\Supermarket_front\obj\Debug\netcoreapp3.1\Gestion.Form1.resources
 E:\DAM-2\Proyecto_final\Supermarket_front\obj\Debug\netcoreapp3.1\Gestion.Gestion_Form.resources

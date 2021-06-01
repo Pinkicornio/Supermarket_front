@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Drawing;
+using MySql.Data.Common;
+using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using ShopfyDBLibrary;
 
@@ -16,15 +17,28 @@ namespace Gestion
          
             InitializeComponent();
             conectionDb();
-
-           
             loadpropietiesLeftPanel();
+           
 
             userCurrentlabel.Text = Data_class.currentUser;
-           // loadpropietiesCombobox();         
-            //LoadUsers("","");
-        
+            loadpropietiesCombobox();         
+           // LoadUsers("","");
 
+            if (Data_class.admin)
+            {
+                loadAdminRequirements();
+                adminbutton.Enabled = true;
+            }
+
+        }
+
+        private void loadAdminRequirements()
+        {
+
+            buttonModifyProduct.Enabled = true;
+            buttonModifyUsers.Enabled = true;
+            buttonDeleteProduct.Enabled = true;
+            buttonDeleteUsers.Enabled = true;
         }
 
         private void LoadUsers(string campo, string where)
@@ -55,7 +69,7 @@ namespace Gestion
             comboboxSubcategory.DisplayMember = "NAME";
             comboboxSubcategory.ValueMember = "SUBCATEGORY_ID";
 
-            dataGridView1.DataSource = db.userSelection("", "");
+            //dataGridView1.DataSource = db.userSelection("", "");
 
 
 
@@ -66,7 +80,7 @@ namespace Gestion
             try
             {
                 db.startConnection();
-                userUsername.Text = "funciona";
+                
             }
             catch (Exception ex)
             {
@@ -77,10 +91,7 @@ namespace Gestion
 
             private void loadpropietiesLeftPanel()
         {
-            if (Data_class.admin)
-            {
-                adminbutton.Enabled = true;
-            }
+           
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
 
@@ -88,10 +99,7 @@ namespace Gestion
             panelProducts.Visible = false;
             panelSales.Visible = false;
 
-
-  
-
-            //db.userInsert("CARLESPASFER", "Monlau2020", "CARLESPASFER@gmail.com", "admin");
+       //db.userInsert("CARLESPASFER", "Monlau2020", "CARLESPASFER@gmail.com", "admin");
             //                campo    -  where    
             
         }
@@ -125,16 +133,6 @@ namespace Gestion
             showSubmenu(panelSales);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void adminbutton_Click(object sender, EventArgs e)
-        {
-
-        }
-
   
 
         private void close_Click(object sender, EventArgs e)
@@ -153,7 +151,7 @@ namespace Gestion
 
           comboboxCategory.SelectedIndex = 0;
            comboboxSubcategory.SelectedIndex = 0;
-            Roles.SelectedIndex = 2;
+            Roles.SelectedIndex = 0;
             
         }
 
@@ -188,10 +186,11 @@ namespace Gestion
                             db.userInsert(user, userPassword.Text, email, rol);
                             MessageBox.Show("USER " + user + " INSERTED");
                             LoadUsers("", "");
+                            cleanData();
                         }
                         else
                         {
-                            MessageBox.Show("Email can't");
+                            MessageBox.Show("Email can't be like that");
                         }
 
                     }
@@ -214,7 +213,7 @@ namespace Gestion
                         }
                         else
                         {
-                            MessageBox.Show("Email can't");
+                            MessageBox.Show("Email can't be like that");
                         }
 
                     }
@@ -225,10 +224,29 @@ namespace Gestion
                     break;
 
             
-            
+          
             }
         
+        }
 
+        private void cleanData()
+        {
+            //- Limpiar usuario
+            userUsername.Clear();
+            userPassword.Clear();
+            emailUser.Clear();
+
+            //- Limpiar producto
+            nameProduct.Clear();
+            brandbox.Clear();
+            pricebox.Clear();
+            stokbox.Clear();
+
+            //- Limpiar Sales
+
+            //- Limpiar Categorias
+
+            //- Limpiar Subcategorias
 
         }
 
@@ -253,7 +271,7 @@ namespace Gestion
                     else
                     {
 
-                        db.productInsert(nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text),Int32.Parse(stokbox.Text) , comboboxCategory.SelectedIndex, comboboxSubcategory.SelectedIndex);
+                        db.productInsert(nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text),Int32.Parse(stokbox.Text) , comboboxCategory.SelectedIndex+1, comboboxSubcategory.SelectedIndex+1);
                             MessageBox.Show("PRODUCT " + nameProduct + " INSERTED");
                             LoadProducts("", "");
                       
@@ -295,6 +313,7 @@ namespace Gestion
         private void buttonCreateUsers_Click(object sender, EventArgs e)
         {
             userButon.Text = "Create";
+            
 
         }
 
@@ -344,5 +363,29 @@ namespace Gestion
         {
 
         }
+
+        private void panel9_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void userPanelvisisble() {
+            panelUser.Visible = true;
+            DefaultPanel.Visible = false;
+            panelProduct.Visible = false;
+        }
+
+        private void productVisible() {
+
+            panelProduct.Visible = false;
+            DefaultPanel.Visible = false;
+            panelUser.Visible = true;
+
+        }
+
     }
 }

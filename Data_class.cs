@@ -4,7 +4,7 @@ namespace Gestion
 {
     class Data_class
     {
-        public static bool  admin = false;
+        public static bool  admin = true;
         public static string currentUser = "user_test";
 
 
