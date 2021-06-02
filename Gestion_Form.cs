@@ -1,6 +1,4 @@
 ﻿using System;
-using MySql.Data.Common;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using ShopfyDBLibrary;
 
@@ -12,24 +10,14 @@ namespace Gestion
     {
         private Data_class dataClass = new Data_class();
         private DB db = new DB();
+        private string currentTable;
+        private bool modify;
+
         public Gestion_Form()
         {
-         
             InitializeComponent();
             conectionDb();
-            loadpropietiesLeftPanel();
-           
-
-            userCurrentlabel.Text = Data_class.currentUser;
-            loadpropietiesCombobox();         
-           // LoadUsers("","");
-
-            if (Data_class.admin)
-            {
-                loadAdminRequirements();
-                adminbutton.Enabled = true;
-            }
-
+            chek.Start();
         }
 
         private void loadAdminRequirements()
@@ -43,36 +31,38 @@ namespace Gestion
 
         private void LoadUsers(string campo, string where)
         {
-            
+
             dataGridView1.DataSource = db.userSelection("", "");
+            dataGridView1.ClearSelection();
+            currentTable = "user";
         }
 
-        private void LoadProducts(string campo, string where) {
-           
+        private void LoadProducts(string campo, string where)
+        {
+
             dataGridView1.DataSource = db.productSelection("", "");
+            dataGridView1.ClearSelection();
+            currentTable = "products";
         }
         private void LoadSales(string campo, string where)
         {
-            
+
             dataGridView1.DataSource = db.salesSelection("", "");
+            dataGridView1.ClearSelection();
+            currentTable = "sales";
         }
 
 
         private void loadpropietiesCombobox()
         {
-           
+            //-- Cargar datos combo box de categoria        
             comboboxCategory.DataSource = db.categorySelection("", "");
             comboboxCategory.DisplayMember = "NAME";
             comboboxCategory.ValueMember = "CATEGORY_ID";
-
+            //-- Cargar datos combo box de Subcategoria 
             comboboxSubcategory.DataSource = db.subcategorySelection("", "");
             comboboxSubcategory.DisplayMember = "NAME";
             comboboxSubcategory.ValueMember = "SUBCATEGORY_ID";
-
-            //dataGridView1.DataSource = db.userSelection("", "");
-
-
-
         }
 
         private void conectionDb()
@@ -80,82 +70,49 @@ namespace Gestion
             try
             {
                 db.startConnection();
-                
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
-           
         }
-
-            private void loadpropietiesLeftPanel()
-        {
-           
-            FormBorderStyle = FormBorderStyle.None;
-            WindowState = FormWindowState.Maximized;
-
-            panelUsers.Visible = false;
-            panelProducts.Visible = false;
-            panelSales.Visible = false;
-
-       //db.userInsert("CARLESPASFER", "Monlau2020", "CARLESPASFER@gmail.com", "admin");
-            //                campo    -  where    
-            
-        }
-
-    
-
-
-        private void showSubmenu(Panel submenu) {
-
-            if (submenu.Visible == false)
-            {
-               
-                submenu.Visible = true;
-            }
-            else
-                submenu.Visible = false;
-        
-        }
-        private void Users_Click(object sender, EventArgs e)
-        {
-            showSubmenu(panelUsers);
-        }
-
-        private void productsButton_Click(object sender, EventArgs e)
-        {
-            showSubmenu(panelProducts);
-        }
-
-        private void salesButton_Click(object sender, EventArgs e)
-        {
-            showSubmenu(panelSales);
-        }
-
-  
 
         private void close_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
         }
 
-        private void buttonDeleteUsers_Click(object sender, EventArgs e)
-        {
-            userButon.Text = "Delete";
-        }
-
-      
+        //-- Datos iniciales form
         private void Gestion_Form_Load_1(object sender, EventArgs e)
         {
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
 
-          comboboxCategory.SelectedIndex = 0;
-           comboboxSubcategory.SelectedIndex = 0;
+            panelUsers.Visible = false;
+            panelProducts.Visible = false;
+            panelSales.Visible = false;
+            panelCategory.Visible = false;
+            panelSubcategory.Visible = false;
+
+            comboboxCategory.SelectedIndex = 0;
+            comboboxSubcategory.SelectedIndex = 0;
             Roles.SelectedIndex = 0;
-            
+
+
+            userCurrentlabel.Text = Data_class.currentUser;
+            loadpropietiesCombobox();
+
+            if (Data_class.admin)
+            {
+                loadAdminRequirements();
+                adminbutton.Enabled = true;
+            }
+
+
         }
 
-      
+
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
@@ -169,7 +126,8 @@ namespace Gestion
         private void createUser_Click(object sender, EventArgs e)
         {
 
-            switch (userButon.Text) {
+            switch (userButon.Text)
+            {
 
                 case "Create":
                     if (string.IsNullOrEmpty(userUsername.Text) && string.IsNullOrEmpty(userPassword.Text) && string.IsNullOrEmpty(emailUser.Text))
@@ -207,9 +165,9 @@ namespace Gestion
                         {
                             string user = userUsername.Text;
                             string rol = Roles.SelectedItem.ToString();
-                            db.userUpdate(1,user, userPassword.Text, email, rol);
+                            db.userUpdate(Int32.Parse(idUser.Text), user, userPassword.Text, email, rol);
                             MessageBox.Show("USER " + user + " UPDATED");
-                            LoadUsers("","");
+                            LoadUsers("", "");
                         }
                         else
                         {
@@ -217,30 +175,33 @@ namespace Gestion
                         }
 
                     }
-                    break;              
+                    break;
 
                 case "Delete":
                     db.productDelete(1);
                     break;
 
-            
-          
+
+
             }
-        
+
         }
 
         private void cleanData()
         {
+
             //- Limpiar usuario
             userUsername.Clear();
             userPassword.Clear();
             emailUser.Clear();
+            idUser.Clear();
 
             //- Limpiar producto
             nameProduct.Clear();
             brandbox.Clear();
             pricebox.Clear();
             stokbox.Clear();
+            idProduct.Clear();
 
             //- Limpiar Sales
 
@@ -267,26 +228,26 @@ namespace Gestion
                         MessageBox.Show("Fields can't be empty!");
 
                     }
-                  
+
                     else
                     {
 
-                        db.productInsert(nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text),Int32.Parse(stokbox.Text) , comboboxCategory.SelectedIndex+1, comboboxSubcategory.SelectedIndex+1);
-                            MessageBox.Show("PRODUCT " + nameProduct + " INSERTED");
-                            LoadProducts("", "");
-                      
+                        db.productInsert(nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex + 1, comboboxSubcategory.SelectedIndex + 1);
+                        MessageBox.Show("PRODUCT " + nameProduct + " INSERTED");
+                        LoadProducts("", "");
+
 
                     }
                     break;
                 case "Modify":
                     if (string.IsNullOrEmpty(nameProduct.Text) && string.IsNullOrEmpty(stokbox.Text) && string.IsNullOrEmpty(brandbox.Text) && string.IsNullOrEmpty(pricebox.Text))
-                    
-                        {
+
+                    {
                         MessageBox.Show("Fields can't be empty!");
                     }
                     else
                     {
-                        db.productUpdate(1,nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex, comboboxSubcategory.SelectedIndex);
+                        db.productUpdate(1, nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex, comboboxSubcategory.SelectedIndex);
                         MessageBox.Show("PRODUCT " + nameProduct + " INSERTED");
                         LoadProducts("", "");
 
@@ -300,43 +261,64 @@ namespace Gestion
 
         }
 
-        private void stockPressed(object sender, KeyPressEventArgs e)
-        {
-            dataClass.check_onlynumbers(sender, e);
-        }
 
-        private void pricePressed(object sender, KeyPressEventArgs e)
-        {
-            dataClass.check_onlynumbers(sender, e);
-        }
 
+
+
+        //-- User Menu
         private void buttonCreateUsers_Click(object sender, EventArgs e)
         {
             userButon.Text = "Create";
-            
-
+            userPanelvisisble();
+            LoadUsers("", "");
+            modify = false;
+            cleanData();
         }
-
         private void buttonModifyUsers_Click(object sender, EventArgs e)
         {
             userButon.Text = "Modify";
-
+            userPanelvisisble();
+            LoadUsers("", "");
+            modify = true;
+            cleanData();
+        }
+        private void buttonDeleteUsers_Click(object sender, EventArgs e)
+        {
+            userButon.Text = "Delete";
+            userPanelvisisble();
+            LoadUsers("", "");
+            modify = false;
+            cleanData();
         }
 
+
+
+        //Product Menu
         private void buttonCreateProduct_Click(object sender, EventArgs e)
         {
             butonProduct.Text = "Create";
+            productVisible();
+            LoadProducts("", "");
+            modify = false;
+            cleanData();
         }
 
         private void buttonModifyProduct_Click(object sender, EventArgs e)
         {
             butonProduct.Text = "Modify";
-
+            productVisible();
+            LoadProducts("", "");
+            modify = true;
+            cleanData();
         }
 
         private void buttonDeleteProduct_Click(object sender, EventArgs e)
         {
             butonProduct.Text = "Delete";
+            productVisible();
+            LoadProducts("", "");
+            modify = false;
+            cleanData();
         }
 
         private void buttonSalesModify_Click(object sender, EventArgs e)
@@ -352,6 +334,27 @@ namespace Gestion
         private void rowSelected(object sender, DataGridViewCellEventArgs e)
         {
 
+            if (modify)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+
+                    switch (currentTable)
+                    {
+
+                        case "user":
+                            userUsername.Text = row.Cells["USERNAME"].Value.ToString();
+                            userPassword.Text = row.Cells["PWD"].Value.ToString();
+                            emailUser.Text = row.Cells["EMAIL"].Value.ToString();
+                    
+
+
+                            break;
+
+                    }
+                }
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -373,19 +376,129 @@ namespace Gestion
         {
 
         }
-        private void userPanelvisisble() {
-            panelUser.Visible = true;
-            DefaultPanel.Visible = false;
-            panelProduct.Visible = false;
+
+       //------ Mostrar menu
+        private void showSubmenu(Panel submenu)
+        {
+
+            if (submenu.Visible == false)
+            {
+
+                submenu.Visible = true;
+            }
+            else
+                submenu.Visible = false;
+
+        }
+        private void Users_Click(object sender, EventArgs e)
+        {
+            showSubmenu(panelUsers);
+
+        }
+        private void productsButton_Click(object sender, EventArgs e)
+        {
+            showSubmenu(panelProducts);
+        }
+        private void salesButton_Click(object sender, EventArgs e)
+        {
+            showSubmenu(panelSales);
+        }
+        private void categoryButton_Click(object sender, EventArgs e)
+        {
+            showSubmenu(panelCategory);
+        }
+        private void subcategoryButton_Click(object sender, EventArgs e)
+        {
+            showSubmenu(panelSubcategory);
+        }
+        //----------------------
+
+        private void userPanelvisisble()
+        {
+            panelUser.BringToFront();
         }
 
-        private void productVisible() {
+        private void productVisible()
+        {
+            panelProduct.BringToFront();
+        }
 
-            panelProduct.Visible = false;
-            DefaultPanel.Visible = false;
-            panelUser.Visible = true;
+
+        //-- Text box validators
+        private void stockPressed(object sender, KeyPressEventArgs e)
+        {
+            dataClass.check_onlynumbers(sender, e);
+        }
+
+        private void pricePressed(object sender, KeyPressEventArgs e)
+        {
+            dataClass.check_onlynumbers(sender, e);
+        }
+
+        private void userbuttona_Click(object sender, EventArgs e)
+        {
 
         }
 
+        private void idProductPress(object sender, KeyPressEventArgs e)
+        {
+            dataClass.check_onlynumbers(sender, e);
+        }
+
+        private void idUserPressed(object sender, KeyPressEventArgs e)
+        {
+            dataClass.check_onlynumbers(sender, e);
+        }
+
+        private void chek_Tick(object sender, EventArgs e)
+        {
+            if (modify)
+            {
+                switch (currentTable)
+                {
+
+                    case "user":
+                        //user
+                        idLabelUser.Visible = true;
+                        idUser.Visible= true;
+                        //resto 
+                        idlabelProduct.Visible = false;
+                        idProduct.Visible = false;
+
+                        break;
+
+                    case "products":
+                        //product
+                        idlabelProduct.Visible = true;
+                        idProduct.Visible = true;
+                        //resto 
+                        idLabelUser.Visible = false;
+                        idUser.Visible = false;
+                        break;
+
+                }
+
+
+            }
+            else
+            {
+                switch (currentTable)
+                {
+                    case "user":
+                        idLabelUser.Visible = false;
+                        idUser.Visible = false;
+                        break;
+
+                    case "products":
+                        idlabelProduct.Visible = false;
+                        idProduct.Visible = false;
+                        break;
+
+
+                }
+
+
+            }
+        }
     }
 }
