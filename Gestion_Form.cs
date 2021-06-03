@@ -12,6 +12,8 @@ namespace Gestion
         private DB db = new DB();
         private string currentTable;
         private bool modify;
+        private bool delete;
+        private int id;
 
         public Gestion_Form()
         {
@@ -178,7 +180,8 @@ namespace Gestion
                     break;
 
                 case "Delete":
-                    db.productDelete(1);
+                    db.userDelete(Int32.Parse(idUser.Text));
+                    LoadUsers("", "");
                     break;
 
 
@@ -233,29 +236,37 @@ namespace Gestion
                     {
 
                         db.productInsert(nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex + 1, comboboxSubcategory.SelectedIndex + 1);
-                        MessageBox.Show("PRODUCT " + nameProduct + " INSERTED");
+                        MessageBox.Show("PRODUCT " + nameProduct.Text + " INSERTED");
                         LoadProducts("", "");
 
 
                     }
                     break;
                 case "Modify":
-                    if (string.IsNullOrEmpty(nameProduct.Text) && string.IsNullOrEmpty(stokbox.Text) && string.IsNullOrEmpty(brandbox.Text) && string.IsNullOrEmpty(pricebox.Text))
+                    if (string.IsNullOrEmpty(idUser.Text) && string.IsNullOrEmpty(nameProduct.Text) && string.IsNullOrEmpty(stokbox.Text) && string.IsNullOrEmpty(brandbox.Text) && string.IsNullOrEmpty(pricebox.Text))
 
                     {
                         MessageBox.Show("Fields can't be empty!");
                     }
                     else
                     {
-                        db.productUpdate(1, nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex, comboboxSubcategory.SelectedIndex);
-                        MessageBox.Show("PRODUCT " + nameProduct + " INSERTED");
+                        db.productUpdate(Int32.Parse(idProduct.Text), nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex, comboboxSubcategory.SelectedIndex);
+                        MessageBox.Show("PRODUCT " + nameProduct.Text + " UPDATED");
                         LoadProducts("", "");
 
                     }
                     break;
 
                 case "Delete":
-                    db.userDelete(1);
+                    if (!string.IsNullOrEmpty(idProduct.Text)) {
+                        db.productDelete(Int32.Parse(idProduct.Text));
+                        LoadProducts("", "");
+                        MessageBox.Show("PRODUCT " + nameProduct.Text + " DELETED ");
+                    }
+                    else
+                    {
+                        MessageBox.Show("ID field can't be empty!");
+                    }
                     break;
             }
 
@@ -272,6 +283,7 @@ namespace Gestion
             userPanelvisisble();
             LoadUsers("", "");
             modify = false;
+            delete = false;
             cleanData();
         }
         private void buttonModifyUsers_Click(object sender, EventArgs e)
@@ -280,6 +292,7 @@ namespace Gestion
             userPanelvisisble();
             LoadUsers("", "");
             modify = true;
+            delete = false;
             cleanData();
         }
         private void buttonDeleteUsers_Click(object sender, EventArgs e)
@@ -288,6 +301,7 @@ namespace Gestion
             userPanelvisisble();
             LoadUsers("", "");
             modify = false;
+            delete = true;
             cleanData();
         }
 
@@ -300,6 +314,7 @@ namespace Gestion
             productVisible();
             LoadProducts("", "");
             modify = false;
+            delete = false;
             cleanData();
         }
 
@@ -309,6 +324,7 @@ namespace Gestion
             productVisible();
             LoadProducts("", "");
             modify = true;
+            delete = false;
             cleanData();
         }
 
@@ -318,6 +334,7 @@ namespace Gestion
             productVisible();
             LoadProducts("", "");
             modify = false;
+            delete = true;
             cleanData();
         }
 
@@ -346,12 +363,20 @@ namespace Gestion
                         case "user":
                             userUsername.Text = row.Cells["USERNAME"].Value.ToString();
                             userPassword.Text = row.Cells["PWD"].Value.ToString();
+                            string password = row.Cells[""].Value.ToString();
                             emailUser.Text = row.Cells["EMAIL"].Value.ToString();
-                    
-
-
+                            idUser.Text = row.Cells["USER_ID"].Value.ToString();
                             break;
 
+                        case "products":
+                            nameProduct.Text = row.Cells["PRODUCT_ID"].Value.ToString();
+                            //metodo de deshasheo 
+                            stokbox.Text = row.Cells["NAME"].Value.ToString();
+                            pricebox.Text = row.Cells["BRAND"].Value.ToString();
+                            brandbox.Text = row.Cells["PRICE"].Value.ToString();
+                            idProduct.Text = row.Cells["STOCK"].Value.ToString();
+
+                            break;
                     }
                 }
             }
@@ -452,7 +477,7 @@ namespace Gestion
 
         private void chek_Tick(object sender, EventArgs e)
         {
-            if (modify)
+            if (modify || delete)
             {
                 switch (currentTable)
                 {

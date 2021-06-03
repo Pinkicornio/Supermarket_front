@@ -108,6 +108,10 @@ namespace Gestion
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.chek = new System.Windows.Forms.Timer(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelSubcategory.SuspendLayout();
             this.panelCategory.SuspendLayout();
@@ -117,12 +121,14 @@ namespace Gestion
             this.panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelUser.SuspendLayout();
+            this.DefaultPanel.SuspendLayout();
             this.panelProduct.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panelTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // userbuttona
@@ -624,7 +630,7 @@ namespace Gestion
             this.panelUser.Controls.Add(this.label5);
             this.panelUser.Controls.Add(this.label6);
             this.panelUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panelUser.Location = new System.Drawing.Point(843, 240);
+            this.panelUser.Location = new System.Drawing.Point(453, 240);
             this.panelUser.Name = "panelUser";
             this.panelUser.Size = new System.Drawing.Size(352, 713);
             this.panelUser.TabIndex = 8;
@@ -771,10 +777,11 @@ namespace Gestion
             // DefaultPanel
             // 
             this.DefaultPanel.BackColor = System.Drawing.Color.RoyalBlue;
-            this.DefaultPanel.Location = new System.Drawing.Point(638, 1004);
+            this.DefaultPanel.Controls.Add(this.panel2);
+            this.DefaultPanel.Location = new System.Drawing.Point(843, 196);
             this.DefaultPanel.Name = "DefaultPanel";
-            this.DefaultPanel.Size = new System.Drawing.Size(352, 36);
-            this.DefaultPanel.TabIndex = 1;
+            this.DefaultPanel.Size = new System.Drawing.Size(352, 19);
+            this.DefaultPanel.TabIndex = 8;
             // 
             // butonProduct
             // 
@@ -810,7 +817,7 @@ namespace Gestion
             this.panelProduct.Location = new System.Drawing.Point(452, 240);
             this.panelProduct.Name = "panelProduct";
             this.panelProduct.Size = new System.Drawing.Size(352, 714);
-            this.panelProduct.TabIndex = 9;
+            this.panelProduct.TabIndex = 8;
             // 
             // idProduct
             // 
@@ -1100,12 +1107,55 @@ namespace Gestion
             // 
             this.chek.Tick += new System.EventHandler(this.chek_Tick);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel2.Location = new System.Drawing.Point(52, 272);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(352, 713);
+            this.panel2.TabIndex = 9;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel3.Controls.Add(this.label19);
+            this.panel3.Controls.Add(this.label18);
+            this.panel3.Location = new System.Drawing.Point(843, 240);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(352, 713);
+            this.panel3.TabIndex = 10;
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(37, 42);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(130, 25);
+            this.label18.TabIndex = 18;
+            this.label18.Text = "CATEGORY";
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(37, 311);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(173, 25);
+            this.label19.TabIndex = 19;
+            this.label19.Text = "SUBCATEGORY";
+            // 
             // Gestion_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1924, 1061);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.DefaultPanel);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel9);
@@ -1131,6 +1181,7 @@ namespace Gestion
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelUser.ResumeLayout(false);
             this.panelUser.PerformLayout();
+            this.DefaultPanel.ResumeLayout(false);
             this.panelProduct.ResumeLayout(false);
             this.panelProduct.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -1140,6 +1191,8 @@ namespace Gestion
             this.panel9.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1223,5 +1276,9 @@ namespace Gestion
         private System.Windows.Forms.TextBox idProduct;
         private System.Windows.Forms.Label idlabelProduct;
         private System.Windows.Forms.Timer chek;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
     }
 }

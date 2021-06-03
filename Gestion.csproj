@@ -29,5 +29,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="prueba\" />
+  </ItemGroup>
 	
 </Project>
