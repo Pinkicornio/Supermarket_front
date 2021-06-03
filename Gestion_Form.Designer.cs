@@ -31,7 +31,7 @@ namespace Gestion
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gestion_Form));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.userbuttona = new System.Windows.Forms.Button();
             this.adminbutton = new System.Windows.Forms.Button();
             this.close = new System.Windows.Forms.Button();
@@ -47,8 +47,8 @@ namespace Gestion
             this.createCategory = new System.Windows.Forms.Button();
             this.categoryButton = new System.Windows.Forms.Button();
             this.panelSales = new System.Windows.Forms.Panel();
+            this.buttonDetailSalesSelect = new System.Windows.Forms.Button();
             this.buttonSalesSelect = new System.Windows.Forms.Button();
-            this.buttonSalesModify = new System.Windows.Forms.Button();
             this.salesButton = new System.Windows.Forms.Button();
             this.panelProducts = new System.Windows.Forms.Panel();
             this.buttonDeleteProduct = new System.Windows.Forms.Button();
@@ -78,6 +78,7 @@ namespace Gestion
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.DefaultPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.butonProduct = new System.Windows.Forms.Button();
             this.panelProduct = new System.Windows.Forms.Panel();
             this.idProduct = new System.Windows.Forms.TextBox();
@@ -108,10 +109,18 @@ namespace Gestion
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.chek = new System.Windows.Forms.Timer(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label18 = new System.Windows.Forms.Label();
+            this.panelCategories = new System.Windows.Forms.Panel();
+            this.createCategories = new System.Windows.Forms.Button();
+            this.subcategoryName = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.categoryName = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.idCategories = new System.Windows.Forms.TextBox();
+            this.idLabelCategories = new System.Windows.Forms.Label();
+            this.idSubcategories = new System.Windows.Forms.TextBox();
+            this.idLabelSubCategories = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelSubcategory.SuspendLayout();
             this.panelCategory.SuspendLayout();
@@ -128,7 +137,7 @@ namespace Gestion
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panelCategories.SuspendLayout();
             this.SuspendLayout();
             // 
             // userbuttona
@@ -139,7 +148,6 @@ namespace Gestion
             this.userbuttona.TabIndex = 0;
             this.userbuttona.Text = "user";
             this.userbuttona.UseVisualStyleBackColor = true;
-            this.userbuttona.Click += new System.EventHandler(this.userbuttona_Click);
             // 
             // adminbutton
             // 
@@ -214,6 +222,7 @@ namespace Gestion
             this.deleteSubcategory.TabIndex = 3;
             this.deleteSubcategory.Text = "DELETE SUBCATEGORY";
             this.deleteSubcategory.UseVisualStyleBackColor = false;
+            this.deleteSubcategory.Click += new System.EventHandler(this.deleteSubcategory_Click);
             // 
             // modifySubcategory
             // 
@@ -230,6 +239,7 @@ namespace Gestion
             this.modifySubcategory.TabIndex = 1;
             this.modifySubcategory.Text = "MODIFY SUBCATEGORY";
             this.modifySubcategory.UseVisualStyleBackColor = false;
+            this.modifySubcategory.Click += new System.EventHandler(this.modifySubcategory_Click);
             // 
             // createSubcategory
             // 
@@ -245,6 +255,7 @@ namespace Gestion
             this.createSubcategory.TabIndex = 0;
             this.createSubcategory.Text = "CREATE SUBCATEGORY";
             this.createSubcategory.UseVisualStyleBackColor = false;
+            this.createSubcategory.Click += new System.EventHandler(this.createSubcategory_Click);
             // 
             // subcategoryButton
             // 
@@ -293,6 +304,7 @@ namespace Gestion
             this.deleteCategory.TabIndex = 3;
             this.deleteCategory.Text = "DELETE CATEGORY";
             this.deleteCategory.UseVisualStyleBackColor = false;
+            this.deleteCategory.Click += new System.EventHandler(this.deleteCategory_Click);
             // 
             // modifyCategory
             // 
@@ -309,6 +321,7 @@ namespace Gestion
             this.modifyCategory.TabIndex = 1;
             this.modifyCategory.Text = "MODIFY CATEGORY";
             this.modifyCategory.UseVisualStyleBackColor = false;
+            this.modifyCategory.Click += new System.EventHandler(this.modifyCategory_Click);
             // 
             // createCategory
             // 
@@ -324,7 +337,7 @@ namespace Gestion
             this.createCategory.TabIndex = 0;
             this.createCategory.Text = "CREATE CATEGORY";
             this.createCategory.UseVisualStyleBackColor = false;
-            this.createCategory.Click += new System.EventHandler(this.button4_Click);
+            this.createCategory.Click += new System.EventHandler(this.createCategry_Onclick);
             // 
             // categoryButton
             // 
@@ -349,13 +362,29 @@ namespace Gestion
             // panelSales
             // 
             this.panelSales.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelSales.Controls.Add(this.buttonDetailSalesSelect);
             this.panelSales.Controls.Add(this.buttonSalesSelect);
-            this.panelSales.Controls.Add(this.buttonSalesModify);
             this.panelSales.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSales.Location = new System.Drawing.Point(0, 569);
             this.panelSales.Name = "panelSales";
             this.panelSales.Size = new System.Drawing.Size(384, 70);
             this.panelSales.TabIndex = 6;
+            // 
+            // buttonDetailSalesSelect
+            // 
+            this.buttonDetailSalesSelect.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonDetailSalesSelect.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonDetailSalesSelect.FlatAppearance.BorderSize = 0;
+            this.buttonDetailSalesSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDetailSalesSelect.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonDetailSalesSelect.Location = new System.Drawing.Point(0, 30);
+            this.buttonDetailSalesSelect.Name = "buttonDetailSalesSelect";
+            this.buttonDetailSalesSelect.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
+            this.buttonDetailSalesSelect.Size = new System.Drawing.Size(384, 30);
+            this.buttonDetailSalesSelect.TabIndex = 2;
+            this.buttonDetailSalesSelect.Text = "DETAIL SALES";
+            this.buttonDetailSalesSelect.UseVisualStyleBackColor = false;
+            this.buttonDetailSalesSelect.Click += new System.EventHandler(this.buttonSalesSelect_Click);
             // 
             // buttonSalesSelect
             // 
@@ -364,30 +393,14 @@ namespace Gestion
             this.buttonSalesSelect.FlatAppearance.BorderSize = 0;
             this.buttonSalesSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesSelect.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonSalesSelect.Location = new System.Drawing.Point(0, 30);
+            this.buttonSalesSelect.Location = new System.Drawing.Point(0, 0);
             this.buttonSalesSelect.Name = "buttonSalesSelect";
             this.buttonSalesSelect.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
             this.buttonSalesSelect.Size = new System.Drawing.Size(384, 30);
-            this.buttonSalesSelect.TabIndex = 2;
-            this.buttonSalesSelect.Text = "DETAIL SALES";
+            this.buttonSalesSelect.TabIndex = 1;
+            this.buttonSalesSelect.Text = "SELECT SALES";
             this.buttonSalesSelect.UseVisualStyleBackColor = false;
-            this.buttonSalesSelect.Click += new System.EventHandler(this.buttonSalesSelect_Click);
-            // 
-            // buttonSalesModify
-            // 
-            this.buttonSalesModify.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonSalesModify.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonSalesModify.FlatAppearance.BorderSize = 0;
-            this.buttonSalesModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesModify.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonSalesModify.Location = new System.Drawing.Point(0, 0);
-            this.buttonSalesModify.Name = "buttonSalesModify";
-            this.buttonSalesModify.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.buttonSalesModify.Size = new System.Drawing.Size(384, 30);
-            this.buttonSalesModify.TabIndex = 1;
-            this.buttonSalesModify.Text = "SELECT SALES";
-            this.buttonSalesModify.UseVisualStyleBackColor = false;
-            this.buttonSalesModify.Click += new System.EventHandler(this.buttonSalesModify_Click);
+            this.buttonSalesSelect.Click += new System.EventHandler(this.buttonSalesselect_Click);
             // 
             // salesButton
             // 
@@ -783,6 +796,14 @@ namespace Gestion
             this.DefaultPanel.Size = new System.Drawing.Size(352, 19);
             this.DefaultPanel.TabIndex = 8;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel2.Location = new System.Drawing.Point(52, 272);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(352, 713);
+            this.panel2.TabIndex = 9;
+            // 
             // butonProduct
             // 
             this.butonProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1009,8 +1030,8 @@ namespace Gestion
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(872, 567);
@@ -1107,23 +1128,93 @@ namespace Gestion
             // 
             this.chek.Tick += new System.EventHandler(this.chek_Tick);
             // 
-            // panel2
+            // panelCategories
             // 
-            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel2.Location = new System.Drawing.Point(52, 272);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(352, 713);
-            this.panel2.TabIndex = 9;
+            this.panelCategories.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelCategories.Controls.Add(this.idSubcategories);
+            this.panelCategories.Controls.Add(this.idLabelSubCategories);
+            this.panelCategories.Controls.Add(this.idCategories);
+            this.panelCategories.Controls.Add(this.idLabelCategories);
+            this.panelCategories.Controls.Add(this.createCategories);
+            this.panelCategories.Controls.Add(this.subcategoryName);
+            this.panelCategories.Controls.Add(this.label21);
+            this.panelCategories.Controls.Add(this.categoryName);
+            this.panelCategories.Controls.Add(this.label20);
+            this.panelCategories.Controls.Add(this.label19);
+            this.panelCategories.Controls.Add(this.label18);
+            this.panelCategories.Location = new System.Drawing.Point(843, 240);
+            this.panelCategories.Name = "panelCategories";
+            this.panelCategories.Size = new System.Drawing.Size(352, 713);
+            this.panelCategories.TabIndex = 10;
             // 
-            // panel3
+            // createCategories
             // 
-            this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel3.Controls.Add(this.label19);
-            this.panel3.Controls.Add(this.label18);
-            this.panel3.Location = new System.Drawing.Point(843, 240);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(352, 713);
-            this.panel3.TabIndex = 10;
+            this.createCategories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.createCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.createCategories.Location = new System.Drawing.Point(237, 666);
+            this.createCategories.Name = "createCategories";
+            this.createCategories.Size = new System.Drawing.Size(101, 31);
+            this.createCategories.TabIndex = 18;
+            this.createCategories.Text = "Create";
+            this.createCategories.UseVisualStyleBackColor = true;
+            this.createCategories.Click += new System.EventHandler(this.createCategories_Click);
+            // 
+            // subcategoryName
+            // 
+            this.subcategoryName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.subcategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.subcategoryName.Location = new System.Drawing.Point(107, 445);
+            this.subcategoryName.Name = "subcategoryName";
+            this.subcategoryName.Size = new System.Drawing.Size(211, 26);
+            this.subcategoryName.TabIndex = 23;
+            // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(20, 450);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(55, 20);
+            this.label21.TabIndex = 22;
+            this.label21.Text = "Name:";
+            // 
+            // categoryName
+            // 
+            this.categoryName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.categoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.categoryName.Location = new System.Drawing.Point(107, 101);
+            this.categoryName.Name = "categoryName";
+            this.categoryName.Size = new System.Drawing.Size(211, 26);
+            this.categoryName.TabIndex = 21;
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(20, 106);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(55, 20);
+            this.label20.TabIndex = 20;
+            this.label20.Text = "Name:";
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(52, 386);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(173, 25);
+            this.label19.TabIndex = 19;
+            this.label19.Text = "SUBCATEGORY";
             // 
             // label18
             // 
@@ -1137,17 +1228,45 @@ namespace Gestion
             this.label18.TabIndex = 18;
             this.label18.Text = "CATEGORY";
             // 
-            // label19
+            // idCategories
             // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label19.Location = new System.Drawing.Point(37, 311);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(173, 25);
-            this.label19.TabIndex = 19;
-            this.label19.Text = "SUBCATEGORY";
+            this.idCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.idCategories.Location = new System.Drawing.Point(107, 141);
+            this.idCategories.Name = "idCategories";
+            this.idCategories.Size = new System.Drawing.Size(211, 26);
+            this.idCategories.TabIndex = 25;
+            this.idCategories.Visible = false;
+            // 
+            // idLabelCategories
+            // 
+            this.idLabelCategories.AutoSize = true;
+            this.idLabelCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.idLabelCategories.Location = new System.Drawing.Point(60, 141);
+            this.idLabelCategories.Name = "idLabelCategories";
+            this.idLabelCategories.Size = new System.Drawing.Size(27, 20);
+            this.idLabelCategories.TabIndex = 24;
+            this.idLabelCategories.Text = "Id:";
+            this.idLabelCategories.Visible = false;
+            // 
+            // idSubcategories
+            // 
+            this.idSubcategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.idSubcategories.Location = new System.Drawing.Point(107, 487);
+            this.idSubcategories.Name = "idSubcategories";
+            this.idSubcategories.Size = new System.Drawing.Size(211, 26);
+            this.idSubcategories.TabIndex = 27;
+            this.idSubcategories.Visible = false;
+            // 
+            // idLabelSubCategories
+            // 
+            this.idLabelSubCategories.AutoSize = true;
+            this.idLabelSubCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.idLabelSubCategories.Location = new System.Drawing.Point(60, 487);
+            this.idLabelSubCategories.Name = "idLabelSubCategories";
+            this.idLabelSubCategories.Size = new System.Drawing.Size(27, 20);
+            this.idLabelSubCategories.TabIndex = 26;
+            this.idLabelSubCategories.Text = "Id:";
+            this.idLabelSubCategories.Visible = false;
             // 
             // Gestion_Form
             // 
@@ -1155,7 +1274,7 @@ namespace Gestion
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1924, 1061);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panelCategories);
             this.Controls.Add(this.DefaultPanel);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel9);
@@ -1191,8 +1310,8 @@ namespace Gestion
             this.panel9.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.panelCategories.ResumeLayout(false);
+            this.panelCategories.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1215,7 +1334,7 @@ namespace Gestion
         private System.Windows.Forms.Button buttonCreateProduct;
         private System.Windows.Forms.Button productsButton;
         private System.Windows.Forms.Panel panelSales;
-        private System.Windows.Forms.Button buttonSalesSelect;
+        private System.Windows.Forms.Button buttonDetailSalesSelect;
         private System.Windows.Forms.Button salesButton;
         private System.Windows.Forms.Panel panelUser;
         private System.Windows.Forms.Button userButon;
@@ -1260,7 +1379,7 @@ namespace Gestion
         private System.Windows.Forms.Button modifyCategory;
         private System.Windows.Forms.Button createCategory;
         private System.Windows.Forms.Button categoryButton;
-        private System.Windows.Forms.Button buttonSalesModify;
+        private System.Windows.Forms.Button buttonSalesSelect;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
@@ -1277,8 +1396,17 @@ namespace Gestion
         private System.Windows.Forms.Label idlabelProduct;
         private System.Windows.Forms.Timer chek;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelCategories;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button createCategories;
+        private System.Windows.Forms.TextBox subcategoryName;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox categoryName;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox idSubcategories;
+        private System.Windows.Forms.Label idLabelSubCategories;
+        private System.Windows.Forms.TextBox idCategories;
+        private System.Windows.Forms.Label idLabelCategories;
     }
 }
