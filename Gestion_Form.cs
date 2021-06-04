@@ -53,6 +53,13 @@ namespace Gestion
             currentTable = "sales";
         }
 
+        private void LoadSalesDetail() {
+            dataGridView1.DataSource = db.sales_detailSelection("","","");
+            dataGridView1.ClearSelection();
+            currentTable = "salesDetails";
+        }
+
+
         private void LoadCategories()
         {
             dataGridView1.DataSource = db.categorySelection("", "");
@@ -108,11 +115,11 @@ namespace Gestion
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
 
-            panelUsers.Visible = false;
-            panelProducts.Visible = false;
-            panelSales.Visible = false;
-            panelCategory.Visible = false;
-            panelSubcategory.Visible = false;
+            panelUsersMenuLeft.Visible = false;
+            panelProductsMenuLeft.Visible = false;
+            panelSalesMenuLeft.Visible = false;
+            panelCategoryMenuLeft.Visible = false;
+            panelSubcategoryMenuLeft.Visible = false;
 
             comboboxCategory.SelectedIndex = 0;
             comboboxSubcategory.SelectedIndex = 0;
@@ -191,9 +198,6 @@ namespace Gestion
                     db.userDelete(Int32.Parse(idUser.Text));
                     LoadUsers("", "");
                     break;
-
-
-
             }
 
         }
@@ -250,13 +254,25 @@ namespace Gestion
         //Categories
         private void createCategories_Click(object sender, EventArgs e)
         {
+            if (currentTable.Equals("category"))
+            {
 
+                switch (createCategories.Text)
+                {
+                    case "Create":
+                        break;
+                    case "Modify":
+                        break;
+                    case "Delete":
+                        break;
+                }
+            }
+            else { 
+            
+            }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
+  
 
         //-- User Menu
         private void buttonCreateUsers_Click(object sender, EventArgs e)
@@ -264,6 +280,7 @@ namespace Gestion
             userButon.Text = "Create";
             userPanelvisisble();
             LoadUsers("", "");
+            enableUsers();
             modify = false;
             delete = false;
             cleanData();
@@ -272,6 +289,7 @@ namespace Gestion
         {
             userButon.Text = "Modify";
             userPanelvisisble();
+            enableUsers();
             LoadUsers("", "");
             modify = true;
             delete = false;
@@ -280,6 +298,7 @@ namespace Gestion
         private void buttonDeleteUsers_Click(object sender, EventArgs e)
         {
             userButon.Text = "Delete";
+            DisableUsers();
             userPanelvisisble();
             LoadUsers("", "");
             modify = false;
@@ -294,6 +313,7 @@ namespace Gestion
             butonProduct.Text = "Create";
             productVisible();
             LoadProducts("", "");
+            enableProducts();
             modify = false;
             delete = false;
             cleanData();
@@ -304,6 +324,7 @@ namespace Gestion
             butonProduct.Text = "Modify";
             productVisible();
             LoadProducts("", "");
+            enableProducts();
             modify = true;
             delete = false;
             cleanData();
@@ -317,6 +338,7 @@ namespace Gestion
             modify = false;
             delete = true;
             cleanData();
+            DisableProducts();
         }
 
         
@@ -326,16 +348,20 @@ namespace Gestion
             modify = false;
             delete = false;
             cleanData();
+            defaultPanleVisible();
+
 
         }
         private void buttonSalesSelect_Click(object sender, EventArgs e)
         {
+            //details Sales
             modify = false;
             delete = false;
             cleanData();
-           
-        }
+            defaultPanleVisible();
+                      
 
+        }
 
         //categories menu
         private void createCategry_Onclick(object sender, EventArgs e)
@@ -343,7 +369,9 @@ namespace Gestion
             modify = false;
             delete = false;
             cleanData();
-            categoriesVisible();
+            categoriesPanelVisible();
+            enableCategories();
+            DisableSubcategories();
             LoadCategories();
             createCategories.Text = "Create";
         }
@@ -352,8 +380,10 @@ namespace Gestion
             modify = true;
             delete = false;
             cleanData();
+            enableCategories();
+            DisableSubcategories();
             LoadCategories();
-            categoriesVisible();
+            categoriesPanelVisible();
             createCategories.Text = "Modify";
         }
 
@@ -363,7 +393,9 @@ namespace Gestion
             delete = true;
             cleanData();
             LoadCategories();
-            categoriesVisible();
+            DisableSubcategories();
+            DisableCategories();
+            categoriesPanelVisible();
             createCategories.Text = "Delete";
         }
 
@@ -373,7 +405,9 @@ namespace Gestion
             modify = false;
             delete = false;
             cleanData();
-            categoriesVisible();
+            categoriesPanelVisible();
+            enableSubcategories();
+            DisableCategories();
             LoadSubCategories();
             createCategories.Text = "Create";
         }
@@ -383,7 +417,9 @@ namespace Gestion
             modify = true;
             delete = false;
             cleanData();
-            categoriesVisible();
+            categoriesPanelVisible();
+            enableSubcategories();
+            DisableCategories();
             LoadSubCategories();
             createCategories.Text = "Modify";
         }
@@ -394,7 +430,9 @@ namespace Gestion
             delete = true;
             createCategories.Text = "Delete";
             cleanData();
-            categoriesVisible();
+            DisableCategories();
+            DisableSubcategories();
+            categoriesPanelVisible();
             LoadSubCategories();
         }
 
@@ -454,24 +492,24 @@ namespace Gestion
         }
         private void Users_Click(object sender, EventArgs e)
         {
-            showSubmenu(panelUsers);
+            showSubmenu(panelUsersMenuLeft);
 
         }
         private void productsButton_Click(object sender, EventArgs e)
         {
-            showSubmenu(panelProducts);
+            showSubmenu(panelProductsMenuLeft);
         }
         private void salesButton_Click(object sender, EventArgs e)
         {
-            showSubmenu(panelSales);
+            showSubmenu(panelSalesMenuLeft);
         }
         private void categoryButton_Click(object sender, EventArgs e)
         {
-            showSubmenu(panelCategory);
+            showSubmenu(panelCategoryMenuLeft);
         }
         private void subcategoryButton_Click(object sender, EventArgs e)
         {
-            showSubmenu(panelSubcategory);
+            showSubmenu(panelSubcategoryMenuLeft);
         }
         //----------------------
 
@@ -479,13 +517,16 @@ namespace Gestion
         private void userPanelvisisble()
         {
             panelUser.BringToFront();
+
         }
         private void productVisible()
         {
             panelProduct.BringToFront();
+          
         }
-        private void categoriesVisible() {
+        private void categoriesPanelVisible() {
             panelCategories.BringToFront();
+          
         }
         private void defaultPanleVisible() {
             DefaultPanel.BringToFront();
@@ -535,10 +576,20 @@ namespace Gestion
                     case "products":
                         //product
                         idlabelProduct.Visible = true;
-                        idProduct.Visible = true;
-                        //resto 
-                        //idLabelUser.Visible = false;
-                        //idUser.Visible = false;
+                        idProduct.Visible = true;                 
+                        break;
+
+                    case "category":
+                        idLabelCategories.Visible = true;
+                        idCategories.Visible = true;
+                        idLabelSubCategories.Visible = false;
+                        idSubcategories.Visible = false;
+                        break;
+                    case "subcategory":
+                        idLabelSubCategories.Visible = true;
+                        idSubcategories.Visible = true;
+                        idLabelCategories.Visible = false;
+                        idCategories.Visible = false;
                         break;
                 }
             }
@@ -554,6 +605,14 @@ namespace Gestion
                     case "products":
                         idlabelProduct.Visible = false;
                         idProduct.Visible = false;
+                        break;
+                    case "category":
+                        idLabelCategories.Visible = false;
+                        idCategories.Visible = false;
+                        break;
+                    case "subcategory":
+                        idLabelSubCategories.Visible = false;
+                        idCategories.Visible = false;
                         break;
                 }
             }
@@ -583,6 +642,61 @@ namespace Gestion
 
 
 
+        //Enable and disable:
+        //Enable
+        private void enableUsers() {
+            userUsername.Enabled = true;
+            userPassword.Enabled = true;
+            emailUser.Enabled = true;
+        }
+
+        private void enableProducts() {
+            nameProduct.Enabled = true;
+            stokbox.Enabled = true;
+            pricebox.Enabled = true;
+            brandbox.Enabled = true;
+        }
+
+        private void enableCategories()
+        {
+            categoryName.Enabled = true;
+           
+        }
+
+        private void enableSubcategories()
+        {
+            subcategoryName.Enabled = true;
+        }
+
+        //Disable
+        private void DisableUsers()
+        {
+            userUsername.Enabled = false;
+            userPassword.Enabled = false;
+            emailUser.Enabled = false;
+        }
+
+        private void DisableProducts()
+        {
+            nameProduct.Enabled = false;
+            stokbox.Enabled = false;
+            pricebox.Enabled = false;
+            brandbox.Enabled = false;
+        }
+
+        private void DisableCategories()
+        {
+            categoryName.Enabled = false;
+
+        }
+
+        private void DisableSubcategories()
+        {
+            subcategoryName.Enabled = false;
+        }
+
+
+
         //metodos a buscar y eleminar------
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -598,10 +712,6 @@ namespace Gestion
 
         private void button4_Click(object sender, EventArgs e)
         {
-        }
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
         }
         private void panelLogin_Paint(object sender, PaintEventArgs e)
         {

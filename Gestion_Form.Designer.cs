@@ -36,26 +36,26 @@ namespace Gestion
             this.adminbutton = new System.Windows.Forms.Button();
             this.close = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelSubcategory = new System.Windows.Forms.Panel();
+            this.panelSubcategoryMenuLeft = new System.Windows.Forms.Panel();
             this.deleteSubcategory = new System.Windows.Forms.Button();
             this.modifySubcategory = new System.Windows.Forms.Button();
             this.createSubcategory = new System.Windows.Forms.Button();
             this.subcategoryButton = new System.Windows.Forms.Button();
-            this.panelCategory = new System.Windows.Forms.Panel();
+            this.panelCategoryMenuLeft = new System.Windows.Forms.Panel();
             this.deleteCategory = new System.Windows.Forms.Button();
             this.modifyCategory = new System.Windows.Forms.Button();
             this.createCategory = new System.Windows.Forms.Button();
             this.categoryButton = new System.Windows.Forms.Button();
-            this.panelSales = new System.Windows.Forms.Panel();
+            this.panelSalesMenuLeft = new System.Windows.Forms.Panel();
             this.buttonDetailSalesSelect = new System.Windows.Forms.Button();
             this.buttonSalesSelect = new System.Windows.Forms.Button();
             this.salesButton = new System.Windows.Forms.Button();
-            this.panelProducts = new System.Windows.Forms.Panel();
+            this.panelProductsMenuLeft = new System.Windows.Forms.Panel();
             this.buttonDeleteProduct = new System.Windows.Forms.Button();
             this.buttonModifyProduct = new System.Windows.Forms.Button();
             this.buttonCreateProduct = new System.Windows.Forms.Button();
             this.productsButton = new System.Windows.Forms.Button();
-            this.panelUsers = new System.Windows.Forms.Panel();
+            this.panelUsersMenuLeft = new System.Windows.Forms.Panel();
             this.buttonDeleteUsers = new System.Windows.Forms.Button();
             this.buttonModifyUsers = new System.Windows.Forms.Button();
             this.buttonCreateUsers = new System.Windows.Forms.Button();
@@ -77,9 +77,18 @@ namespace Gestion
             this.userUsername = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.DefaultPanel = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.butonProduct = new System.Windows.Forms.Button();
+            this.panelCategories = new System.Windows.Forms.Panel();
+            this.idSubcategories = new System.Windows.Forms.TextBox();
+            this.idLabelSubCategories = new System.Windows.Forms.Label();
+            this.idCategories = new System.Windows.Forms.TextBox();
+            this.idLabelCategories = new System.Windows.Forms.Label();
+            this.createCategories = new System.Windows.Forms.Button();
+            this.subcategoryName = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.categoryName = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.panelProduct = new System.Windows.Forms.Panel();
             this.idProduct = new System.Windows.Forms.TextBox();
             this.idlabelProduct = new System.Windows.Forms.Label();
@@ -89,6 +98,7 @@ namespace Gestion
             this.label17 = new System.Windows.Forms.Label();
             this.comboboxSubcategory = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.butonProduct = new System.Windows.Forms.Button();
             this.comboboxCategory = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.stokbox = new System.Windows.Forms.TextBox();
@@ -109,35 +119,23 @@ namespace Gestion
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.chek = new System.Windows.Forms.Timer(this.components);
-            this.panelCategories = new System.Windows.Forms.Panel();
-            this.createCategories = new System.Windows.Forms.Button();
-            this.subcategoryName = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.categoryName = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.idCategories = new System.Windows.Forms.TextBox();
-            this.idLabelCategories = new System.Windows.Forms.Label();
-            this.idSubcategories = new System.Windows.Forms.TextBox();
-            this.idLabelSubCategories = new System.Windows.Forms.Label();
+            this.DefaultPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.panelSubcategory.SuspendLayout();
-            this.panelCategory.SuspendLayout();
-            this.panelSales.SuspendLayout();
-            this.panelProducts.SuspendLayout();
-            this.panelUsers.SuspendLayout();
+            this.panelSubcategoryMenuLeft.SuspendLayout();
+            this.panelCategoryMenuLeft.SuspendLayout();
+            this.panelSalesMenuLeft.SuspendLayout();
+            this.panelProductsMenuLeft.SuspendLayout();
+            this.panelUsersMenuLeft.SuspendLayout();
             this.panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelUser.SuspendLayout();
-            this.DefaultPanel.SuspendLayout();
+            this.panelCategories.SuspendLayout();
             this.panelProduct.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panelTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
-            this.panelCategories.SuspendLayout();
             this.SuspendLayout();
             // 
             // userbuttona
@@ -177,15 +175,15 @@ namespace Gestion
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.panelSubcategory);
+            this.panel1.Controls.Add(this.panelSubcategoryMenuLeft);
             this.panel1.Controls.Add(this.subcategoryButton);
-            this.panel1.Controls.Add(this.panelCategory);
+            this.panel1.Controls.Add(this.panelCategoryMenuLeft);
             this.panel1.Controls.Add(this.categoryButton);
-            this.panel1.Controls.Add(this.panelSales);
+            this.panel1.Controls.Add(this.panelSalesMenuLeft);
             this.panel1.Controls.Add(this.salesButton);
-            this.panel1.Controls.Add(this.panelProducts);
+            this.panel1.Controls.Add(this.panelProductsMenuLeft);
             this.panel1.Controls.Add(this.productsButton);
-            this.panel1.Controls.Add(this.panelUsers);
+            this.panel1.Controls.Add(this.panelUsersMenuLeft);
             this.panel1.Controls.Add(this.buttonusers);
             this.panel1.Controls.Add(this.panelLogin);
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -195,23 +193,22 @@ namespace Gestion
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // panelSubcategory
+            // panelSubcategoryMenuLeft
             // 
-            this.panelSubcategory.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panelSubcategory.Controls.Add(this.deleteSubcategory);
-            this.panelSubcategory.Controls.Add(this.modifySubcategory);
-            this.panelSubcategory.Controls.Add(this.createSubcategory);
-            this.panelSubcategory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubcategory.Location = new System.Drawing.Point(0, 826);
-            this.panelSubcategory.Name = "panelSubcategory";
-            this.panelSubcategory.Size = new System.Drawing.Size(384, 105);
-            this.panelSubcategory.TabIndex = 10;
+            this.panelSubcategoryMenuLeft.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelSubcategoryMenuLeft.Controls.Add(this.deleteSubcategory);
+            this.panelSubcategoryMenuLeft.Controls.Add(this.modifySubcategory);
+            this.panelSubcategoryMenuLeft.Controls.Add(this.createSubcategory);
+            this.panelSubcategoryMenuLeft.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSubcategoryMenuLeft.Location = new System.Drawing.Point(0, 826);
+            this.panelSubcategoryMenuLeft.Name = "panelSubcategoryMenuLeft";
+            this.panelSubcategoryMenuLeft.Size = new System.Drawing.Size(384, 105);
+            this.panelSubcategoryMenuLeft.TabIndex = 10;
             // 
             // deleteSubcategory
             // 
             this.deleteSubcategory.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.deleteSubcategory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.deleteSubcategory.Enabled = false;
             this.deleteSubcategory.FlatAppearance.BorderSize = 0;
             this.deleteSubcategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteSubcategory.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -228,7 +225,6 @@ namespace Gestion
             // 
             this.modifySubcategory.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.modifySubcategory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.modifySubcategory.Enabled = false;
             this.modifySubcategory.FlatAppearance.BorderSize = 0;
             this.modifySubcategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.modifySubcategory.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -277,23 +273,22 @@ namespace Gestion
             this.subcategoryButton.UseVisualStyleBackColor = false;
             this.subcategoryButton.Click += new System.EventHandler(this.subcategoryButton_Click);
             // 
-            // panelCategory
+            // panelCategoryMenuLeft
             // 
-            this.panelCategory.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panelCategory.Controls.Add(this.deleteCategory);
-            this.panelCategory.Controls.Add(this.modifyCategory);
-            this.panelCategory.Controls.Add(this.createCategory);
-            this.panelCategory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelCategory.Location = new System.Drawing.Point(0, 684);
-            this.panelCategory.Name = "panelCategory";
-            this.panelCategory.Size = new System.Drawing.Size(384, 97);
-            this.panelCategory.TabIndex = 8;
+            this.panelCategoryMenuLeft.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelCategoryMenuLeft.Controls.Add(this.deleteCategory);
+            this.panelCategoryMenuLeft.Controls.Add(this.modifyCategory);
+            this.panelCategoryMenuLeft.Controls.Add(this.createCategory);
+            this.panelCategoryMenuLeft.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelCategoryMenuLeft.Location = new System.Drawing.Point(0, 684);
+            this.panelCategoryMenuLeft.Name = "panelCategoryMenuLeft";
+            this.panelCategoryMenuLeft.Size = new System.Drawing.Size(384, 97);
+            this.panelCategoryMenuLeft.TabIndex = 8;
             // 
             // deleteCategory
             // 
             this.deleteCategory.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.deleteCategory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.deleteCategory.Enabled = false;
             this.deleteCategory.FlatAppearance.BorderSize = 0;
             this.deleteCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteCategory.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -310,7 +305,6 @@ namespace Gestion
             // 
             this.modifyCategory.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.modifyCategory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.modifyCategory.Enabled = false;
             this.modifyCategory.FlatAppearance.BorderSize = 0;
             this.modifyCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.modifyCategory.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -359,16 +353,16 @@ namespace Gestion
             this.categoryButton.UseVisualStyleBackColor = false;
             this.categoryButton.Click += new System.EventHandler(this.categoryButton_Click);
             // 
-            // panelSales
+            // panelSalesMenuLeft
             // 
-            this.panelSales.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panelSales.Controls.Add(this.buttonDetailSalesSelect);
-            this.panelSales.Controls.Add(this.buttonSalesSelect);
-            this.panelSales.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSales.Location = new System.Drawing.Point(0, 569);
-            this.panelSales.Name = "panelSales";
-            this.panelSales.Size = new System.Drawing.Size(384, 70);
-            this.panelSales.TabIndex = 6;
+            this.panelSalesMenuLeft.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelSalesMenuLeft.Controls.Add(this.buttonDetailSalesSelect);
+            this.panelSalesMenuLeft.Controls.Add(this.buttonSalesSelect);
+            this.panelSalesMenuLeft.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSalesMenuLeft.Location = new System.Drawing.Point(0, 569);
+            this.panelSalesMenuLeft.Name = "panelSalesMenuLeft";
+            this.panelSalesMenuLeft.Size = new System.Drawing.Size(384, 70);
+            this.panelSalesMenuLeft.TabIndex = 6;
             // 
             // buttonDetailSalesSelect
             // 
@@ -422,17 +416,17 @@ namespace Gestion
             this.salesButton.UseVisualStyleBackColor = false;
             this.salesButton.Click += new System.EventHandler(this.salesButton_Click);
             // 
-            // panelProducts
+            // panelProductsMenuLeft
             // 
-            this.panelProducts.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panelProducts.Controls.Add(this.buttonDeleteProduct);
-            this.panelProducts.Controls.Add(this.buttonModifyProduct);
-            this.panelProducts.Controls.Add(this.buttonCreateProduct);
-            this.panelProducts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelProducts.Location = new System.Drawing.Point(0, 425);
-            this.panelProducts.Name = "panelProducts";
-            this.panelProducts.Size = new System.Drawing.Size(384, 99);
-            this.panelProducts.TabIndex = 4;
+            this.panelProductsMenuLeft.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelProductsMenuLeft.Controls.Add(this.buttonDeleteProduct);
+            this.panelProductsMenuLeft.Controls.Add(this.buttonModifyProduct);
+            this.panelProductsMenuLeft.Controls.Add(this.buttonCreateProduct);
+            this.panelProductsMenuLeft.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelProductsMenuLeft.Location = new System.Drawing.Point(0, 425);
+            this.panelProductsMenuLeft.Name = "panelProductsMenuLeft";
+            this.panelProductsMenuLeft.Size = new System.Drawing.Size(384, 99);
+            this.panelProductsMenuLeft.TabIndex = 4;
             // 
             // buttonDeleteProduct
             // 
@@ -504,17 +498,17 @@ namespace Gestion
             this.productsButton.UseVisualStyleBackColor = false;
             this.productsButton.Click += new System.EventHandler(this.productsButton_Click);
             // 
-            // panelUsers
+            // panelUsersMenuLeft
             // 
-            this.panelUsers.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panelUsers.Controls.Add(this.buttonDeleteUsers);
-            this.panelUsers.Controls.Add(this.buttonModifyUsers);
-            this.panelUsers.Controls.Add(this.buttonCreateUsers);
-            this.panelUsers.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUsers.Location = new System.Drawing.Point(0, 280);
-            this.panelUsers.Name = "panelUsers";
-            this.panelUsers.Size = new System.Drawing.Size(384, 100);
-            this.panelUsers.TabIndex = 2;
+            this.panelUsersMenuLeft.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelUsersMenuLeft.Controls.Add(this.buttonDeleteUsers);
+            this.panelUsersMenuLeft.Controls.Add(this.buttonModifyUsers);
+            this.panelUsersMenuLeft.Controls.Add(this.buttonCreateUsers);
+            this.panelUsersMenuLeft.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelUsersMenuLeft.Location = new System.Drawing.Point(0, 280);
+            this.panelUsersMenuLeft.Name = "panelUsersMenuLeft";
+            this.panelUsersMenuLeft.Size = new System.Drawing.Size(384, 100);
+            this.panelUsersMenuLeft.TabIndex = 2;
             // 
             // buttonDeleteUsers
             // 
@@ -643,7 +637,7 @@ namespace Gestion
             this.panelUser.Controls.Add(this.label5);
             this.panelUser.Controls.Add(this.label6);
             this.panelUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panelUser.Location = new System.Drawing.Point(453, 240);
+            this.panelUser.Location = new System.Drawing.Point(405, 262);
             this.panelUser.Name = "panelUser";
             this.panelUser.Size = new System.Drawing.Size(352, 713);
             this.panelUser.TabIndex = 8;
@@ -787,33 +781,145 @@ namespace Gestion
             this.label6.TabIndex = 0;
             this.label6.Text = "USER ";
             // 
-            // DefaultPanel
+            // panelCategories
             // 
-            this.DefaultPanel.BackColor = System.Drawing.Color.RoyalBlue;
-            this.DefaultPanel.Controls.Add(this.panel2);
-            this.DefaultPanel.Location = new System.Drawing.Point(843, 196);
-            this.DefaultPanel.Name = "DefaultPanel";
-            this.DefaultPanel.Size = new System.Drawing.Size(352, 19);
-            this.DefaultPanel.TabIndex = 8;
+            this.panelCategories.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelCategories.Controls.Add(this.idSubcategories);
+            this.panelCategories.Controls.Add(this.idLabelSubCategories);
+            this.panelCategories.Controls.Add(this.idCategories);
+            this.panelCategories.Controls.Add(this.idLabelCategories);
+            this.panelCategories.Controls.Add(this.createCategories);
+            this.panelCategories.Controls.Add(this.subcategoryName);
+            this.panelCategories.Controls.Add(this.label21);
+            this.panelCategories.Controls.Add(this.categoryName);
+            this.panelCategories.Controls.Add(this.label20);
+            this.panelCategories.Controls.Add(this.label19);
+            this.panelCategories.Controls.Add(this.label18);
+            this.panelCategories.Location = new System.Drawing.Point(405, 262);
+            this.panelCategories.Name = "panelCategories";
+            this.panelCategories.Size = new System.Drawing.Size(352, 713);
+            this.panelCategories.TabIndex = 9;
             // 
-            // panel2
+            // idSubcategories
             // 
-            this.panel2.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panel2.Location = new System.Drawing.Point(52, 272);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(352, 713);
-            this.panel2.TabIndex = 9;
+            this.idSubcategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.idSubcategories.Location = new System.Drawing.Point(107, 487);
+            this.idSubcategories.Name = "idSubcategories";
+            this.idSubcategories.Size = new System.Drawing.Size(211, 26);
+            this.idSubcategories.TabIndex = 27;
+            this.idSubcategories.Visible = false;
             // 
-            // butonProduct
+            // idLabelSubCategories
             // 
-            this.butonProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.butonProduct.Location = new System.Drawing.Point(229, 666);
-            this.butonProduct.Name = "butonProduct";
-            this.butonProduct.Size = new System.Drawing.Size(102, 31);
-            this.butonProduct.TabIndex = 7;
-            this.butonProduct.Text = "Create";
-            this.butonProduct.UseVisualStyleBackColor = true;
-            this.butonProduct.Click += new System.EventHandler(this.createProduct_onClick);
+            this.idLabelSubCategories.AutoSize = true;
+            this.idLabelSubCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.idLabelSubCategories.Location = new System.Drawing.Point(60, 487);
+            this.idLabelSubCategories.Name = "idLabelSubCategories";
+            this.idLabelSubCategories.Size = new System.Drawing.Size(27, 20);
+            this.idLabelSubCategories.TabIndex = 26;
+            this.idLabelSubCategories.Text = "Id:";
+            this.idLabelSubCategories.Visible = false;
+            // 
+            // idCategories
+            // 
+            this.idCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.idCategories.Location = new System.Drawing.Point(107, 141);
+            this.idCategories.Name = "idCategories";
+            this.idCategories.Size = new System.Drawing.Size(211, 26);
+            this.idCategories.TabIndex = 25;
+            this.idCategories.Visible = false;
+            // 
+            // idLabelCategories
+            // 
+            this.idLabelCategories.AutoSize = true;
+            this.idLabelCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.idLabelCategories.Location = new System.Drawing.Point(60, 141);
+            this.idLabelCategories.Name = "idLabelCategories";
+            this.idLabelCategories.Size = new System.Drawing.Size(27, 20);
+            this.idLabelCategories.TabIndex = 24;
+            this.idLabelCategories.Text = "Id:";
+            this.idLabelCategories.Visible = false;
+            // 
+            // createCategories
+            // 
+            this.createCategories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.createCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.createCategories.Location = new System.Drawing.Point(237, 666);
+            this.createCategories.Name = "createCategories";
+            this.createCategories.Size = new System.Drawing.Size(101, 31);
+            this.createCategories.TabIndex = 18;
+            this.createCategories.Text = "Create";
+            this.createCategories.UseVisualStyleBackColor = true;
+            this.createCategories.Click += new System.EventHandler(this.createCategories_Click);
+            // 
+            // subcategoryName
+            // 
+            this.subcategoryName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.subcategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.subcategoryName.Location = new System.Drawing.Point(107, 445);
+            this.subcategoryName.Name = "subcategoryName";
+            this.subcategoryName.Size = new System.Drawing.Size(211, 26);
+            this.subcategoryName.TabIndex = 23;
+            // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(20, 450);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(55, 20);
+            this.label21.TabIndex = 22;
+            this.label21.Text = "Name:";
+            // 
+            // categoryName
+            // 
+            this.categoryName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.categoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.categoryName.Location = new System.Drawing.Point(107, 101);
+            this.categoryName.Name = "categoryName";
+            this.categoryName.Size = new System.Drawing.Size(211, 26);
+            this.categoryName.TabIndex = 21;
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(20, 106);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(55, 20);
+            this.label20.TabIndex = 20;
+            this.label20.Text = "Name:";
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(52, 386);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(173, 25);
+            this.label19.TabIndex = 19;
+            this.label19.Text = "SUBCATEGORY";
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(37, 42);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(130, 25);
+            this.label18.TabIndex = 18;
+            this.label18.Text = "CATEGORY";
             // 
             // panelProduct
             // 
@@ -835,10 +941,10 @@ namespace Gestion
             this.panelProduct.Controls.Add(this.label9);
             this.panelProduct.Controls.Add(this.label10);
             this.panelProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panelProduct.Location = new System.Drawing.Point(452, 240);
+            this.panelProduct.Location = new System.Drawing.Point(763, 261);
             this.panelProduct.Name = "panelProduct";
-            this.panelProduct.Size = new System.Drawing.Size(352, 714);
-            this.panelProduct.TabIndex = 8;
+            this.panelProduct.Size = new System.Drawing.Size(352, 713);
+            this.panelProduct.TabIndex = 7;
             // 
             // idProduct
             // 
@@ -921,6 +1027,17 @@ namespace Gestion
             this.label15.TabIndex = 8;
             this.label15.Text = "Subcategory:";
             // 
+            // butonProduct
+            // 
+            this.butonProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.butonProduct.Location = new System.Drawing.Point(229, 666);
+            this.butonProduct.Name = "butonProduct";
+            this.butonProduct.Size = new System.Drawing.Size(102, 31);
+            this.butonProduct.TabIndex = 7;
+            this.butonProduct.Text = "Create";
+            this.butonProduct.UseVisualStyleBackColor = true;
+            this.butonProduct.Click += new System.EventHandler(this.createProduct_onClick);
+            // 
             // comboboxCategory
             // 
             this.comboboxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1002,16 +1119,15 @@ namespace Gestion
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1930, 28);
             this.panel4.TabIndex = 11;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // panelTable
             // 
             this.panelTable.BackColor = System.Drawing.Color.RoyalBlue;
             this.panelTable.Controls.Add(this.dataGridView1);
             this.panelTable.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panelTable.Location = new System.Drawing.Point(1224, 240);
+            this.panelTable.Location = new System.Drawing.Point(1139, 240);
             this.panelTable.Name = "panelTable";
-            this.panelTable.Size = new System.Drawing.Size(571, 625);
+            this.panelTable.Size = new System.Drawing.Size(656, 714);
             this.panelTable.TabIndex = 12;
             // 
             // dataGridView1
@@ -1034,7 +1150,7 @@ namespace Gestion
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(872, 567);
+            this.dataGridView1.Size = new System.Drawing.Size(872, 651);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rowSelected);
             // 
@@ -1128,145 +1244,13 @@ namespace Gestion
             // 
             this.chek.Tick += new System.EventHandler(this.chek_Tick);
             // 
-            // panelCategories
+            // DefaultPanel
             // 
-            this.panelCategories.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panelCategories.Controls.Add(this.idSubcategories);
-            this.panelCategories.Controls.Add(this.idLabelSubCategories);
-            this.panelCategories.Controls.Add(this.idCategories);
-            this.panelCategories.Controls.Add(this.idLabelCategories);
-            this.panelCategories.Controls.Add(this.createCategories);
-            this.panelCategories.Controls.Add(this.subcategoryName);
-            this.panelCategories.Controls.Add(this.label21);
-            this.panelCategories.Controls.Add(this.categoryName);
-            this.panelCategories.Controls.Add(this.label20);
-            this.panelCategories.Controls.Add(this.label19);
-            this.panelCategories.Controls.Add(this.label18);
-            this.panelCategories.Location = new System.Drawing.Point(843, 240);
-            this.panelCategories.Name = "panelCategories";
-            this.panelCategories.Size = new System.Drawing.Size(352, 713);
-            this.panelCategories.TabIndex = 10;
-            // 
-            // createCategories
-            // 
-            this.createCategories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.createCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.createCategories.Location = new System.Drawing.Point(237, 666);
-            this.createCategories.Name = "createCategories";
-            this.createCategories.Size = new System.Drawing.Size(101, 31);
-            this.createCategories.TabIndex = 18;
-            this.createCategories.Text = "Create";
-            this.createCategories.UseVisualStyleBackColor = true;
-            this.createCategories.Click += new System.EventHandler(this.createCategories_Click);
-            // 
-            // subcategoryName
-            // 
-            this.subcategoryName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.subcategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.subcategoryName.Location = new System.Drawing.Point(107, 445);
-            this.subcategoryName.Name = "subcategoryName";
-            this.subcategoryName.Size = new System.Drawing.Size(211, 26);
-            this.subcategoryName.TabIndex = 23;
-            // 
-            // label21
-            // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(20, 450);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(55, 20);
-            this.label21.TabIndex = 22;
-            this.label21.Text = "Name:";
-            // 
-            // categoryName
-            // 
-            this.categoryName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.categoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.categoryName.Location = new System.Drawing.Point(107, 101);
-            this.categoryName.Name = "categoryName";
-            this.categoryName.Size = new System.Drawing.Size(211, 26);
-            this.categoryName.TabIndex = 21;
-            // 
-            // label20
-            // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(20, 106);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(55, 20);
-            this.label20.TabIndex = 20;
-            this.label20.Text = "Name:";
-            // 
-            // label19
-            // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label19.Location = new System.Drawing.Point(52, 386);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(173, 25);
-            this.label19.TabIndex = 19;
-            this.label19.Text = "SUBCATEGORY";
-            // 
-            // label18
-            // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(37, 42);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(130, 25);
-            this.label18.TabIndex = 18;
-            this.label18.Text = "CATEGORY";
-            // 
-            // idCategories
-            // 
-            this.idCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.idCategories.Location = new System.Drawing.Point(107, 141);
-            this.idCategories.Name = "idCategories";
-            this.idCategories.Size = new System.Drawing.Size(211, 26);
-            this.idCategories.TabIndex = 25;
-            this.idCategories.Visible = false;
-            // 
-            // idLabelCategories
-            // 
-            this.idLabelCategories.AutoSize = true;
-            this.idLabelCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.idLabelCategories.Location = new System.Drawing.Point(60, 141);
-            this.idLabelCategories.Name = "idLabelCategories";
-            this.idLabelCategories.Size = new System.Drawing.Size(27, 20);
-            this.idLabelCategories.TabIndex = 24;
-            this.idLabelCategories.Text = "Id:";
-            this.idLabelCategories.Visible = false;
-            // 
-            // idSubcategories
-            // 
-            this.idSubcategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.idSubcategories.Location = new System.Drawing.Point(107, 487);
-            this.idSubcategories.Name = "idSubcategories";
-            this.idSubcategories.Size = new System.Drawing.Size(211, 26);
-            this.idSubcategories.TabIndex = 27;
-            this.idSubcategories.Visible = false;
-            // 
-            // idLabelSubCategories
-            // 
-            this.idLabelSubCategories.AutoSize = true;
-            this.idLabelSubCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.idLabelSubCategories.Location = new System.Drawing.Point(60, 487);
-            this.idLabelSubCategories.Name = "idLabelSubCategories";
-            this.idLabelSubCategories.Size = new System.Drawing.Size(27, 20);
-            this.idLabelSubCategories.TabIndex = 26;
-            this.idLabelSubCategories.Text = "Id:";
-            this.idLabelSubCategories.Visible = false;
+            this.DefaultPanel.BackColor = System.Drawing.Color.RoyalBlue;
+            this.DefaultPanel.Location = new System.Drawing.Point(1070, 196);
+            this.DefaultPanel.Name = "DefaultPanel";
+            this.DefaultPanel.Size = new System.Drawing.Size(352, 35);
+            this.DefaultPanel.TabIndex = 10;
             // 
             // Gestion_Form
             // 
@@ -1275,32 +1259,33 @@ namespace Gestion
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1924, 1061);
             this.Controls.Add(this.panelCategories);
+            this.Controls.Add(this.panelProduct);
             this.Controls.Add(this.DefaultPanel);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panelTable);
+            this.Controls.Add(this.panelUser);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.userbuttona);
-            this.Controls.Add(this.panelUser);
             this.Controls.Add(this.adminbutton);
-            this.Controls.Add(this.panelProduct);
             this.Controls.Add(this.panel1);
             this.Name = "Gestion_Form";
             this.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
             this.Text = "DELETE PRODUCT";
             this.Load += new System.EventHandler(this.Gestion_Form_Load_1);
             this.panel1.ResumeLayout(false);
-            this.panelSubcategory.ResumeLayout(false);
-            this.panelCategory.ResumeLayout(false);
-            this.panelSales.ResumeLayout(false);
-            this.panelProducts.ResumeLayout(false);
-            this.panelUsers.ResumeLayout(false);
+            this.panelSubcategoryMenuLeft.ResumeLayout(false);
+            this.panelCategoryMenuLeft.ResumeLayout(false);
+            this.panelSalesMenuLeft.ResumeLayout(false);
+            this.panelProductsMenuLeft.ResumeLayout(false);
+            this.panelUsersMenuLeft.ResumeLayout(false);
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelUser.ResumeLayout(false);
             this.panelUser.PerformLayout();
-            this.DefaultPanel.ResumeLayout(false);
+            this.panelCategories.ResumeLayout(false);
+            this.panelCategories.PerformLayout();
             this.panelProduct.ResumeLayout(false);
             this.panelProduct.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -1310,8 +1295,6 @@ namespace Gestion
             this.panel9.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            this.panelCategories.ResumeLayout(false);
-            this.panelCategories.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1323,17 +1306,17 @@ namespace Gestion
         private System.Windows.Forms.Button close;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelLogin;
-        private System.Windows.Forms.Panel panelUsers;
+        private System.Windows.Forms.Panel panelUsersMenuLeft;
         private System.Windows.Forms.Button buttonDeleteUsers;
         private System.Windows.Forms.Button buttonModifyUsers;
         private System.Windows.Forms.Button buttonCreateUsers;
         private System.Windows.Forms.Button buttonusers;
-        private System.Windows.Forms.Panel panelProducts;
+        private System.Windows.Forms.Panel panelProductsMenuLeft;
         private System.Windows.Forms.Button buttonDeleteProduct;
         private System.Windows.Forms.Button buttonModifyProduct;
         private System.Windows.Forms.Button buttonCreateProduct;
         private System.Windows.Forms.Button productsButton;
-        private System.Windows.Forms.Panel panelSales;
+        private System.Windows.Forms.Panel panelSalesMenuLeft;
         private System.Windows.Forms.Button buttonDetailSalesSelect;
         private System.Windows.Forms.Button salesButton;
         private System.Windows.Forms.Panel panelUser;
@@ -1347,34 +1330,19 @@ namespace Gestion
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox userPassword;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Panel panelProduct;
-        private System.Windows.Forms.Button butonProduct;
-        private System.Windows.Forms.ComboBox comboboxCategory;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox stokbox;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox nameProduct;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox pricebox;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox brandbox;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox comboboxSubcategory;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panelTable;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button user;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label userCurrentlabel;
-        private System.Windows.Forms.Panel panelSubcategory;
+        private System.Windows.Forms.Panel panelSubcategoryMenuLeft;
         private System.Windows.Forms.Button deleteSubcategory;
         private System.Windows.Forms.Button modifySubcategory;
         private System.Windows.Forms.Button createSubcategory;
         private System.Windows.Forms.Button subcategoryButton;
-        private System.Windows.Forms.Panel panelCategory;
+        private System.Windows.Forms.Panel panelCategoryMenuLeft;
         private System.Windows.Forms.Button deleteCategory;
         private System.Windows.Forms.Button modifyCategory;
         private System.Windows.Forms.Button createCategory;
@@ -1389,24 +1357,38 @@ namespace Gestion
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel DefaultPanel;
         private System.Windows.Forms.TextBox idUser;
         private System.Windows.Forms.Label idLabelUser;
-        private System.Windows.Forms.TextBox idProduct;
-        private System.Windows.Forms.Label idlabelProduct;
         private System.Windows.Forms.Timer chek;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox nameProduct;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox stokbox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboboxCategory;
+        private System.Windows.Forms.Button butonProduct;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox comboboxSubcategory;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox brandbox;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox pricebox;
+        private System.Windows.Forms.Label idlabelProduct;
+        private System.Windows.Forms.TextBox idProduct;
+        private System.Windows.Forms.Panel DefaultPanel;
+        private System.Windows.Forms.Panel panelProduct;
         private System.Windows.Forms.Panel panelCategories;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox idSubcategories;
+        private System.Windows.Forms.Label idLabelSubCategories;
+        private System.Windows.Forms.TextBox idCategories;
+        private System.Windows.Forms.Label idLabelCategories;
         private System.Windows.Forms.Button createCategories;
         private System.Windows.Forms.TextBox subcategoryName;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox categoryName;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox idSubcategories;
-        private System.Windows.Forms.Label idLabelSubCategories;
-        private System.Windows.Forms.TextBox idCategories;
-        private System.Windows.Forms.Label idLabelCategories;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
     }
 }
