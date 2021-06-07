@@ -69,7 +69,7 @@ namespace Gestion
 
         private void LoadSubCategories()
         {
-            dataGridView1.DataSource = db.categorySelection("", "");
+            dataGridView1.DataSource = db.subcategorySelection("", "");
             dataGridView1.ClearSelection();
             currentTable = "subcategory";
         }
@@ -146,7 +146,7 @@ namespace Gestion
             {
 
                 case "Create":
-                    if (string.IsNullOrEmpty(userUsername.Text) && string.IsNullOrEmpty(userPassword.Text) && string.IsNullOrEmpty(emailUser.Text))
+                    if (string.IsNullOrWhiteSpace(userUsername.Text) && string.IsNullOrWhiteSpace(userPassword.Text) && string.IsNullOrWhiteSpace(emailUser.Text))
                     {
                         MessageBox.Show("Fields can't be empty!");
                     }
@@ -158,10 +158,17 @@ namespace Gestion
                             string password = userPassword.Text;
                             string user = userUsername.Text;
                             string rol = Roles.SelectedItem.ToString();
-                            db.userInsert(user, password, email, rol);
-                            MessageBox.Show("USER " + user + " INSERTED");
-                            LoadUsers("", "");
-                            cleanData();
+
+                            if (db.userInsert(user, password, email, rol))
+                            {
+                                MessageBox.Show("USER " + user + " INSERTED");
+                                LoadUsers("", "");
+                                cleanData();
+                            }
+                            else {
+                                MessageBox.Show("USER " + user + " NOT INSERTED");
+                            }
+                           
                         }
                         else
                         {
@@ -171,7 +178,7 @@ namespace Gestion
                     }
                     break;
                 case "Modify":
-                    if (string.IsNullOrEmpty(userUsername.Text) && string.IsNullOrEmpty(userPassword.Text) && string.IsNullOrEmpty(emailUser.Text))
+                    if (string.IsNullOrWhiteSpace(userUsername.Text) && string.IsNullOrWhiteSpace(userPassword.Text) && string.IsNullOrWhiteSpace(emailUser.Text))
                     {
                         MessageBox.Show("Fields can't be empty!");
                     }
@@ -182,21 +189,37 @@ namespace Gestion
                         {
                             string user = userUsername.Text;
                             string rol = Roles.SelectedItem.ToString();
-                            db.userUpdate(Int32.Parse(idUser.Text), user, userPassword.Text, email, rol);
-                            MessageBox.Show("USER " + user + " UPDATED");
-                            LoadUsers("", "");
+
+                            if (db.userUpdate(Int32.Parse(idUser.Text), user, userPassword.Text, email, rol))
+                            {
+                                MessageBox.Show("USER " + user + " UPDATED");
+                                LoadUsers("", "");
+                            }
+                            else {
+                                MessageBox.Show("USER " + user + " CAN'T UPDATED");
+                            }
+                          
                         }
                         else
                         {
-                            MessageBox.Show("Email can't be like that");
+                            MessageBox.Show("VERIFY THE EMAIL!");
+
                         }
 
                     }
                     break;
 
                 case "Delete":
-                    db.userDelete(Int32.Parse(idUser.Text));
-                    LoadUsers("", "");
+
+                    if (db.userDelete(Int32.Parse(idUser.Text)))
+                    {
+                        MessageBox.Show("User deleted");
+                        LoadUsers("", "");
+                    }
+                    else {
+                        MessageBox.Show("User not deleted");
+                    }
+                   
                     break;
             }
 
@@ -210,38 +233,60 @@ namespace Gestion
             {
 
                 case "Create":
-                    if (string.IsNullOrEmpty(nameProduct.Text) && string.IsNullOrEmpty(stokbox.Text) && string.IsNullOrEmpty(brandbox.Text) && string.IsNullOrEmpty(pricebox.Text))
+                    if (string.IsNullOrWhiteSpace(nameProduct.Text) && string.IsNullOrWhiteSpace(stokbox.Text) && string.IsNullOrWhiteSpace(brandbox.Text) && string.IsNullOrWhiteSpace(pricebox.Text))
                     {
                         MessageBox.Show("Fields can't be empty!");
 
                     }
                     else
                     {
-                        db.productInsert(nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex + 1, comboboxSubcategory.SelectedIndex + 1);
-                        MessageBox.Show("PRODUCT " + nameProduct.Text + " INSERTED");
-                        LoadProducts("", "");
+                        if (db.productInsert(nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex + 1, comboboxSubcategory.SelectedIndex + 1))
+                        {
+                            MessageBox.Show("PRODUCT " + nameProduct.Text + " INSERTED");
+                            LoadProducts("", "");
+                            cleanData();
+                        }
+                        else {
+                            MessageBox.Show("PRODUCT " + nameProduct.Text + " NOT INSERTED");
+                        }
+                      
+                      
                     }
                     break;
                 case "Modify":
-                    if (string.IsNullOrEmpty(idUser.Text) && string.IsNullOrEmpty(nameProduct.Text) && string.IsNullOrEmpty(stokbox.Text) && string.IsNullOrEmpty(brandbox.Text) && string.IsNullOrEmpty(pricebox.Text))
+                    if (string.IsNullOrWhiteSpace(idUser.Text) && string.IsNullOrWhiteSpace(nameProduct.Text) && string.IsNullOrWhiteSpace(stokbox.Text) && string.IsNullOrWhiteSpace(brandbox.Text) && string.IsNullOrWhiteSpace(pricebox.Text))
 
                     {
                         MessageBox.Show("Fields can't be empty!");
                     }
                     else
                     {
-                        db.productUpdate(Int32.Parse(idProduct.Text), nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex, comboboxSubcategory.SelectedIndex);
-                        MessageBox.Show("PRODUCT " + nameProduct.Text + " UPDATED");
-                        LoadProducts("", "");
+                        if (db.productUpdate(Int32.Parse(idProduct.Text), nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex, comboboxSubcategory.SelectedIndex))
+                        {
+                            MessageBox.Show("PRODUCT " + nameProduct.Text + " UPDATED");
+                            LoadProducts("", "");
+                            cleanData();
+                        }
+                        else {
+                            MessageBox.Show("PRODUCT NOT UPDATED");
+                        }
+                    
                     }
                     break;
 
                 case "Delete":
-                    if (!string.IsNullOrEmpty(idProduct.Text))
+                    if (!string.IsNullOrWhiteSpace(idProduct.Text))
                     {
-                        db.productDelete(Int32.Parse(idProduct.Text));
-                        LoadProducts("", "");
-                        MessageBox.Show("PRODUCT " + nameProduct.Text + " DELETED ");
+                        if (db.productDelete(Int32.Parse(idProduct.Text))) {
+                          
+                            LoadProducts("", "");
+                            cleanData();
+                            MessageBox.Show("PRODUCT " + nameProduct.Text + " DELETED ");
+                        }
+                        else
+                        {
+                            MessageBox.Show("PRODUCT " + nameProduct.Text + " NOT DELETED ");
+                        }
                     }
                     else
                     {
@@ -260,15 +305,127 @@ namespace Gestion
                 switch (createCategories.Text)
                 {
                     case "Create":
+                        if (!string.IsNullOrWhiteSpace(categoryName.Text))
+                        {
+                            if (db.categoryInsert(categoryName.Text))
+                            {
+                                MessageBox.Show("NEW CATEGORY ADDED");
+                                LoadCategories();
+                                loadpropietiesCombobox();
+                            }
+                            else
+                            {
+                                MessageBox.Show("CAN'T ADD A NEW CATEGORY");
+                            }
+                        }
+                        else {
+                            MessageBox.Show("FIELDS CAN BE EMPTY");
+                        } 
                         break;
                     case "Modify":
-                        break;
+                        if (!string.IsNullOrWhiteSpace(idCategories.Text) && !string.IsNullOrWhiteSpace(categoryName.Text))
+                        {
+                            if (db.categoryUpdate(Int32.Parse(idCategories.Text), categoryName.Text))
+                            {
+                                MessageBox.Show("CATEGORY UPDATED");
+                                LoadCategories();
+                                loadpropietiesCombobox();
+                            }
+                            else
+                            {
+                                MessageBox.Show("CAN'T UPDATE");
+                            }
+                        }
+                        else {
+                            MessageBox.Show("FIELDS CAN BE EMPTY");
+                        }
+                         break;
                     case "Delete":
+                        if (!string.IsNullOrWhiteSpace(idCategories.Text))
+                        {
+
+                            if (db.categoryDelete(Int32.Parse(idCategories.Text)))
+                            {
+                                MessageBox.Show("CATEGORY UPDATED");
+                                LoadCategories();
+                                loadpropietiesCombobox();
+                            }
+                            else
+                            {
+                                MessageBox.Show("CAN'T DELETE");
+                            }
+                        }
+                        else {
+                            MessageBox.Show("FIELDS CAN BE EMPTY");
+                        }
+
                         break;
                 }
             }
-            else { 
-            
+            else {
+
+                switch (createCategories.Text)
+                {
+                    case "Create":
+                        if (!string.IsNullOrWhiteSpace(subcategoryName.Text))
+                        {
+                            if (db.subcategoryInsert(subcategoryName.Text))
+                            {
+                                MessageBox.Show("SUBCATEGORY ADDED");
+                                LoadSubCategories();
+                                loadpropietiesCombobox();
+                            }
+                            else {
+                                MessageBox.Show("SUBCATEGORY NOT ADDED");
+                            }
+
+                        }
+                        else {
+                            MessageBox.Show("FIELDS CAN'T BE EMPTY");
+                        }
+                        break;
+                    case "Modify":
+                        if (!string.IsNullOrWhiteSpace(subcategoryName.Text)&&!string.IsNullOrWhiteSpace(idSubcategories.Text))
+                        {
+
+                            if (db.subcategoryInsert(subcategoryName.Text))
+                            {
+                                MessageBox.Show("SUBCATEGORY UPDATED");
+                                LoadSubCategories();
+                                loadpropietiesCombobox();
+                            }
+                            else
+                            {
+                                MessageBox.Show("SUBCATEGORY NOT UPDATED");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("FIELDS CAN'T BE EMPTY");
+                        }
+                        break;
+                    case "Delete":
+                        if (!string.IsNullOrWhiteSpace(idSubcategories.Text))
+                        {
+                            if (db.subcategoryInsert(subcategoryName.Text))
+                            {
+                                MessageBox.Show("SUBCATEGORY DELETED");
+                                LoadSubCategories();
+                                loadpropietiesCombobox();
+                            }
+
+                            else
+                            {
+                                MessageBox.Show("SUBCATEGORY NOT DELETED");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("FIELDS CAN'T BE EMPTY");
+                        }
+                        break;
+                }
+
             }
         }
 
@@ -284,7 +441,10 @@ namespace Gestion
             modify = false;
             delete = false;
             cleanData();
+            InfoPanel();
         }
+
+
         private void buttonModifyUsers_Click(object sender, EventArgs e)
         {
             userButon.Text = "Modify";
@@ -294,6 +454,7 @@ namespace Gestion
             modify = true;
             delete = false;
             cleanData();
+            InfoPanel();
         }
         private void buttonDeleteUsers_Click(object sender, EventArgs e)
         {
@@ -304,6 +465,7 @@ namespace Gestion
             modify = false;
             delete = true;
             cleanData();
+            InfoPanel();
         }
 
 
@@ -317,6 +479,7 @@ namespace Gestion
             modify = false;
             delete = false;
             cleanData();
+            InfoPanel();
         }
 
         private void buttonModifyProduct_Click(object sender, EventArgs e)
@@ -327,6 +490,7 @@ namespace Gestion
             enableProducts();
             modify = true;
             delete = false;
+            InfoPanel();
             cleanData();
         }
 
@@ -338,6 +502,7 @@ namespace Gestion
             modify = false;
             delete = true;
             cleanData();
+            InfoPanel();
             DisableProducts();
         }
 
@@ -348,8 +513,9 @@ namespace Gestion
             modify = false;
             delete = false;
             cleanData();
+            LoadSales("", "");
             defaultPanleVisible();
-
+            InfoPanel();
 
         }
         private void buttonSalesSelect_Click(object sender, EventArgs e)
@@ -359,7 +525,9 @@ namespace Gestion
             delete = false;
             cleanData();
             defaultPanleVisible();
-                      
+            InfoPanel();
+            LoadSalesDetail();
+
 
         }
 
@@ -373,6 +541,7 @@ namespace Gestion
             enableCategories();
             DisableSubcategories();
             LoadCategories();
+            InfoPanel();
             createCategories.Text = "Create";
         }
         private void modifyCategory_Click(object sender, EventArgs e)
@@ -384,6 +553,7 @@ namespace Gestion
             DisableSubcategories();
             LoadCategories();
             categoriesPanelVisible();
+            InfoPanel();
             createCategories.Text = "Modify";
         }
 
@@ -396,6 +566,7 @@ namespace Gestion
             DisableSubcategories();
             DisableCategories();
             categoriesPanelVisible();
+            InfoPanel();
             createCategories.Text = "Delete";
         }
 
@@ -410,6 +581,7 @@ namespace Gestion
             DisableCategories();
             LoadSubCategories();
             createCategories.Text = "Create";
+            InfoPanel();
         }
 
         private void modifySubcategory_Click(object sender, EventArgs e)
@@ -422,6 +594,7 @@ namespace Gestion
             DisableCategories();
             LoadSubCategories();
             createCategories.Text = "Modify";
+            InfoPanel();
         }
 
         private void deleteSubcategory_Click(object sender, EventArgs e)
@@ -434,8 +607,38 @@ namespace Gestion
             DisableSubcategories();
             categoriesPanelVisible();
             LoadSubCategories();
+            InfoPanel();
         }
 
+        //Panel de informacion
+
+        private void InfoPanel()
+        {
+            switch (currentTable)
+            {
+                case "user":
+                    CurrentTableLabel.Text = "Users";
+                    TableDescriptionLabel.Text = "luedeps asdfdsf PRUEBA";
+                    break;
+                case "products":
+                    CurrentTableLabel.Text = "Products";
+                    TableDescriptionLabel.Text = "ESTO es una pruegfdfgjdfgnjdgfdfbndfgjdgfj";
+                    break;
+                case "sales":
+                    CurrentTableLabel.Text = "Sales";
+                    TableDescriptionLabel.Text = "darfdsfdfsdfsdvfdgf";
+                    break;
+                case "category":
+                    CurrentTableLabel.Text = "Category";
+                    TableDescriptionLabel.Text = "dfsdfrgfedgfedgfedgfefdfggdfdgfsdfesgdfgdfgdgf    ff";
+                    break;
+                case "subcategory":
+                    CurrentTableLabel.Text = "Subcategory";
+                    TableDescriptionLabel.Text = "T8T8UDGFUDGFJUDSGFSKGHKJGHKJDFSHGKJDSHJ";
+                    break;
+            }
+            
+        }
 
         //row selected metodo
         private void rowSelected(object sender, DataGridViewCellEventArgs e)
@@ -452,7 +655,7 @@ namespace Gestion
 
                         case "user":
                             userUsername.Text = row.Cells["USERNAME"].Value.ToString();
-                            userPassword.Text = row.Cells["PWD"].Value.ToString();
+                           // userPassword.Text = row.Cells["PWD"].Value.ToString();
                             string password = row.Cells["EMAIL"].Value.ToString();
                             /*metodo de deshasheo
                                     I                             
@@ -464,13 +667,23 @@ namespace Gestion
                             break;
 
                         case "products":
-                            nameProduct.Text = row.Cells["PRODUCT_ID"].Value.ToString();
-                        
-                            stokbox.Text = row.Cells["NAME"].Value.ToString();
-                            pricebox.Text = row.Cells["BRAND"].Value.ToString();
-                            brandbox.Text = row.Cells["PRICE"].Value.ToString();
-                            idProduct.Text = row.Cells["STOCK"].Value.ToString();
+                            nameProduct.Text = row.Cells["NAME"].Value.ToString();
+                            stokbox.Text = row.Cells["STOCK"].Value.ToString();
+                            pricebox.Text = row.Cells["BRANDPRICE"].Value.ToString();
+                            brandbox.Text = row.Cells["BRAND"].Value.ToString();
+                            idProduct.Text = row.Cells["PRODUCT_ID"].Value.ToString();
 
+                            break;
+
+                        case "category":
+
+                            categoryName.Text = row.Cells["NAME"].Value.ToString();
+                            idCategories.Text = row.Cells["CATEGORY_ID"].Value.ToString();
+                            break;
+
+                        case "subcategory":
+                            subcategoryName.Text = row.Cells["NAME"].Value.ToString();
+                            idSubcategories.Text = row.Cells["SUBCATEGORY_ID"].Value.ToString();
                             break;
                     }
                 }
@@ -532,6 +745,7 @@ namespace Gestion
             DefaultPanel.BringToFront();
         }
 
+        //llamada a metodos auxiliares
         //-- Text box validators
         private void stockPressed(object sender, KeyPressEventArgs e)
         {
@@ -540,11 +754,8 @@ namespace Gestion
 
         private void pricePressed(object sender, KeyPressEventArgs e)
         {
-            dataClass.check_onlynumbers(sender, e);
+            dataClass.check_onlynumbersWithComa(sender, e);
         }
-
-
-        //llamada a metodos auxiliares
         private void idProductPress(object sender, KeyPressEventArgs e)
         {
             dataClass.check_onlynumbers(sender, e);
@@ -554,6 +765,16 @@ namespace Gestion
         {
             dataClass.check_onlynumbers(sender, e);
         }
+        private void idSubCategoryPress(object sender, KeyPressEventArgs e)
+        {
+            dataClass.check_onlynumbers(sender, e);
+        }
+
+        private void idCategoryPress(object sender, KeyPressEventArgs e)
+        {
+            dataClass.check_onlynumbers(sender, e);
+        }
+
 
 
         //Verificador
@@ -717,7 +938,6 @@ namespace Gestion
         {
 
         }
-
     }
         //-----------------------------
 

@@ -58,6 +58,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing.Common" name="System.Drawing.Common, Version=4.0.2.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAPNvAADzbwETtjGOAAAAB3RJ
+        TUUH5QUcDxkfRSakFgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIFSURBVGhD
+        3ZoxTsQwEEUjQQ8lF4AaWhAn4RRQwwWgp6eBEs4ANTXcAIEQHXQI/rPwahcmKNnYiT1fetJqY4/HcsYe
+        22kSaU3siiNxKe7Fk/gQnz/wm/94RhnKUmddTKpVsS2Oxa14FTj81RHKUoe62MAWNkfTitgXF+JZWE4u
+        A7awiW3ayKpNcS7ehOVMCrBNG1siuRjyA/EgrMZz8ChoM9nrRjCeindhNZgT2qTtwRPChmCGsRoZkyuB
+        L0uJitfCMjwFN6J3ZxjKEkbiN4xM59eM4OK9tAyVAL51mgCYKaYI7K7gGz7+K+Zupj3LQEngY+s6w2rK
+        QmRVLBF8NTMAUoOcK3Zq8BWfF0TwkOdYFUoGnxcCn8wzZQI4FviM7zORRlsFawDfg1hg7oRVqAbYz4RF
+        ck+wwbEK1QC+s9MMW84+O7vSwPdDUWRO1Rf6EA4DrIc1QR/CyYb1sCboQzimsR7WBH2oOtAj9MFPR9y8
+        Wm6C3c3062ZB9JCi0AcXSSN9qD6Nx/fZWZeLjRVys9V1c/iAXBwHITcHdMjFkWmUi0NsRPCUfK1wJv4E
+        eJtYYKq/6IlycfUWRcUSRmbQZWgUQ1n99XQUwcVMUfUHA/Oq/hOOebGakhqQ56RMNF8ENrHdumLnEENO
+        5kkaPeQzJ/YTJ2JHZHmN+ohgZJfW98Mz6iQI5Kb5BlJTouchZvQLAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="subcategoryButton.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
@@ -488,6 +504,6 @@
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>25</value>
+    <value>33</value>
   </metadata>
 </root>

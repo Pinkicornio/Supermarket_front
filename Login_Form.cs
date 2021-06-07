@@ -61,5 +61,11 @@ namespace Gestion
         {
            // passwordfield.PasswordChar = '*';
         }
+
+        private void Login_Form_Load(object sender, EventArgs e)
+        {
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+        }
     }
 }
