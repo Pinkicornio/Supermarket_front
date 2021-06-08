@@ -31,14 +31,15 @@ namespace Gestion
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gestion_Form));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.userbuttona = new System.Windows.Forms.Button();
             this.adminbutton = new System.Windows.Forms.Button();
             this.close = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panelStorage = new System.Windows.Forms.Panel();
+            this.storageDetailButton = new System.Windows.Forms.Button();
+            this.storageSelectButton = new System.Windows.Forms.Button();
+            this.storageButtonMenu = new System.Windows.Forms.Button();
             this.panelSubcategoryMenuLeft = new System.Windows.Forms.Panel();
             this.deleteSubcategory = new System.Windows.Forms.Button();
             this.modifySubcategory = new System.Windows.Forms.Button();
@@ -119,11 +120,12 @@ namespace Gestion
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.FilterCombobox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.chek = new System.Windows.Forms.Timer(this.components);
             this.DefaultPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panelStorage.SuspendLayout();
             this.panelSubcategoryMenuLeft.SuspendLayout();
             this.panelCategoryMenuLeft.SuspendLayout();
             this.panelSalesMenuLeft.SuspendLayout();
@@ -178,9 +180,8 @@ namespace Gestion
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.panelStorage);
+            this.panel1.Controls.Add(this.storageButtonMenu);
             this.panel1.Controls.Add(this.panelSubcategoryMenuLeft);
             this.panel1.Controls.Add(this.subcategoryButton);
             this.panel1.Controls.Add(this.panelCategoryMenuLeft);
@@ -199,54 +200,67 @@ namespace Gestion
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // button7
+            // panelStorage
             // 
-            this.button7.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button7.Location = new System.Drawing.Point(0, 979);
-            this.button7.Name = "button7";
-            this.button7.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.button7.Size = new System.Drawing.Size(384, 30);
-            this.button7.TabIndex = 13;
-            this.button7.Text = "STORAGE DETAIL";
-            this.button7.UseVisualStyleBackColor = false;
+            this.panelStorage.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelStorage.Controls.Add(this.storageDetailButton);
+            this.panelStorage.Controls.Add(this.storageSelectButton);
+            this.panelStorage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelStorage.Location = new System.Drawing.Point(0, 949);
+            this.panelStorage.Name = "panelStorage";
+            this.panelStorage.Size = new System.Drawing.Size(384, 98);
+            this.panelStorage.TabIndex = 14;
+            this.panelStorage.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // button8
+            // storageDetailButton
             // 
-            this.button8.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button8.Location = new System.Drawing.Point(0, 949);
-            this.button8.Name = "button8";
-            this.button8.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.button8.Size = new System.Drawing.Size(384, 30);
-            this.button8.TabIndex = 12;
-            this.button8.Text = "STORAGE";
-            this.button8.UseVisualStyleBackColor = false;
+            this.storageDetailButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.storageDetailButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.storageDetailButton.FlatAppearance.BorderSize = 0;
+            this.storageDetailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.storageDetailButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.storageDetailButton.Location = new System.Drawing.Point(0, 40);
+            this.storageDetailButton.Name = "storageDetailButton";
+            this.storageDetailButton.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
+            this.storageDetailButton.Size = new System.Drawing.Size(384, 42);
+            this.storageDetailButton.TabIndex = 14;
+            this.storageDetailButton.Text = "STORAGE DETAIL";
+            this.storageDetailButton.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // storageSelectButton
             // 
-            this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 904);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(384, 45);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "           STORAGE";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
+            this.storageSelectButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.storageSelectButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.storageSelectButton.FlatAppearance.BorderSize = 0;
+            this.storageSelectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.storageSelectButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.storageSelectButton.Location = new System.Drawing.Point(0, 0);
+            this.storageSelectButton.Name = "storageSelectButton";
+            this.storageSelectButton.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
+            this.storageSelectButton.Size = new System.Drawing.Size(384, 40);
+            this.storageSelectButton.TabIndex = 13;
+            this.storageSelectButton.Text = "STORAGE";
+            this.storageSelectButton.UseVisualStyleBackColor = false;
+            // 
+            // storageButtonMenu
+            // 
+            this.storageButtonMenu.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.storageButtonMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.storageButtonMenu.FlatAppearance.BorderSize = 0;
+            this.storageButtonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.storageButtonMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.storageButtonMenu.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.storageButtonMenu.Image = ((System.Drawing.Image)(resources.GetObject("storageButtonMenu.Image")));
+            this.storageButtonMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.storageButtonMenu.Location = new System.Drawing.Point(0, 904);
+            this.storageButtonMenu.Name = "storageButtonMenu";
+            this.storageButtonMenu.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.storageButtonMenu.Size = new System.Drawing.Size(384, 45);
+            this.storageButtonMenu.TabIndex = 11;
+            this.storageButtonMenu.Text = "           STORAGE";
+            this.storageButtonMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.storageButtonMenu.UseVisualStyleBackColor = false;
+            this.storageButtonMenu.Click += new System.EventHandler(this.storageButtonMenu_Click);
             // 
             // panelSubcategoryMenuLeft
             // 
@@ -350,7 +364,7 @@ namespace Gestion
             this.deleteCategory.Location = new System.Drawing.Point(0, 60);
             this.deleteCategory.Name = "deleteCategory";
             this.deleteCategory.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.deleteCategory.Size = new System.Drawing.Size(384, 30);
+            this.deleteCategory.Size = new System.Drawing.Size(384, 31);
             this.deleteCategory.TabIndex = 3;
             this.deleteCategory.Text = "DELETE CATEGORY";
             this.deleteCategory.UseVisualStyleBackColor = false;
@@ -1203,8 +1217,8 @@ namespace Gestion
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(660, 666);
@@ -1246,7 +1260,7 @@ namespace Gestion
             this.panel10.Controls.Add(this.dateTimePicker1);
             this.panel10.Controls.Add(this.textBox1);
             this.panel10.Controls.Add(this.label12);
-            this.panel10.Controls.Add(this.comboBox1);
+            this.panel10.Controls.Add(this.FilterCombobox);
             this.panel10.Controls.Add(this.label4);
             this.panel10.Location = new System.Drawing.Point(405, 140);
             this.panel10.Name = "panel10";
@@ -1264,7 +1278,7 @@ namespace Gestion
             // 
             this.textBox1.Location = new System.Drawing.Point(617, 14);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(347, 23);
+            this.textBox1.Size = new System.Drawing.Size(358, 23);
             this.textBox1.TabIndex = 15;
             // 
             // label12
@@ -1277,13 +1291,13 @@ namespace Gestion
             this.label12.TabIndex = 14;
             this.label12.Text = "Datos para la busqueda";
             // 
-            // comboBox1
+            // FilterCombobox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(208, 13);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(192, 23);
-            this.comboBox1.TabIndex = 1;
+            this.FilterCombobox.FormattingEnabled = true;
+            this.FilterCombobox.Location = new System.Drawing.Point(208, 13);
+            this.FilterCombobox.Name = "FilterCombobox";
+            this.FilterCombobox.Size = new System.Drawing.Size(192, 23);
+            this.FilterCombobox.TabIndex = 1;
             // 
             // label4
             // 
@@ -1329,6 +1343,7 @@ namespace Gestion
             this.Text = "DELETE PRODUCT";
             this.Load += new System.EventHandler(this.Gestion_Form_Load_1);
             this.panel1.ResumeLayout(false);
+            this.panelStorage.ResumeLayout(false);
             this.panelSubcategoryMenuLeft.ResumeLayout(false);
             this.panelCategoryMenuLeft.ResumeLayout(false);
             this.panelSalesMenuLeft.ResumeLayout(false);
@@ -1410,7 +1425,7 @@ namespace Gestion
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox FilterCombobox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox idUser;
         private System.Windows.Forms.Label idLabelUser;
@@ -1445,8 +1460,9 @@ namespace Gestion
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button storageButtonMenu;
+        private System.Windows.Forms.Panel panelStorage;
+        private System.Windows.Forms.Button storageDetailButton;
+        private System.Windows.Forms.Button storageSelectButton;
     }
 }

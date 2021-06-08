@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ShopfyDBLibrary;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Gestion
@@ -6,7 +8,8 @@ namespace Gestion
     public partial class Login_Form : Form
     {
 
-       
+        private DB db = new DB();
+        private Data_class data_class = new Data_class();
         public Login_Form()
         {
             InitializeComponent();
@@ -21,25 +24,45 @@ namespace Gestion
         private void loginbutton_Click(object sender, EventArgs e)
         {
             Gestion_Form gestion_form;
+            string userInput = userfield.Text;
+            string pwdInput = userfield.Text;
 
 
-            if (userfield.Text.Equals("admin") && passwordfield.Text.Equals("admin")) {
+            try {
 
-             
-                this.Hide();
-                Data_class.admin = true;
-                gestion_form = new Gestion_Form();
-                gestion_form.Show();
-                    
+                List<string> datainfo = db.getLoginInfo(userInput);
+                
+
+                if (datainfo[2].Equals(data_class.hashpwd(pwdInput,datainfo[3]))) {
+
+                    if (datainfo[4].Equals("admin"))
+                    {
+
+                        Data_class.admin = true;
+                        Data_class.currentUser = userInput;
+                        this.Hide();
+                        gestion_form = new Gestion_Form();
+                        gestion_form.Show();
+
+                    }
+
+                    else 
+                    {
+                        Data_class.admin = false;
+                        Data_class.currentUser = userInput;
+                        this.Hide();
+                        gestion_form = new Gestion_Form();
+                        gestion_form.Show();
+
+                    }
+
+                }
+              
             }
-
-            else if (userfield.Text.Equals("user") && passwordfield.Text.Equals("user"))
+            catch
             {
-                this.Hide();
-                gestion_form = new Gestion_Form();
-                gestion_form.Show();
+                MessageBox.Show("LOG FAILED, USERNAME NOT EXIST");
             }
-
 
 
         }
@@ -66,6 +89,20 @@ namespace Gestion
         {
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
+            conectionDb();
         }
+        private void conectionDb()
+        {
+            try
+            {
+                db.startConnection();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
     }
 }

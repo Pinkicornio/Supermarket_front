@@ -7,7 +7,7 @@ namespace Gestion
     class Data_class
     {
         public static bool  admin = true;
-        public static string currentUser = "user_test";
+        public static string currentUser;
 
 
         public void check_onlynumbers(object sender, KeyPressEventArgs e)
@@ -57,11 +57,11 @@ namespace Gestion
             return true;
         }
 
-        public string encriptar(string contra, System.DateTime fecha)
+        public string hashpwd(string contra, string fecha)
         {
-   
-            string fechaHash = fecha.ToString();
-            fechaHash = fechaHash.Replace("-", "");
+
+            string fechaHash = fecha;
+            fechaHash = fechaHash.Replace("/", "");
 
             //-----------
             string hashDate = mD5(fechaHash);
@@ -74,9 +74,9 @@ namespace Gestion
 
             string pebre = salContra;
 
-            int lengh = pebre.Length;
-            string sSubCadena = pebre.Substring(0, 17);
-            string sSubCadena2 = pebre.Substring(17, lengh);
+           
+            string sSubCadena = pebre.Substring(0, (int)(pebre.Length / 2));
+            string sSubCadena2 = pebre.Substring((int)(pebre.Length / 2), (int)(pebre.Length / 2));
             string Contrapebre = sSubCadena2 + sSubCadena;
 
             //lengh conocer la lingtud de la string luego lo separamos por X numero y cambiarlo de posicion 
@@ -87,7 +87,7 @@ namespace Gestion
 
         }
 
-        public string mD5(string input)
+        private string mD5(string input)
         {
             // Use input string to calculate MD5 hash
             using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())

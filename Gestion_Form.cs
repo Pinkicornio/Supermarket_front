@@ -13,7 +13,6 @@ namespace Gestion
         private string currentTable;
         private bool modify;
         private bool delete;
-        private int id;
 
         public Gestion_Form()
         {
@@ -27,13 +26,11 @@ namespace Gestion
             buttonDeleteProduct.Enabled = true;
             buttonDeleteUsers.Enabled = true;
         }
-
-
         //-- Load datos de tabla
         private void LoadUsers(string campo, string where)
         {
 
-            dataGridView1.DataSource = db.userSelection("", "");
+            dataGridView1.DataSource = db.userSelection("", "","");
             dataGridView1.ClearSelection();
             currentTable = "user";
         }
@@ -41,7 +38,7 @@ namespace Gestion
         private void LoadProducts(string campo, string where)
         {
 
-            dataGridView1.DataSource = db.productSelection("", "");
+            dataGridView1.DataSource = db.productSelection("", "","");
             dataGridView1.ClearSelection();
             currentTable = "products";
         }
@@ -87,6 +84,34 @@ namespace Gestion
             comboboxSubcategory.ValueMember = "SUBCATEGORY_ID";
 
         }
+
+        private void loadUserFilterCombobox()
+        {
+
+            string[] userFilter = new string[] {"USER_ID","USERNAME", "PWD", "EMAIL", "CREATION_DATE", "ROL"};
+          }
+        private void loadProductFilterCombobox()
+        {
+            string[] productFilter = new string[] { "PRODUCT_ID", "NAME", "PRICE", "STOCK", "CATEGORY_ID", "SUBCATEGORY_ID" };
+        }
+        private void loadSalesFilterCombobox()
+        {
+            string[] salesFilter = new string[] {"SALE_ID", "PRICE", "GENERATION_DATE"};
+        }
+        private void loadDetailSalesFilterCombobox()
+        {
+            string[] detailSalesFilter = new string[] {};
+        }
+
+        private void LoadCategoriesFilterCombobox()
+        {
+
+        }
+        private void LoadSubcategoriesFilterCombobox()
+        {
+
+        }
+
         //conexion bd
         private void conectionDb()
         {
@@ -120,6 +145,7 @@ namespace Gestion
             panelSalesMenuLeft.Visible = false;
             panelCategoryMenuLeft.Visible = false;
             panelSubcategoryMenuLeft.Visible = false;
+            panelStorage.Visible = false;
 
             comboboxCategory.SelectedIndex = 0;
             comboboxSubcategory.SelectedIndex = 0;
@@ -156,6 +182,11 @@ namespace Gestion
                         if (dataClass.IsValidEmail(email))
                         {
                             string password = userPassword.Text;
+                            DateTime dateTimenow = DateTime.Now; 
+                            MessageBox.Show(dateTimenow.ToString("dd/MM/yyyy"));
+
+                            password = dataClass.hashpwd(password,dateTimenow.ToString("dd/MM/yyyy"));
+
                             string user = userUsername.Text;
                             string rol = Roles.SelectedItem.ToString();
 
@@ -178,6 +209,8 @@ namespace Gestion
                     }
                     break;
                 case "Modify":
+
+                    MessageBox.Show("REMEMBER CHANGE PASWORD");
                     if (string.IsNullOrWhiteSpace(userUsername.Text) && string.IsNullOrWhiteSpace(userPassword.Text) && string.IsNullOrWhiteSpace(emailUser.Text))
                     {
                         MessageBox.Show("Fields can't be empty!");
@@ -228,7 +261,7 @@ namespace Gestion
         //-- Producto 
         private void createProduct_onClick(object sender, EventArgs e)
         {
-
+            float price;
             switch (butonProduct.Text)
             {
 
@@ -240,17 +273,24 @@ namespace Gestion
                     }
                     else
                     {
-                        if (db.productInsert(nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex + 1, comboboxSubcategory.SelectedIndex + 1))
+                        if (float.TryParse(pricebox.Text, out price))
                         {
-                            MessageBox.Show("PRODUCT " + nameProduct.Text + " INSERTED");
-                            LoadProducts("", "");
-                            cleanData();
+                            price = (float) Math.Round(price,2);
+                            if (db.productInsert(nameProduct.Text, brandbox.Text, price, Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex + 1, comboboxSubcategory.SelectedIndex + 1))
+                            {
+                                MessageBox.Show("PRODUCT " + nameProduct.Text + " INSERTED");
+                                LoadProducts("", "");
+                                cleanData();
+                            }
+                            else
+                            {
+                                MessageBox.Show("PRODUCT " + nameProduct.Text + " NOT INSERTED");
+                            }
                         }
                         else {
-                            MessageBox.Show("PRODUCT " + nameProduct.Text + " NOT INSERTED");
+                            MessageBox.Show("Price not valid");
                         }
-                      
-                      
+
                     }
                     break;
                 case "Modify":
@@ -388,7 +428,7 @@ namespace Gestion
                         if (!string.IsNullOrWhiteSpace(subcategoryName.Text)&&!string.IsNullOrWhiteSpace(idSubcategories.Text))
                         {
 
-                            if (db.subcategoryInsert(subcategoryName.Text))
+                            if (db.subcategoryUpdate(Int32.Parse(idSubcategories.Text), subcategoryName.Text))
                             {
                                 MessageBox.Show("SUBCATEGORY UPDATED");
                                 LoadSubCategories();
@@ -407,7 +447,7 @@ namespace Gestion
                     case "Delete":
                         if (!string.IsNullOrWhiteSpace(idSubcategories.Text))
                         {
-                            if (db.subcategoryInsert(subcategoryName.Text))
+                            if (db.subcategoryDelete(Int32.Parse(idSubcategories.Text)))
                             {
                                 MessageBox.Show("SUBCATEGORY DELETED");
                                 LoadSubCategories();
@@ -442,6 +482,7 @@ namespace Gestion
             delete = false;
             cleanData();
             InfoPanel();
+            loadUserFilterCombobox();
         }
 
 
@@ -455,6 +496,7 @@ namespace Gestion
             delete = false;
             cleanData();
             InfoPanel();
+            loadUserFilterCombobox();
         }
         private void buttonDeleteUsers_Click(object sender, EventArgs e)
         {
@@ -466,6 +508,7 @@ namespace Gestion
             delete = true;
             cleanData();
             InfoPanel();
+            loadUserFilterCombobox();
         }
 
 
@@ -480,6 +523,7 @@ namespace Gestion
             delete = false;
             cleanData();
             InfoPanel();
+            loadProductFilterCombobox();
         }
 
         private void buttonModifyProduct_Click(object sender, EventArgs e)
@@ -492,6 +536,7 @@ namespace Gestion
             delete = false;
             InfoPanel();
             cleanData();
+            loadProductFilterCombobox();
         }
 
         private void buttonDeleteProduct_Click(object sender, EventArgs e)
@@ -504,6 +549,7 @@ namespace Gestion
             cleanData();
             InfoPanel();
             DisableProducts();
+            loadProductFilterCombobox();
         }
 
         
@@ -516,6 +562,7 @@ namespace Gestion
             LoadSales("", "");
             defaultPanleVisible();
             InfoPanel();
+            loadSalesFilterCombobox();
 
         }
         private void buttonSalesSelect_Click(object sender, EventArgs e)
@@ -527,10 +574,11 @@ namespace Gestion
             defaultPanleVisible();
             InfoPanel();
             LoadSalesDetail();
-
+            loadDetailSalesFilterCombobox();
 
         }
 
+        
         //categories menu
         private void createCategry_Onclick(object sender, EventArgs e)
         {
@@ -543,6 +591,7 @@ namespace Gestion
             LoadCategories();
             InfoPanel();
             createCategories.Text = "Create";
+            LoadCategoriesFilterCombobox();
         }
         private void modifyCategory_Click(object sender, EventArgs e)
         {
@@ -555,6 +604,7 @@ namespace Gestion
             categoriesPanelVisible();
             InfoPanel();
             createCategories.Text = "Modify";
+            LoadCategoriesFilterCombobox();
         }
 
         private void deleteCategory_Click(object sender, EventArgs e)
@@ -568,6 +618,7 @@ namespace Gestion
             categoriesPanelVisible();
             InfoPanel();
             createCategories.Text = "Delete";
+            LoadCategoriesFilterCombobox();
         }
 
         //Subcategory menu
@@ -582,6 +633,7 @@ namespace Gestion
             LoadSubCategories();
             createCategories.Text = "Create";
             InfoPanel();
+            LoadSubcategoriesFilterCombobox();
         }
 
         private void modifySubcategory_Click(object sender, EventArgs e)
@@ -595,6 +647,7 @@ namespace Gestion
             LoadSubCategories();
             createCategories.Text = "Modify";
             InfoPanel();
+            LoadSubcategoriesFilterCombobox();
         }
 
         private void deleteSubcategory_Click(object sender, EventArgs e)
@@ -608,6 +661,7 @@ namespace Gestion
             categoriesPanelVisible();
             LoadSubCategories();
             InfoPanel();
+            LoadSubcategoriesFilterCombobox();
         }
 
         //Panel de informacion
@@ -669,7 +723,7 @@ namespace Gestion
                         case "products":
                             nameProduct.Text = row.Cells["NAME"].Value.ToString();
                             stokbox.Text = row.Cells["STOCK"].Value.ToString();
-                            pricebox.Text = row.Cells["BRANDPRICE"].Value.ToString();
+                            pricebox.Text = row.Cells["PRICE"].Value.ToString();
                             brandbox.Text = row.Cells["BRAND"].Value.ToString();
                             idProduct.Text = row.Cells["PRODUCT_ID"].Value.ToString();
 
@@ -724,6 +778,10 @@ namespace Gestion
         {
             showSubmenu(panelSubcategoryMenuLeft);
         }
+        private void storageButtonMenu_Click(object sender, EventArgs e)
+        {
+            showSubmenu(panelStorage);
+        }
         //----------------------
 
         //Visibilidad panels
@@ -744,6 +802,7 @@ namespace Gestion
         private void defaultPanleVisible() {
             DefaultPanel.BringToFront();
         }
+
 
         //llamada a metodos auxiliares
         //-- Text box validators
@@ -935,6 +994,20 @@ namespace Gestion
         {
         }
         private void panelLogin_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        
+
+        private void storageSelectButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+      
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
