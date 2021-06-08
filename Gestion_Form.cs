@@ -27,48 +27,56 @@ namespace Gestion
             buttonDeleteUsers.Enabled = true;
         }
         //-- Load datos de tabla
-        private void LoadUsers(string campo, string where)
+        private void LoadUsers(string campo, string where, string where2)
         {
-
-            dataGridView1.DataSource = db.userSelection("", "","");
+            dataGridView1.DataSource = db.userSelection(campo, where, where2);
             dataGridView1.ClearSelection();
             currentTable = "user";
         }
 
-        private void LoadProducts(string campo, string where)
+        private void LoadProducts(string campo, string where, string where2)
         {
-
-            dataGridView1.DataSource = db.productSelection("", "","");
+            dataGridView1.DataSource = db.productSelection(campo, where, where2);
             dataGridView1.ClearSelection();
             currentTable = "products";
         }
         private void LoadSales(string campo, string where)
         {
-
-            dataGridView1.DataSource = db.salesSelection("", "");
+            dataGridView1.DataSource = db.salesSelection(campo, where);
             dataGridView1.ClearSelection();
             currentTable = "sales";
         }
-
-        private void LoadSalesDetail() {
-            dataGridView1.DataSource = db.sales_detailSelection("","","");
+        private void LoadSalesDetail(string campo, string where, string where2) {
+            dataGridView1.DataSource = db.sales_detailSelection(campo, where, where2);
             dataGridView1.ClearSelection();
             currentTable = "salesDetails";
         }
-
-
-        private void LoadCategories()
+        private void LoadCategories(string campo, string where)
         {
-            dataGridView1.DataSource = db.categorySelection("", "");
+            dataGridView1.DataSource = db.categorySelection(campo, where);
             dataGridView1.ClearSelection();
             currentTable = "category";
         }
 
-        private void LoadSubCategories()
+        private void LoadSubCategories(string campo, string where)
         {
-            dataGridView1.DataSource = db.subcategorySelection("", "");
+            dataGridView1.DataSource = db.subcategorySelection(campo, where);
             dataGridView1.ClearSelection();
             currentTable = "subcategory";
+        }
+
+        private void LoadStorage(string campo, string where, string where2)
+        {
+            dataGridView1.DataSource = db.storageSelection(campo, where, where2);
+            dataGridView1.ClearSelection();
+            currentTable = "storage";
+        }
+        private void LoadStorageDetails(string campo, string where, string where2)
+        {
+
+            dataGridView1.DataSource = db.storage_detailSelection(campo, where, where2);
+            dataGridView1.ClearSelection();
+            currentTable = "detailstorage";
         }
 
         //Cargar datos combobox categorias
@@ -85,31 +93,102 @@ namespace Gestion
 
         }
 
+
+        //FILTRO:
         private void loadUserFilterCombobox()
         {
+            
+            string[] Filtertable = new string[] {"USER_ID","USERNAME", "PWD", "EMAIL", "CREATION_DATE", "ROL"};
 
-            string[] userFilter = new string[] {"USER_ID","USERNAME", "PWD", "EMAIL", "CREATION_DATE", "ROL"};
-          }
+
+            FilterCombobox.Items.Clear();
+            FilterCombobox.Items.AddRange(Filtertable);
+            FilterCombobox.SelectedIndex = 0;
+        }
         private void loadProductFilterCombobox()
         {
-            string[] productFilter = new string[] { "PRODUCT_ID", "NAME", "PRICE", "STOCK", "CATEGORY_ID", "SUBCATEGORY_ID" };
+            string[] Filtertable = new string[] { "PRODUCT_ID", "NAME", "PRICE", "STOCK", "CATEGORY_ID", "SUBCATEGORY_ID" };
+            FilterCombobox.Items.Clear();
+            FilterCombobox.Items.AddRange(Filtertable);
+            FilterCombobox.SelectedIndex = 0;
         }
         private void loadSalesFilterCombobox()
         {
-            string[] salesFilter = new string[] {"SALE_ID", "PRICE", "GENERATION_DATE"};
+            string[] Filtertable = new string[] {"SALE_ID", "PRICE", "GENERATION_DATE"};
+            FilterCombobox.Items.Clear();
+            FilterCombobox.Items.AddRange(Filtertable);
+            FilterCombobox.SelectedIndex = 0;
         }
         private void loadDetailSalesFilterCombobox()
         {
-            string[] detailSalesFilter = new string[] {};
+            string[] Filtertable = new string[] {"SALE_ID", "PRICE", "PRODUCT_ID", "AMOUNT"};
+            FilterCombobox.Items.Clear();
+            FilterCombobox.Items.AddRange(Filtertable);
+            FilterCombobox.SelectedIndex = 0;
         }
 
         private void LoadCategoriesFilterCombobox()
         {
-
+            string[] Filtertable = new string[] {"CATEGORY_ID", "NAME" };
+            FilterCombobox.Items.Clear();
+            FilterCombobox.Items.AddRange(Filtertable);
+            FilterCombobox.SelectedIndex = 0;
         }
         private void LoadSubcategoriesFilterCombobox()
         {
+            string[] Filtertable = new string[] { "SUBCATEGORY_ID", "NAME" };
+            FilterCombobox.Items.Clear();
+            FilterCombobox.Items.AddRange(Filtertable);
+            FilterCombobox.SelectedIndex = 0;
+        }
 
+        private void LoadStorageFilterCombobox()
+        {
+            string[] Filtertable = new string[] { "USER_ID", "HOUSE_ID" };
+            FilterCombobox.Items.Clear();
+            FilterCombobox.Items.AddRange(Filtertable);
+            FilterCombobox.SelectedIndex = 0;
+        }
+        private void LoadStorageDetailsilterCombobox()
+        {
+            string[] Filtertable = new string[] { "PRODUCT_ID", "HOUSE_ID", "STOCK", "ADQUISITION_DATE","MIN_STOCK","NAME","BRAND","TOTAL_PRICE" };
+            FilterCombobox.Items.Clear();
+            FilterCombobox.Items.AddRange(Filtertable);
+            FilterCombobox.SelectedIndex = 0;
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (currentTable)
+                {
+                    case "user":
+                        LoadUsers(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
+                        break;
+                    case "products":
+                        LoadProducts(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
+                        break;
+                    case "sales":
+                        LoadSales(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text);
+                        break;
+                    case "category":
+                        LoadCategories(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text);
+                        break;
+                    case "subcategory":
+                        LoadSubCategories(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text);
+                        break;
+                    case "storage":
+                        LoadStorage(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
+                        break;
+                    case "detailstorage":
+                        LoadStorageDetails(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
+                        break;
+                }
+            }
+            catch {
+                MessageBox.Show("ERROR");
+            }
         }
 
         //conexion bd
@@ -146,6 +225,8 @@ namespace Gestion
             panelCategoryMenuLeft.Visible = false;
             panelSubcategoryMenuLeft.Visible = false;
             panelStorage.Visible = false;
+            
+
 
             comboboxCategory.SelectedIndex = 0;
             comboboxSubcategory.SelectedIndex = 0;
@@ -183,17 +264,14 @@ namespace Gestion
                         {
                             string password = userPassword.Text;
                             DateTime dateTimenow = DateTime.Now; 
-                            MessageBox.Show(dateTimenow.ToString("dd/MM/yyyy"));
-
-                            password = dataClass.hashpwd(password,dateTimenow.ToString("dd/MM/yyyy"));
-
+                            password = dataClass.hashpwd(password,dateTimenow.ToString());
                             string user = userUsername.Text;
                             string rol = Roles.SelectedItem.ToString();
 
                             if (db.userInsert(user, password, email, rol))
                             {
                                 MessageBox.Show("USER " + user + " INSERTED");
-                                LoadUsers("", "");
+                                LoadUsers("", "","");
                                 cleanData();
                             }
                             else {
@@ -226,7 +304,7 @@ namespace Gestion
                             if (db.userUpdate(Int32.Parse(idUser.Text), user, userPassword.Text, email, rol))
                             {
                                 MessageBox.Show("USER " + user + " UPDATED");
-                                LoadUsers("", "");
+                                LoadUsers("", "","");
                             }
                             else {
                                 MessageBox.Show("USER " + user + " CAN'T UPDATED");
@@ -247,7 +325,7 @@ namespace Gestion
                     if (db.userDelete(Int32.Parse(idUser.Text)))
                     {
                         MessageBox.Show("User deleted");
-                        LoadUsers("", "");
+                        LoadUsers("", "","");
                     }
                     else {
                         MessageBox.Show("User not deleted");
@@ -269,7 +347,6 @@ namespace Gestion
                     if (string.IsNullOrWhiteSpace(nameProduct.Text) && string.IsNullOrWhiteSpace(stokbox.Text) && string.IsNullOrWhiteSpace(brandbox.Text) && string.IsNullOrWhiteSpace(pricebox.Text))
                     {
                         MessageBox.Show("Fields can't be empty!");
-
                     }
                     else
                     {
@@ -279,7 +356,7 @@ namespace Gestion
                             if (db.productInsert(nameProduct.Text, brandbox.Text, price, Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex + 1, comboboxSubcategory.SelectedIndex + 1))
                             {
                                 MessageBox.Show("PRODUCT " + nameProduct.Text + " INSERTED");
-                                LoadProducts("", "");
+                                LoadProducts("", "","");
                                 cleanData();
                             }
                             else
@@ -304,7 +381,7 @@ namespace Gestion
                         if (db.productUpdate(Int32.Parse(idProduct.Text), nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex, comboboxSubcategory.SelectedIndex))
                         {
                             MessageBox.Show("PRODUCT " + nameProduct.Text + " UPDATED");
-                            LoadProducts("", "");
+                            LoadProducts("", "","");
                             cleanData();
                         }
                         else {
@@ -318,8 +395,7 @@ namespace Gestion
                     if (!string.IsNullOrWhiteSpace(idProduct.Text))
                     {
                         if (db.productDelete(Int32.Parse(idProduct.Text))) {
-                          
-                            LoadProducts("", "");
+                            LoadProducts("", "","");
                             cleanData();
                             MessageBox.Show("PRODUCT " + nameProduct.Text + " DELETED ");
                         }
@@ -350,7 +426,7 @@ namespace Gestion
                             if (db.categoryInsert(categoryName.Text))
                             {
                                 MessageBox.Show("NEW CATEGORY ADDED");
-                                LoadCategories();
+                                LoadCategories("","");
                                 loadpropietiesCombobox();
                             }
                             else
@@ -368,7 +444,7 @@ namespace Gestion
                             if (db.categoryUpdate(Int32.Parse(idCategories.Text), categoryName.Text))
                             {
                                 MessageBox.Show("CATEGORY UPDATED");
-                                LoadCategories();
+                                LoadCategories("", "");
                                 loadpropietiesCombobox();
                             }
                             else
@@ -387,7 +463,7 @@ namespace Gestion
                             if (db.categoryDelete(Int32.Parse(idCategories.Text)))
                             {
                                 MessageBox.Show("CATEGORY UPDATED");
-                                LoadCategories();
+                                LoadCategories("", "");
                                 loadpropietiesCombobox();
                             }
                             else
@@ -412,7 +488,7 @@ namespace Gestion
                             if (db.subcategoryInsert(subcategoryName.Text))
                             {
                                 MessageBox.Show("SUBCATEGORY ADDED");
-                                LoadSubCategories();
+                                LoadSubCategories("", "");
                                 loadpropietiesCombobox();
                             }
                             else {
@@ -431,7 +507,7 @@ namespace Gestion
                             if (db.subcategoryUpdate(Int32.Parse(idSubcategories.Text), subcategoryName.Text))
                             {
                                 MessageBox.Show("SUBCATEGORY UPDATED");
-                                LoadSubCategories();
+                                LoadSubCategories("", "");
                                 loadpropietiesCombobox();
                             }
                             else
@@ -450,7 +526,7 @@ namespace Gestion
                             if (db.subcategoryDelete(Int32.Parse(idSubcategories.Text)))
                             {
                                 MessageBox.Show("SUBCATEGORY DELETED");
-                                LoadSubCategories();
+                                LoadSubCategories("", "");
                                 loadpropietiesCombobox();
                             }
 
@@ -476,7 +552,7 @@ namespace Gestion
         {
             userButon.Text = "Create";
             userPanelvisisble();
-            LoadUsers("", "");
+            LoadUsers("", "","");
             enableUsers();
             modify = false;
             delete = false;
@@ -491,7 +567,7 @@ namespace Gestion
             userButon.Text = "Modify";
             userPanelvisisble();
             enableUsers();
-            LoadUsers("", "");
+            LoadUsers("", "","");
             modify = true;
             delete = false;
             cleanData();
@@ -503,7 +579,7 @@ namespace Gestion
             userButon.Text = "Delete";
             DisableUsers();
             userPanelvisisble();
-            LoadUsers("", "");
+            LoadUsers("", "","");
             modify = false;
             delete = true;
             cleanData();
@@ -517,7 +593,7 @@ namespace Gestion
         {
             butonProduct.Text = "Create";
             productVisible();
-            LoadProducts("", "");
+            LoadProducts("", "","");
             enableProducts();
             modify = false;
             delete = false;
@@ -530,7 +606,7 @@ namespace Gestion
         {
             butonProduct.Text = "Modify";
             productVisible();
-            LoadProducts("", "");
+            LoadProducts("", "","");
             enableProducts();
             modify = true;
             delete = false;
@@ -543,7 +619,7 @@ namespace Gestion
         {
             butonProduct.Text = "Delete";
             productVisible();
-            LoadProducts("", "");
+            LoadProducts("", "","");
             modify = false;
             delete = true;
             cleanData();
@@ -573,7 +649,7 @@ namespace Gestion
             cleanData();
             defaultPanleVisible();
             InfoPanel();
-            LoadSalesDetail();
+            LoadSalesDetail("", "","");
             loadDetailSalesFilterCombobox();
 
         }
@@ -588,7 +664,7 @@ namespace Gestion
             categoriesPanelVisible();
             enableCategories();
             DisableSubcategories();
-            LoadCategories();
+            LoadCategories("", "");
             InfoPanel();
             createCategories.Text = "Create";
             LoadCategoriesFilterCombobox();
@@ -600,7 +676,7 @@ namespace Gestion
             cleanData();
             enableCategories();
             DisableSubcategories();
-            LoadCategories();
+            LoadCategories("", "");
             categoriesPanelVisible();
             InfoPanel();
             createCategories.Text = "Modify";
@@ -612,7 +688,7 @@ namespace Gestion
             modify = false;
             delete = true;
             cleanData();
-            LoadCategories();
+            LoadCategories("", "");
             DisableSubcategories();
             DisableCategories();
             categoriesPanelVisible();
@@ -630,7 +706,7 @@ namespace Gestion
             categoriesPanelVisible();
             enableSubcategories();
             DisableCategories();
-            LoadSubCategories();
+            LoadSubCategories("", "");
             createCategories.Text = "Create";
             InfoPanel();
             LoadSubcategoriesFilterCombobox();
@@ -644,7 +720,7 @@ namespace Gestion
             categoriesPanelVisible();
             enableSubcategories();
             DisableCategories();
-            LoadSubCategories();
+            LoadSubCategories("", "");
             createCategories.Text = "Modify";
             InfoPanel();
             LoadSubcategoriesFilterCombobox();
@@ -659,10 +735,32 @@ namespace Gestion
             DisableCategories();
             DisableSubcategories();
             categoriesPanelVisible();
-            LoadSubCategories();
+            LoadSubCategories("","");
             InfoPanel();
             LoadSubcategoriesFilterCombobox();
         }
+
+        // STORAGE
+        private void storageSelectButton_Click_1(object sender, EventArgs e)
+        {
+            modify = false;
+            delete = false;
+            cleanData();
+            LoadStorage("", "","");
+            InfoPanel();
+            LoadStorageFilterCombobox();
+        }
+
+        private void storageDetailButton_Click(object sender, EventArgs e)
+        {
+            modify = false;
+            delete = false;
+            cleanData();
+            LoadStorageDetails("","","");
+            InfoPanel();
+            LoadStorageDetailsilterCombobox();
+        }
+      
 
         //Panel de informacion
 
@@ -689,6 +787,14 @@ namespace Gestion
                 case "subcategory":
                     CurrentTableLabel.Text = "Subcategory";
                     TableDescriptionLabel.Text = "T8T8UDGFUDGFJUDSGFSKGHKJGHKJDFSHGKJDSHJ";
+                    break;
+                case "storage":
+                    CurrentTableLabel.Text = "Storage";
+                    TableDescriptionLabel.Text = "sdfsdfsdfsdffds  sdfsdfsdfsdfdsfsdsd";
+                    break;
+                case "detailstorage":
+                    CurrentTableLabel.Text = "Detail storage";
+                    TableDescriptionLabel.Text = "sdfsdfsdfsdffds  sdfsdfsdfsdfdsfsdsd";
                     break;
             }
             
@@ -915,8 +1021,10 @@ namespace Gestion
 
             //- Limpiar Categorias
             categoryName.Clear();
+            idCategories.Clear();
             //- Limpiar Subcategorias
             subcategoryName.Clear();
+            idSubcategories.Clear();
         }
 
 
@@ -1011,6 +1119,8 @@ namespace Gestion
         {
 
         }
+
+    
     }
         //-----------------------------
 

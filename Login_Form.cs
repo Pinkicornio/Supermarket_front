@@ -25,17 +25,19 @@ namespace Gestion
         {
             Gestion_Form gestion_form;
             string userInput = userfield.Text;
-            string pwdInput = userfield.Text;
+            string pwdInput = passwordfield.Text;
 
 
             try {
 
                 List<string> datainfo = db.getLoginInfo(userInput);
-                
 
-                if (datainfo[2].Equals(data_class.hashpwd(pwdInput,datainfo[3]))) {
 
-                    if (datainfo[4].Equals("admin"))
+
+                if (datainfo[1].Equals(data_class.hashpwd(pwdInput, datainfo[2])))
+                {
+
+                    if (datainfo[3].Equals("ADMIN"))
                     {
 
                         Data_class.admin = true;
@@ -46,7 +48,7 @@ namespace Gestion
 
                     }
 
-                    else 
+                    else
                     {
                         Data_class.admin = false;
                         Data_class.currentUser = userInput;
@@ -56,6 +58,9 @@ namespace Gestion
 
                     }
 
+                }
+                else {
+                    MessageBox.Show("WRONG PASSWORD");
                 }
               
             }

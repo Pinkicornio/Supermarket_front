@@ -6,7 +6,7 @@ namespace Gestion
 {
     class Data_class
     {
-        public static bool  admin = true;
+        public static bool  admin=true;
         public static string currentUser;
 
 
@@ -15,19 +15,14 @@ namespace Gestion
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
-
             }
-
         }
-
-
         public void check_onlynumbersWithComa(object sender, KeyPressEventArgs e) {
 
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
                   (e.KeyChar != ','))
             {
                 e.Handled = true;
-
             }
 
             // only allow one decimal point
@@ -61,6 +56,9 @@ namespace Gestion
         {
 
             string fechaHash = fecha;
+
+            fechaHash = fechaHash.Trim();
+            fechaHash = fechaHash.Replace(":", "");
             fechaHash = fechaHash.Replace("/", "");
 
             //-----------

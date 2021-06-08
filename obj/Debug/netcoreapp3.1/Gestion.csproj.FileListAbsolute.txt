@@ -122,3 +122,9 @@ G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\NPOI.OpenXmlFormats.
 G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\NPOI.dll
 G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 G:\Proyecto_final\Supermarket_front\bin\Debug\netcoreapp3.1\ICSharpCode.SharpZipLib.dll
+E:\DAM-2\Proyecto_final\frontsuper\Supermarket_front\bin\Debug\netcoreapp3.1\NPOI.OOXML.dll
+E:\DAM-2\Proyecto_final\frontsuper\Supermarket_front\bin\Debug\netcoreapp3.1\NPOI.OpenXml4Net.dll
+E:\DAM-2\Proyecto_final\frontsuper\Supermarket_front\bin\Debug\netcoreapp3.1\NPOI.OpenXmlFormats.dll
+E:\DAM-2\Proyecto_final\frontsuper\Supermarket_front\bin\Debug\netcoreapp3.1\NPOI.dll
+E:\DAM-2\Proyecto_final\frontsuper\Supermarket_front\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+E:\DAM-2\Proyecto_final\frontsuper\Supermarket_front\bin\Debug\netcoreapp3.1\ICSharpCode.SharpZipLib.dll

@@ -117,8 +117,12 @@ namespace Gestion
             this.TableDescriptionLabel = new System.Windows.Forms.Label();
             this.CurrentTableLabel = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.where2Textbox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.searchButton = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.where1TextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.FilterCombobox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -226,6 +230,7 @@ namespace Gestion
             this.storageDetailButton.TabIndex = 14;
             this.storageDetailButton.Text = "STORAGE DETAIL";
             this.storageDetailButton.UseVisualStyleBackColor = false;
+            this.storageDetailButton.Click += new System.EventHandler(this.storageDetailButton_Click);
             // 
             // storageSelectButton
             // 
@@ -241,6 +246,7 @@ namespace Gestion
             this.storageSelectButton.TabIndex = 13;
             this.storageSelectButton.Text = "STORAGE";
             this.storageSelectButton.UseVisualStyleBackColor = false;
+            this.storageSelectButton.Click += new System.EventHandler(this.storageSelectButton_Click_1);
             // 
             // storageButtonMenu
             // 
@@ -1257,8 +1263,12 @@ namespace Gestion
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel10.Controls.Add(this.dateTimePicker2);
+            this.panel10.Controls.Add(this.where2Textbox);
+            this.panel10.Controls.Add(this.label13);
+            this.panel10.Controls.Add(this.searchButton);
             this.panel10.Controls.Add(this.dateTimePicker1);
-            this.panel10.Controls.Add(this.textBox1);
+            this.panel10.Controls.Add(this.where1TextBox);
             this.panel10.Controls.Add(this.label12);
             this.panel10.Controls.Add(this.FilterCombobox);
             this.panel10.Controls.Add(this.label4);
@@ -1267,36 +1277,71 @@ namespace Gestion
             this.panel10.Size = new System.Drawing.Size(1503, 50);
             this.panel10.TabIndex = 17;
             // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(1020, 15);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker2.TabIndex = 20;
+            // 
+            // where2Textbox
+            // 
+            this.where2Textbox.Location = new System.Drawing.Point(576, 15);
+            this.where2Textbox.Name = "where2Textbox";
+            this.where2Textbox.Size = new System.Drawing.Size(88, 23);
+            this.where2Textbox.TabIndex = 19;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(494, 14);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 21);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "where 2:";
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(1368, 12);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(119, 23);
+            this.searchButton.TabIndex = 17;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(1051, 16);
+            this.dateTimePicker1.Location = new System.Drawing.Point(784, 14);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker1.TabIndex = 16;
             // 
-            // textBox1
+            // where1TextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(617, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(358, 23);
-            this.textBox1.TabIndex = 15;
+            this.where1TextBox.Location = new System.Drawing.Point(349, 14);
+            this.where1TextBox.Name = "where1TextBox";
+            this.where1TextBox.Size = new System.Drawing.Size(96, 23);
+            this.where1TextBox.TabIndex = 15;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(438, 16);
+            this.label12.Location = new System.Drawing.Point(267, 13);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(173, 21);
+            this.label12.Size = new System.Drawing.Size(69, 21);
             this.label12.TabIndex = 14;
-            this.label12.Text = "Datos para la busqueda";
+            this.label12.Text = "where 1:";
             // 
             // FilterCombobox
             // 
+            this.FilterCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FilterCombobox.FormattingEnabled = true;
-            this.FilterCombobox.Location = new System.Drawing.Point(208, 13);
+            this.FilterCombobox.Location = new System.Drawing.Point(96, 16);
             this.FilterCombobox.Name = "FilterCombobox";
-            this.FilterCombobox.Size = new System.Drawing.Size(192, 23);
+            this.FilterCombobox.Size = new System.Drawing.Size(145, 23);
             this.FilterCombobox.TabIndex = 1;
             // 
             // label4
@@ -1305,9 +1350,9 @@ namespace Gestion
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(47, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(155, 21);
+            this.label4.Size = new System.Drawing.Size(43, 21);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Criterio de busqueda";
+            this.label4.Text = "Field";
             // 
             // chek
             // 
@@ -1316,7 +1361,7 @@ namespace Gestion
             // DefaultPanel
             // 
             this.DefaultPanel.BackColor = System.Drawing.Color.RoyalBlue;
-            this.DefaultPanel.Location = new System.Drawing.Point(1070, 196);
+            this.DefaultPanel.Location = new System.Drawing.Point(415, 222);
             this.DefaultPanel.Name = "DefaultPanel";
             this.DefaultPanel.Size = new System.Drawing.Size(352, 35);
             this.DefaultPanel.TabIndex = 10;
@@ -1423,7 +1468,7 @@ namespace Gestion
         private System.Windows.Forms.Label TableDescriptionLabel;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox where1TextBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox FilterCombobox;
         private System.Windows.Forms.Label label4;
@@ -1464,5 +1509,9 @@ namespace Gestion
         private System.Windows.Forms.Panel panelStorage;
         private System.Windows.Forms.Button storageDetailButton;
         private System.Windows.Forms.Button storageSelectButton;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.TextBox where2Textbox;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }
