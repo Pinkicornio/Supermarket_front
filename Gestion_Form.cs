@@ -10,7 +10,7 @@ namespace Gestion
     {
         private Data_class dataClass = new Data_class();
         private DB db = new DB();
-        private string currentTable, currentField;
+        private string currentTable;
         private bool modify,delete;
         
    
@@ -93,22 +93,7 @@ namespace Gestion
             comboboxSubcategory.ValueMember = "SUBCATEGORY_ID";
 
         }
-        private void FilterCombobox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (FilterCombobox.SelectedItem.ToString().Equals("PRICE") || FilterCombobox.SelectedItem.ToString().Equals("TOTAL_PRICE")) {
-
-                if (FilterCombobox.SelectedItem.ToString().Equals("PRICE"))currentField = "PRICE";
-                currentField = "TOTAL_PRICE";
-
-
-                where2Textbox.Visible = true;
-                where1label.Text = "Min Price:";
-                where2label.Visible = true;
-                where2label.Text = "Max Price:";
-
-                
-            }
-        }
+     
 
         //FILTRO:
         private void loadUserFilterCombobox()
@@ -173,6 +158,52 @@ namespace Gestion
             FilterCombobox.SelectedIndex = 0;
         }
 
+        private void FilterCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FilterCombobox.SelectedItem.ToString().Contains("PRICE"))
+            {
+                where2Textbox.Visible = true;
+                where2label.Visible = true;
+                where1label.Text = "Min Price:";
+                where2label.Text = "Max Price:";
+                dateTimePicker1.Visible = false;
+                dateTimePicker2.Visible = false;
+                where1TextBox.Visible = true;
+                where1label.Visible = true;
+            }
+            else if (FilterCombobox.SelectedItem.ToString().Contains("DATE"))
+            {
+
+                where2Textbox.Visible = false;
+                where2label.Visible = false;
+                where1label.Text = "Where 1:";
+                where2label.Text = "Where 2:";
+                where1TextBox.Visible = false;
+                where1label.Visible = false;
+                dateTimePicker1.Visible = true;
+                dateTimePicker2.Visible = true;
+            }
+            else
+            {
+                where2Textbox.Visible = false;
+                where2label.Visible = false;
+                where1label.Text = "Where 1:";
+                where2label.Text = "Where 2:";
+                where1TextBox.Visible = true;
+                where1label.Visible = true;
+                dateTimePicker1.Visible = false;
+                dateTimePicker2.Visible = false;
+            }
+
+
+        }
+
+        private void FilterValidatorString(object sender, KeyPressEventArgs e)
+        {
+            if (FilterCombobox.SelectedItem.ToString().Contains("PRICE")) dataClass.check_onlynumbersWithComa(sender, e);
+            if (FilterCombobox.SelectedItem.ToString().Equals("STOCK")|| FilterCombobox.SelectedItem.ToString().Contains("ID")) dataClass.check_onlynumbers(sender, e);
+        }
+        //FIN FILTRO
         private void searchButton_Click(object sender, EventArgs e)
         {
             try
@@ -314,10 +345,13 @@ namespace Gestion
                         string email = emailUser.Text;
                         if (dataClass.IsValidEmail(email))
                         {
+                            string password = userPassword.Text;
+                            DateTime dateTimenow = DateTime.Now;
+                            password = dataClass.hashpwd(password, dateTimenow.ToString());
                             string user = userUsername.Text;
                             string rol = Roles.SelectedItem.ToString();
 
-                            if (db.userUpdate(Int32.Parse(idUser.Text), user, userPassword.Text, email, rol))
+                            if (db.userUpdate(Int32.Parse(idUser.Text), user, password, email, rol))
                             {
                                 MessageBox.Show("USER " + user + " UPDATED");
                                 LoadUsers("", "","");
@@ -940,38 +974,19 @@ namespace Gestion
 
         //llamada a metodos auxiliares
         //-- Text box validators
-        private void stockPressed(object sender, KeyPressEventArgs e)
-        {
-            dataClass.check_onlynumbers(sender, e);
-        }
-
+        
         private void numbersAndcoma(object sender, KeyPressEventArgs e)
         {
             dataClass.check_onlynumbersWithComa(sender, e);
         }
 
-     
-        private void idProductPress(object sender, KeyPressEventArgs e)
-        {
-            dataClass.check_onlynumbers(sender, e);
-        }
 
         private void onlyNumbers(object sender, KeyPressEventArgs e)
         {
             dataClass.check_onlynumbers(sender, e);
         }
      
-        private void idSubCategoryPress(object sender, KeyPressEventArgs e)
-        {
-            dataClass.check_onlynumbers(sender, e);
-        }
-
-        private void idCategoryPress(object sender, KeyPressEventArgs e)
-        {
-            dataClass.check_onlynumbers(sender, e);
-        }
-
-
+  
 
         //Verificador
         private void chek_Tick(object sender, EventArgs e)
@@ -1117,9 +1132,7 @@ namespace Gestion
 
 
         //metodos a buscar y eleminar------
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-        }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -1129,21 +1142,10 @@ namespace Gestion
         {
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-        }
         private void panelLogin_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
-   
-
-        private void storageSelectButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
       
 
         private void panel2_Paint(object sender, PaintEventArgs e)

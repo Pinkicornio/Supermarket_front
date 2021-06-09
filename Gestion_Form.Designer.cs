@@ -31,9 +31,7 @@ namespace Gestion
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gestion_Form));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.userbuttona = new System.Windows.Forms.Button();
-            this.adminbutton = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.close = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelStorage = new System.Windows.Forms.Panel();
@@ -146,25 +144,6 @@ namespace Gestion
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // userbuttona
-            // 
-            this.userbuttona.Location = new System.Drawing.Point(452, 1011);
-            this.userbuttona.Name = "userbuttona";
-            this.userbuttona.Size = new System.Drawing.Size(66, 29);
-            this.userbuttona.TabIndex = 0;
-            this.userbuttona.Text = "user";
-            this.userbuttona.UseVisualStyleBackColor = true;
-            // 
-            // adminbutton
-            // 
-            this.adminbutton.Enabled = false;
-            this.adminbutton.Location = new System.Drawing.Point(524, 1007);
-            this.adminbutton.Name = "adminbutton";
-            this.adminbutton.Size = new System.Drawing.Size(108, 33);
-            this.adminbutton.TabIndex = 1;
-            this.adminbutton.Text = "admin";
-            this.adminbutton.UseVisualStyleBackColor = true;
             // 
             // close
             // 
@@ -1072,7 +1051,7 @@ namespace Gestion
             this.idSubcategories.Size = new System.Drawing.Size(211, 26);
             this.idSubcategories.TabIndex = 27;
             this.idSubcategories.Visible = false;
-            this.idSubcategories.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.idSubCategoryPress);
+            this.idSubcategories.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers);
             // 
             // idLabelSubCategories
             // 
@@ -1093,7 +1072,7 @@ namespace Gestion
             this.idCategories.Size = new System.Drawing.Size(211, 26);
             this.idCategories.TabIndex = 25;
             this.idCategories.Visible = false;
-            this.idCategories.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.idCategoryPress);
+            this.idCategories.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers);
             // 
             // idLabelCategories
             // 
@@ -1225,8 +1204,8 @@ namespace Gestion
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1008, 654);
@@ -1281,10 +1260,11 @@ namespace Gestion
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(1034, 16);
+            this.dateTimePicker2.Location = new System.Drawing.Point(1116, 16);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker2.TabIndex = 20;
+            this.dateTimePicker2.Visible = false;
             // 
             // where2Textbox
             // 
@@ -1292,6 +1272,8 @@ namespace Gestion
             this.where2Textbox.Name = "where2Textbox";
             this.where2Textbox.Size = new System.Drawing.Size(88, 23);
             this.where2Textbox.TabIndex = 19;
+            this.where2Textbox.Visible = false;
+            this.where2Textbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FilterValidatorString);
             // 
             // where2label
             // 
@@ -1302,12 +1284,13 @@ namespace Gestion
             this.where2label.Size = new System.Drawing.Size(69, 21);
             this.where2label.TabIndex = 18;
             this.where2label.Text = "where 2:";
+            this.where2label.Visible = false;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(1285, 13);
+            this.searchButton.Location = new System.Drawing.Point(1322, 13);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(202, 28);
+            this.searchButton.Size = new System.Drawing.Size(165, 28);
             this.searchButton.TabIndex = 17;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -1315,10 +1298,11 @@ namespace Gestion
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(778, 16);
+            this.dateTimePicker1.Location = new System.Drawing.Point(786, 16);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker1.TabIndex = 16;
+            this.dateTimePicker1.Visible = false;
             // 
             // where1TextBox
             // 
@@ -1326,6 +1310,7 @@ namespace Gestion
             this.where1TextBox.Name = "where1TextBox";
             this.where1TextBox.Size = new System.Drawing.Size(96, 23);
             this.where1TextBox.TabIndex = 15;
+            this.where1TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FilterValidatorString);
             // 
             // where1label
             // 
@@ -1380,8 +1365,6 @@ namespace Gestion
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panelTable);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.userbuttona);
-            this.Controls.Add(this.adminbutton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelProduct);
             this.Controls.Add(this.panelUser);
@@ -1418,9 +1401,6 @@ namespace Gestion
         }
 
         #endregion
-
-        private System.Windows.Forms.Button userbuttona;
-        private System.Windows.Forms.Button adminbutton;
         private System.Windows.Forms.Button close;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelLogin;
