@@ -31,7 +31,7 @@ namespace Gestion
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gestion_Form));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.userbuttona = new System.Windows.Forms.Button();
             this.adminbutton = new System.Windows.Forms.Button();
             this.close = new System.Windows.Forms.Button();
@@ -119,11 +119,11 @@ namespace Gestion
             this.panel10 = new System.Windows.Forms.Panel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.where2Textbox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.where2label = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.where1TextBox = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.where1label = new System.Windows.Forms.Label();
             this.FilterCombobox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.chek = new System.Windows.Forms.Timer(this.components);
@@ -202,7 +202,6 @@ namespace Gestion
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(386, 1048);
             this.panel1.TabIndex = 3;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panelStorage
             // 
@@ -699,6 +698,7 @@ namespace Gestion
             // panelUser
             // 
             this.panelUser.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelUser.Controls.Add(this.idUser);
             this.panelUser.Controls.Add(this.idLabelUser);
             this.panelUser.Controls.Add(this.userPassword);
@@ -725,7 +725,7 @@ namespace Gestion
             this.idUser.Size = new System.Drawing.Size(211, 26);
             this.idUser.TabIndex = 17;
             this.idUser.Visible = false;
-            this.idUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.idUserPressed);
+            this.idUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers);
             // 
             // idLabelUser
             // 
@@ -745,7 +745,7 @@ namespace Gestion
             this.userPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.userPassword.Location = new System.Drawing.Point(109, 165);
             this.userPassword.Name = "userPassword";
-            this.userPassword.Size = new System.Drawing.Size(211, 26);
+            this.userPassword.Size = new System.Drawing.Size(209, 26);
             this.userPassword.TabIndex = 9;
             // 
             // label11
@@ -767,7 +767,7 @@ namespace Gestion
             this.userButon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.userButon.Location = new System.Drawing.Point(239, 668);
             this.userButon.Name = "userButon";
-            this.userButon.Size = new System.Drawing.Size(101, 31);
+            this.userButon.Size = new System.Drawing.Size(99, 31);
             this.userButon.TabIndex = 7;
             this.userButon.Text = "Create";
             this.userButon.UseVisualStyleBackColor = true;
@@ -785,7 +785,7 @@ namespace Gestion
             "NO_SELECTED"});
             this.Roles.Location = new System.Drawing.Point(109, 276);
             this.Roles.Name = "Roles";
-            this.Roles.Size = new System.Drawing.Size(211, 28);
+            this.Roles.Size = new System.Drawing.Size(209, 28);
             this.Roles.TabIndex = 6;
             // 
             // label2
@@ -807,7 +807,7 @@ namespace Gestion
             this.emailUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.emailUser.Location = new System.Drawing.Point(109, 220);
             this.emailUser.Name = "emailUser";
-            this.emailUser.Size = new System.Drawing.Size(211, 26);
+            this.emailUser.Size = new System.Drawing.Size(209, 26);
             this.emailUser.TabIndex = 4;
             // 
             // label3
@@ -829,7 +829,7 @@ namespace Gestion
             this.userUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.userUsername.Location = new System.Drawing.Point(109, 107);
             this.userUsername.Name = "userUsername";
-            this.userUsername.Size = new System.Drawing.Size(211, 26);
+            this.userUsername.Size = new System.Drawing.Size(209, 26);
             this.userUsername.TabIndex = 2;
             // 
             // label5
@@ -859,6 +859,7 @@ namespace Gestion
             // panelProduct
             // 
             this.panelProduct.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelProduct.Controls.Add(this.idProduct);
             this.panelProduct.Controls.Add(this.idlabelProduct);
             this.panelProduct.Controls.Add(this.pricebox);
@@ -876,7 +877,7 @@ namespace Gestion
             this.panelProduct.Controls.Add(this.label9);
             this.panelProduct.Controls.Add(this.label10);
             this.panelProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panelProduct.Location = new System.Drawing.Point(415, 262);
+            this.panelProduct.Location = new System.Drawing.Point(415, 263);
             this.panelProduct.Name = "panelProduct";
             this.panelProduct.Size = new System.Drawing.Size(352, 713);
             this.panelProduct.TabIndex = 8;
@@ -889,7 +890,7 @@ namespace Gestion
             this.idProduct.Size = new System.Drawing.Size(183, 26);
             this.idProduct.TabIndex = 15;
             this.idProduct.Visible = false;
-            this.idProduct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.idProductPress);
+            this.idProduct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers);
             // 
             // idlabelProduct
             // 
@@ -910,7 +911,7 @@ namespace Gestion
             this.pricebox.ShortcutsEnabled = false;
             this.pricebox.Size = new System.Drawing.Size(183, 26);
             this.pricebox.TabIndex = 13;
-            this.pricebox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pricePressed);
+            this.pricebox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numbersAndcoma);
             // 
             // label16
             // 
@@ -1003,7 +1004,7 @@ namespace Gestion
             this.stokbox.ShortcutsEnabled = false;
             this.stokbox.Size = new System.Drawing.Size(183, 26);
             this.stokbox.TabIndex = 4;
-            this.stokbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stockPressed);
+            this.stokbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers);
             // 
             // label8
             // 
@@ -1046,6 +1047,7 @@ namespace Gestion
             // panelCategories
             // 
             this.panelCategories.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panelCategories.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelCategories.Controls.Add(this.idSubcategories);
             this.panelCategories.Controls.Add(this.idLabelSubCategories);
             this.panelCategories.Controls.Add(this.idCategories);
@@ -1057,9 +1059,9 @@ namespace Gestion
             this.panelCategories.Controls.Add(this.label20);
             this.panelCategories.Controls.Add(this.label19);
             this.panelCategories.Controls.Add(this.label18);
-            this.panelCategories.Location = new System.Drawing.Point(788, 263);
+            this.panelCategories.Location = new System.Drawing.Point(415, 263);
             this.panelCategories.Name = "panelCategories";
-            this.panelCategories.Size = new System.Drawing.Size(352, 713);
+            this.panelCategories.Size = new System.Drawing.Size(352, 714);
             this.panelCategories.TabIndex = 9;
             // 
             // idSubcategories
@@ -1111,7 +1113,7 @@ namespace Gestion
             this.createCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.createCategories.Location = new System.Drawing.Point(237, 666);
             this.createCategories.Name = "createCategories";
-            this.createCategories.Size = new System.Drawing.Size(101, 31);
+            this.createCategories.Size = new System.Drawing.Size(99, 31);
             this.createCategories.TabIndex = 18;
             this.createCategories.Text = "Create";
             this.createCategories.UseVisualStyleBackColor = true;
@@ -1124,7 +1126,7 @@ namespace Gestion
             this.subcategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.subcategoryName.Location = new System.Drawing.Point(107, 445);
             this.subcategoryName.Name = "subcategoryName";
-            this.subcategoryName.Size = new System.Drawing.Size(211, 26);
+            this.subcategoryName.Size = new System.Drawing.Size(209, 26);
             this.subcategoryName.TabIndex = 23;
             // 
             // label21
@@ -1146,7 +1148,7 @@ namespace Gestion
             this.categoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.categoryName.Location = new System.Drawing.Point(107, 101);
             this.categoryName.Name = "categoryName";
-            this.categoryName.Size = new System.Drawing.Size(211, 26);
+            this.categoryName.Size = new System.Drawing.Size(209, 26);
             this.categoryName.TabIndex = 21;
             // 
             // label20
@@ -1202,9 +1204,9 @@ namespace Gestion
             this.panelTable.BackColor = System.Drawing.Color.RoyalBlue;
             this.panelTable.Controls.Add(this.dataGridView1);
             this.panelTable.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panelTable.Location = new System.Drawing.Point(1168, 263);
+            this.panelTable.Location = new System.Drawing.Point(807, 263);
             this.panelTable.Name = "panelTable";
-            this.panelTable.Size = new System.Drawing.Size(724, 714);
+            this.panelTable.Size = new System.Drawing.Size(1085, 714);
             this.panelTable.TabIndex = 12;
             // 
             // dataGridView1
@@ -1216,18 +1218,18 @@ namespace Gestion
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(31, 29);
+            this.dataGridView1.Location = new System.Drawing.Point(39, 29);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(660, 666);
+            this.dataGridView1.Size = new System.Drawing.Size(1008, 654);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rowSelected);
             // 
@@ -1265,11 +1267,11 @@ namespace Gestion
             this.panel10.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel10.Controls.Add(this.dateTimePicker2);
             this.panel10.Controls.Add(this.where2Textbox);
-            this.panel10.Controls.Add(this.label13);
+            this.panel10.Controls.Add(this.where2label);
             this.panel10.Controls.Add(this.searchButton);
             this.panel10.Controls.Add(this.dateTimePicker1);
             this.panel10.Controls.Add(this.where1TextBox);
-            this.panel10.Controls.Add(this.label12);
+            this.panel10.Controls.Add(this.where1label);
             this.panel10.Controls.Add(this.FilterCombobox);
             this.panel10.Controls.Add(this.label4);
             this.panel10.Location = new System.Drawing.Point(405, 140);
@@ -1279,7 +1281,7 @@ namespace Gestion
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(1020, 15);
+            this.dateTimePicker2.Location = new System.Drawing.Point(1034, 16);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker2.TabIndex = 20;
@@ -1291,21 +1293,21 @@ namespace Gestion
             this.where2Textbox.Size = new System.Drawing.Size(88, 23);
             this.where2Textbox.TabIndex = 19;
             // 
-            // label13
+            // where2label
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(494, 14);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 21);
-            this.label13.TabIndex = 18;
-            this.label13.Text = "where 2:";
+            this.where2label.AutoSize = true;
+            this.where2label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.where2label.Location = new System.Drawing.Point(494, 14);
+            this.where2label.Name = "where2label";
+            this.where2label.Size = new System.Drawing.Size(69, 21);
+            this.where2label.TabIndex = 18;
+            this.where2label.Text = "where 2:";
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(1368, 12);
+            this.searchButton.Location = new System.Drawing.Point(1285, 13);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(119, 23);
+            this.searchButton.Size = new System.Drawing.Size(202, 28);
             this.searchButton.TabIndex = 17;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -1313,7 +1315,7 @@ namespace Gestion
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(784, 14);
+            this.dateTimePicker1.Location = new System.Drawing.Point(778, 16);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker1.TabIndex = 16;
@@ -1325,15 +1327,15 @@ namespace Gestion
             this.where1TextBox.Size = new System.Drawing.Size(96, 23);
             this.where1TextBox.TabIndex = 15;
             // 
-            // label12
+            // where1label
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(267, 13);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 21);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "where 1:";
+            this.where1label.AutoSize = true;
+            this.where1label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.where1label.Location = new System.Drawing.Point(267, 13);
+            this.where1label.Name = "where1label";
+            this.where1label.Size = new System.Drawing.Size(69, 21);
+            this.where1label.TabIndex = 14;
+            this.where1label.Text = "where 1:";
             // 
             // FilterCombobox
             // 
@@ -1343,6 +1345,7 @@ namespace Gestion
             this.FilterCombobox.Name = "FilterCombobox";
             this.FilterCombobox.Size = new System.Drawing.Size(145, 23);
             this.FilterCombobox.TabIndex = 1;
+            this.FilterCombobox.SelectedIndexChanged += new System.EventHandler(this.FilterCombobox_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -1361,9 +1364,9 @@ namespace Gestion
             // DefaultPanel
             // 
             this.DefaultPanel.BackColor = System.Drawing.Color.RoyalBlue;
-            this.DefaultPanel.Location = new System.Drawing.Point(415, 222);
+            this.DefaultPanel.Location = new System.Drawing.Point(415, 263);
             this.DefaultPanel.Name = "DefaultPanel";
-            this.DefaultPanel.Size = new System.Drawing.Size(352, 35);
+            this.DefaultPanel.Size = new System.Drawing.Size(352, 714);
             this.DefaultPanel.TabIndex = 10;
             // 
             // Gestion_Form
@@ -1372,17 +1375,17 @@ namespace Gestion
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1924, 1061);
-            this.Controls.Add(this.panelCategories);
-            this.Controls.Add(this.panelProduct);
             this.Controls.Add(this.DefaultPanel);
             this.Controls.Add(this.panel10);
-            this.Controls.Add(this.panelUser);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panelTable);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.userbuttona);
             this.Controls.Add(this.adminbutton);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelProduct);
+            this.Controls.Add(this.panelUser);
+            this.Controls.Add(this.panelCategories);
             this.Name = "Gestion_Form";
             this.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
             this.Text = "DELETE PRODUCT";
@@ -1469,7 +1472,7 @@ namespace Gestion
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox where1TextBox;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label where1label;
         private System.Windows.Forms.ComboBox FilterCombobox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox idUser;
@@ -1511,7 +1514,7 @@ namespace Gestion
         private System.Windows.Forms.Button storageSelectButton;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox where2Textbox;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label where2label;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }

@@ -10,9 +10,10 @@ namespace Gestion
     {
         private Data_class dataClass = new Data_class();
         private DB db = new DB();
-        private string currentTable;
-        private bool modify;
-        private bool delete;
+        private string currentTable, currentField;
+        private bool modify,delete;
+        
+   
 
         public Gestion_Form()
         {
@@ -92,7 +93,22 @@ namespace Gestion
             comboboxSubcategory.ValueMember = "SUBCATEGORY_ID";
 
         }
+        private void FilterCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FilterCombobox.SelectedItem.ToString().Equals("PRICE") || FilterCombobox.SelectedItem.ToString().Equals("TOTAL_PRICE")) {
 
+                if (FilterCombobox.SelectedItem.ToString().Equals("PRICE"))currentField = "PRICE";
+                currentField = "TOTAL_PRICE";
+
+
+                where2Textbox.Visible = true;
+                where1label.Text = "Min Price:";
+                where2label.Visible = true;
+                where2label.Text = "Max Price:";
+
+                
+            }
+        }
 
         //FILTRO:
         private void loadUserFilterCombobox()
@@ -164,24 +180,31 @@ namespace Gestion
                 switch (currentTable)
                 {
                     case "user":
+                       
                         LoadUsers(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
                         break;
                     case "products":
+                       
                         LoadProducts(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
                         break;
                     case "sales":
+                    
                         LoadSales(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text);
                         break;
                     case "category":
+                        
                         LoadCategories(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text);
                         break;
                     case "subcategory":
+                
                         LoadSubCategories(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text);
                         break;
                     case "storage":
+                 
                         LoadStorage(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
                         break;
                     case "detailstorage":
+                
                         LoadStorageDetails(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
                         break;
                 }
@@ -225,14 +248,9 @@ namespace Gestion
             panelCategoryMenuLeft.Visible = false;
             panelSubcategoryMenuLeft.Visible = false;
             panelStorage.Visible = false;
-            
-
-
             comboboxCategory.SelectedIndex = 0;
             comboboxSubcategory.SelectedIndex = 0;
             Roles.SelectedIndex = 0;
-
-
             userCurrentlabel.Text = Data_class.currentUser;
             loadpropietiesCombobox();
 
@@ -241,8 +259,6 @@ namespace Gestion
                 loadAdminRequirements();
                 adminbutton.Enabled = true;
             }
-
-
         }
 
         //user 
@@ -367,7 +383,6 @@ namespace Gestion
                         else {
                             MessageBox.Show("Price not valid");
                         }
-
                     }
                     break;
                 case "Modify":
@@ -378,7 +393,7 @@ namespace Gestion
                     }
                     else
                     {
-                        if (db.productUpdate(Int32.Parse(idProduct.Text), nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex, comboboxSubcategory.SelectedIndex))
+                        if (db.productUpdate(Int32.Parse(idProduct.Text), nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex+1, comboboxSubcategory.SelectedIndex+1))
                         {
                             MessageBox.Show("PRODUCT " + nameProduct.Text + " UPDATED");
                             LoadProducts("", "","");
@@ -387,7 +402,6 @@ namespace Gestion
                         else {
                             MessageBox.Show("PRODUCT NOT UPDATED");
                         }
-                    
                     }
                     break;
 
@@ -559,6 +573,7 @@ namespace Gestion
             cleanData();
             InfoPanel();
             loadUserFilterCombobox();
+  
         }
 
 
@@ -573,6 +588,7 @@ namespace Gestion
             cleanData();
             InfoPanel();
             loadUserFilterCombobox();
+           
         }
         private void buttonDeleteUsers_Click(object sender, EventArgs e)
         {
@@ -585,6 +601,7 @@ namespace Gestion
             cleanData();
             InfoPanel();
             loadUserFilterCombobox();
+
         }
 
 
@@ -600,6 +617,7 @@ namespace Gestion
             cleanData();
             InfoPanel();
             loadProductFilterCombobox();
+
         }
 
         private void buttonModifyProduct_Click(object sender, EventArgs e)
@@ -613,6 +631,7 @@ namespace Gestion
             InfoPanel();
             cleanData();
             loadProductFilterCombobox();
+           
         }
 
         private void buttonDeleteProduct_Click(object sender, EventArgs e)
@@ -626,6 +645,7 @@ namespace Gestion
             InfoPanel();
             DisableProducts();
             loadProductFilterCombobox();
+            
         }
 
         
@@ -639,7 +659,7 @@ namespace Gestion
             defaultPanleVisible();
             InfoPanel();
             loadSalesFilterCombobox();
-
+         
         }
         private void buttonSalesSelect_Click(object sender, EventArgs e)
         {
@@ -651,7 +671,7 @@ namespace Gestion
             InfoPanel();
             LoadSalesDetail("", "","");
             loadDetailSalesFilterCombobox();
-
+         
         }
 
         
@@ -668,6 +688,7 @@ namespace Gestion
             InfoPanel();
             createCategories.Text = "Create";
             LoadCategoriesFilterCombobox();
+          
         }
         private void modifyCategory_Click(object sender, EventArgs e)
         {
@@ -681,6 +702,7 @@ namespace Gestion
             InfoPanel();
             createCategories.Text = "Modify";
             LoadCategoriesFilterCombobox();
+          
         }
 
         private void deleteCategory_Click(object sender, EventArgs e)
@@ -695,6 +717,7 @@ namespace Gestion
             InfoPanel();
             createCategories.Text = "Delete";
             LoadCategoriesFilterCombobox();
+          
         }
 
         //Subcategory menu
@@ -710,6 +733,7 @@ namespace Gestion
             createCategories.Text = "Create";
             InfoPanel();
             LoadSubcategoriesFilterCombobox();
+            
         }
 
         private void modifySubcategory_Click(object sender, EventArgs e)
@@ -724,6 +748,7 @@ namespace Gestion
             createCategories.Text = "Modify";
             InfoPanel();
             LoadSubcategoriesFilterCombobox();
+          
         }
 
         private void deleteSubcategory_Click(object sender, EventArgs e)
@@ -738,6 +763,7 @@ namespace Gestion
             LoadSubCategories("","");
             InfoPanel();
             LoadSubcategoriesFilterCombobox();
+           
         }
 
         // STORAGE
@@ -749,6 +775,7 @@ namespace Gestion
             LoadStorage("", "","");
             InfoPanel();
             LoadStorageFilterCombobox();
+            
         }
 
         private void storageDetailButton_Click(object sender, EventArgs e)
@@ -759,6 +786,7 @@ namespace Gestion
             LoadStorageDetails("","","");
             InfoPanel();
             LoadStorageDetailsilterCombobox();
+          
         }
       
 
@@ -917,19 +945,22 @@ namespace Gestion
             dataClass.check_onlynumbers(sender, e);
         }
 
-        private void pricePressed(object sender, KeyPressEventArgs e)
+        private void numbersAndcoma(object sender, KeyPressEventArgs e)
         {
             dataClass.check_onlynumbersWithComa(sender, e);
         }
+
+     
         private void idProductPress(object sender, KeyPressEventArgs e)
         {
             dataClass.check_onlynumbers(sender, e);
         }
 
-        private void idUserPressed(object sender, KeyPressEventArgs e)
+        private void onlyNumbers(object sender, KeyPressEventArgs e)
         {
             dataClass.check_onlynumbers(sender, e);
         }
+     
         private void idSubCategoryPress(object sender, KeyPressEventArgs e)
         {
             dataClass.check_onlynumbers(sender, e);
@@ -1106,7 +1137,7 @@ namespace Gestion
 
         }
 
-        
+   
 
         private void storageSelectButton_Click(object sender, EventArgs e)
         {
@@ -1120,7 +1151,7 @@ namespace Gestion
 
         }
 
-    
+      
     }
         //-----------------------------
 
