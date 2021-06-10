@@ -115,6 +115,8 @@ namespace Gestion
             this.TableDescriptionLabel = new System.Windows.Forms.Label();
             this.CurrentTableLabel = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.DataLabel2 = new System.Windows.Forms.Label();
+            this.DateLabel1 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.where2Textbox = new System.Windows.Forms.TextBox();
             this.where2label = new System.Windows.Forms.Label();
@@ -1244,6 +1246,8 @@ namespace Gestion
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel10.Controls.Add(this.DataLabel2);
+            this.panel10.Controls.Add(this.DateLabel1);
             this.panel10.Controls.Add(this.dateTimePicker2);
             this.panel10.Controls.Add(this.where2Textbox);
             this.panel10.Controls.Add(this.where2label);
@@ -1258,9 +1262,27 @@ namespace Gestion
             this.panel10.Size = new System.Drawing.Size(1503, 50);
             this.panel10.TabIndex = 17;
             // 
+            // DataLabel2
+            // 
+            this.DataLabel2.AutoSize = true;
+            this.DataLabel2.Location = new System.Drawing.Point(1067, 20);
+            this.DataLabel2.Name = "DataLabel2";
+            this.DataLabel2.Size = new System.Drawing.Size(43, 15);
+            this.DataLabel2.TabIndex = 22;
+            this.DataLabel2.Text = "Data 2:";
+            // 
+            // DateLabel1
+            // 
+            this.DateLabel1.AutoSize = true;
+            this.DateLabel1.Location = new System.Drawing.Point(737, 17);
+            this.DateLabel1.Name = "DateLabel1";
+            this.DateLabel1.Size = new System.Drawing.Size(43, 15);
+            this.DateLabel1.TabIndex = 21;
+            this.DateLabel1.Text = "Data 1:";
+            // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(1116, 16);
+            this.dateTimePicker2.Location = new System.Drawing.Point(1116, 15);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker2.TabIndex = 20;
@@ -1270,7 +1292,7 @@ namespace Gestion
             // 
             this.where2Textbox.Location = new System.Drawing.Point(576, 15);
             this.where2Textbox.Name = "where2Textbox";
-            this.where2Textbox.Size = new System.Drawing.Size(88, 23);
+            this.where2Textbox.Size = new System.Drawing.Size(155, 23);
             this.where2Textbox.TabIndex = 19;
             this.where2Textbox.Visible = false;
             this.where2Textbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FilterValidatorString);
@@ -1298,7 +1320,7 @@ namespace Gestion
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(786, 16);
+            this.dateTimePicker1.Location = new System.Drawing.Point(786, 14);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker1.TabIndex = 16;
@@ -1308,7 +1330,7 @@ namespace Gestion
             // 
             this.where1TextBox.Location = new System.Drawing.Point(349, 14);
             this.where1TextBox.Name = "where1TextBox";
-            this.where1TextBox.Size = new System.Drawing.Size(96, 23);
+            this.where1TextBox.Size = new System.Drawing.Size(139, 23);
             this.where1TextBox.TabIndex = 15;
             this.where1TextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FilterValidatorString);
             // 
@@ -1496,5 +1518,7 @@ namespace Gestion
         private System.Windows.Forms.TextBox where2Textbox;
         private System.Windows.Forms.Label where2label;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label DataLabel2;
+        private System.Windows.Forms.Label DateLabel1;
     }
 }

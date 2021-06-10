@@ -41,9 +41,9 @@ namespace Gestion
             dataGridView1.ClearSelection();
             currentTable = "products";
         }
-        private void LoadSales(string campo, string where)
+        private void LoadSales(string campo, string where, string where2)
         {
-            dataGridView1.DataSource = db.salesSelection(campo, where);
+            dataGridView1.DataSource = db.salesSelection(campo, where, where2);
             dataGridView1.ClearSelection();
             currentTable = "sales";
         }
@@ -85,11 +85,13 @@ namespace Gestion
         {
             //-- Cargar datos combo box de categoria        
             comboboxCategory.DataSource = db.categorySelection("", "");
-            comboboxCategory.DisplayMember = "NAME";
+            comboboxCategory.DisplayMember = "CATEGORY_ID";
+            //comboboxCategory.DisplayMember = "NAME";
             comboboxCategory.ValueMember = "CATEGORY_ID";
             //-- Cargar datos combo box de Subcategoria 
             comboboxSubcategory.DataSource = db.subcategorySelection("", "");
-            comboboxSubcategory.DisplayMember = "NAME";
+            comboboxSubcategory.DisplayMember = "SUBCATEGORY_ID";
+            //comboboxSubcategory.DisplayMember = "NAME";
             comboboxSubcategory.ValueMember = "SUBCATEGORY_ID";
 
         }
@@ -98,64 +100,46 @@ namespace Gestion
         //FILTRO:
         private void loadUserFilterCombobox()
         {
-            
             string[] Filtertable = new string[] {"USER_ID","USERNAME", "PWD", "EMAIL", "CREATION_DATE", "ROL"};
-
-
-            FilterCombobox.Items.Clear();
-            FilterCombobox.Items.AddRange(Filtertable);
-            FilterCombobox.SelectedIndex = 0;
+            clearFilter(Filtertable);
         }
         private void loadProductFilterCombobox()
         {
             string[] Filtertable = new string[] { "PRODUCT_ID", "NAME", "PRICE", "STOCK", "CATEGORY_ID", "SUBCATEGORY_ID" };
-            FilterCombobox.Items.Clear();
-            FilterCombobox.Items.AddRange(Filtertable);
-            FilterCombobox.SelectedIndex = 0;
+            clearFilter(Filtertable);
         }
         private void loadSalesFilterCombobox()
         {
             string[] Filtertable = new string[] {"SALE_ID", "PRICE", "GENERATION_DATE"};
-            FilterCombobox.Items.Clear();
-            FilterCombobox.Items.AddRange(Filtertable);
-            FilterCombobox.SelectedIndex = 0;
+            clearFilter(Filtertable);
         }
         private void loadDetailSalesFilterCombobox()
         {
             string[] Filtertable = new string[] {"SALE_ID", "PRICE", "PRODUCT_ID", "AMOUNT"};
-            FilterCombobox.Items.Clear();
-            FilterCombobox.Items.AddRange(Filtertable);
-            FilterCombobox.SelectedIndex = 0;
+            clearFilter(Filtertable);
         }
 
         private void LoadCategoriesFilterCombobox()
         {
             string[] Filtertable = new string[] {"CATEGORY_ID", "NAME" };
-            FilterCombobox.Items.Clear();
-            FilterCombobox.Items.AddRange(Filtertable);
-            FilterCombobox.SelectedIndex = 0;
+            clearFilter(Filtertable);
         }
         private void LoadSubcategoriesFilterCombobox()
         {
             string[] Filtertable = new string[] { "SUBCATEGORY_ID", "NAME" };
-            FilterCombobox.Items.Clear();
-            FilterCombobox.Items.AddRange(Filtertable);
-            FilterCombobox.SelectedIndex = 0;
+            clearFilter(Filtertable);
         }
 
         private void LoadStorageFilterCombobox()
         {
             string[] Filtertable = new string[] { "USER_ID", "HOUSE_ID" };
-            FilterCombobox.Items.Clear();
-            FilterCombobox.Items.AddRange(Filtertable);
-            FilterCombobox.SelectedIndex = 0;
+            clearFilter(Filtertable);
         }
         private void LoadStorageDetailsilterCombobox()
         {
             string[] Filtertable = new string[] { "PRODUCT_ID", "HOUSE_ID", "STOCK", "ADQUISITION_DATE","MIN_STOCK","NAME","BRAND","TOTAL_PRICE" };
-            FilterCombobox.Items.Clear();
-            FilterCombobox.Items.AddRange(Filtertable);
-            FilterCombobox.SelectedIndex = 0;
+     
+            clearFilter(Filtertable);
         }
 
         private void FilterCombobox_SelectedIndexChanged(object sender, EventArgs e)
@@ -170,6 +154,8 @@ namespace Gestion
                 dateTimePicker2.Visible = false;
                 where1TextBox.Visible = true;
                 where1label.Visible = true;
+                DateLabel1.Visible = false;
+                DataLabel2.Visible = false;
             }
             else if (FilterCombobox.SelectedItem.ToString().Contains("DATE"))
             {
@@ -182,6 +168,8 @@ namespace Gestion
                 where1label.Visible = false;
                 dateTimePicker1.Visible = true;
                 dateTimePicker2.Visible = true;
+                DateLabel1.Visible = true;
+                DataLabel2.Visible = true;
             }
             else
             {
@@ -193,6 +181,8 @@ namespace Gestion
                 where1label.Visible = true;
                 dateTimePicker1.Visible = false;
                 dateTimePicker2.Visible = false;
+                DateLabel1.Visible = false;
+                DataLabel2.Visible = false;
             }
 
 
@@ -203,7 +193,7 @@ namespace Gestion
             if (FilterCombobox.SelectedItem.ToString().Contains("PRICE")) dataClass.check_onlynumbersWithComa(sender, e);
             if (FilterCombobox.SelectedItem.ToString().Equals("STOCK")|| FilterCombobox.SelectedItem.ToString().Contains("ID")) dataClass.check_onlynumbers(sender, e);
         }
-        //FIN FILTRO
+
         private void searchButton_Click(object sender, EventArgs e)
         {
             try
@@ -211,39 +201,52 @@ namespace Gestion
                 switch (currentTable)
                 {
                     case "user":
-                       
-                        LoadUsers(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
+                        if (FilterCombobox.SelectedItem.ToString().Contains("DATE")) {
+                            LoadUsers(FilterCombobox.SelectedItem.ToString(), dateTimePicker1.Value.ToString("dd/MM/yyyy"), dateTimePicker2.Value.ToString("dd/MM/yyyy"));
+                        }
+                       LoadUsers(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
                         break;
                     case "products":
-                       
                         LoadProducts(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
                         break;
                     case "sales":
-                    
-                        LoadSales(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text);
+                        if (FilterCombobox.SelectedItem.ToString().Contains("DATE"))
+                        {
+                            LoadSales(FilterCombobox.SelectedItem.ToString(), dateTimePicker1.Value.ToString("dd/MM/yyyy"), dateTimePicker2.Value.ToString("dd/MM/yyyy"));
+                        }
+                        LoadSales(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
+                        break;
+                    case "salesDetails":  
+                       LoadSalesDetail(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
                         break;
                     case "category":
-                        
+
                         LoadCategories(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text);
                         break;
                     case "subcategory":
-                
+
                         LoadSubCategories(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text);
                         break;
                     case "storage":
-                 
+
                         LoadStorage(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
                         break;
                     case "detailstorage":
-                
+                        if (FilterCombobox.SelectedItem.ToString().Contains("DATE"))
+                        {
+                            LoadStorageDetails(FilterCombobox.SelectedItem.ToString(), dateTimePicker1.Value.ToString("dd/MM/yyyy"), dateTimePicker2.Value.ToString("dd/MM/yyyy"));
+                        }
                         LoadStorageDetails(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
                         break;
                 }
             }
-            catch {
-                MessageBox.Show("ERROR");
+            catch
+            {
+                
             }
         }
+        //FIN FILTRO
+
 
         //conexion bd
         private void conectionDb()
@@ -288,7 +291,7 @@ namespace Gestion
             if (Data_class.admin)
             {
                 loadAdminRequirements();
-                adminbutton.Enabled = true;
+        
             }
         }
 
@@ -403,7 +406,14 @@ namespace Gestion
                         if (float.TryParse(pricebox.Text, out price))
                         {
                             price = (float) Math.Round(price,2);
-                            if (db.productInsert(nameProduct.Text, brandbox.Text, price, Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex + 1, comboboxSubcategory.SelectedIndex + 1))
+
+
+                            if (db.productInsert(nameProduct.Text, 
+                                brandbox.Text,
+                                price, 
+                                Int32.Parse(stokbox.Text), 
+                                Int32.Parse(comboboxCategory.Text),
+                                Int32.Parse(comboboxSubcategory.Text)))
                             {
                                 MessageBox.Show("PRODUCT " + nameProduct.Text + " INSERTED");
                                 LoadProducts("", "","");
@@ -427,14 +437,28 @@ namespace Gestion
                     }
                     else
                     {
-                        if (db.productUpdate(Int32.Parse(idProduct.Text), nameProduct.Text, brandbox.Text, float.Parse(pricebox.Text), Int32.Parse(stokbox.Text), comboboxCategory.SelectedIndex+1, comboboxSubcategory.SelectedIndex+1))
+                        if (float.TryParse(pricebox.Text, out price))
                         {
-                            MessageBox.Show("PRODUCT " + nameProduct.Text + " UPDATED");
-                            LoadProducts("", "","");
-                            cleanData();
+                            price = (float)Math.Round(price, 2);
+
+                        
+                            if (db.productUpdate(Int32.Parse(idProduct.Text),
+                                nameProduct.Text, brandbox.Text,
+                               price, Int32.Parse(stokbox.Text),
+                                Int32.Parse(comboboxCategory.Text),
+                                Int32.Parse(comboboxSubcategory.Text)))
+                            {
+                                MessageBox.Show("PRODUCT " + nameProduct.Text + " UPDATED");
+                                LoadProducts("", "", "");
+                                cleanData();
+                            }
+                            else
+                            {
+                                MessageBox.Show("PRODUCT NOT UPDATED");
+                            }
                         }
                         else {
-                            MessageBox.Show("PRODUCT NOT UPDATED");
+                            MessageBox.Show("Price not valid");
                         }
                     }
                     break;
@@ -689,7 +713,7 @@ namespace Gestion
             modify = false;
             delete = false;
             cleanData();
-            LoadSales("", "");
+            LoadSales("", "", "");
             defaultPanleVisible();
             InfoPanel();
             loadSalesFilterCombobox();
@@ -700,10 +724,10 @@ namespace Gestion
             //details Sales
             modify = false;
             delete = false;
+            LoadSalesDetail("", "", "");
             cleanData();
             defaultPanleVisible();
             InfoPanel();
-            LoadSalesDetail("", "","");
             loadDetailSalesFilterCombobox();
          
         }
@@ -832,31 +856,35 @@ namespace Gestion
             {
                 case "user":
                     CurrentTableLabel.Text = "Users";
-                    TableDescriptionLabel.Text = "luedeps asdfdsf PRUEBA";
+                    TableDescriptionLabel.Text = "ludem ipsum ludem ipsum ludem ipsum";
                     break;
                 case "products":
                     CurrentTableLabel.Text = "Products";
-                    TableDescriptionLabel.Text = "ESTO es una pruegfdfgjdfgnjdgfdfbndfgjdgfj";
+                    TableDescriptionLabel.Text = "ludem ipsum";
                     break;
                 case "sales":
                     CurrentTableLabel.Text = "Sales";
-                    TableDescriptionLabel.Text = "darfdsfdfsdfsdvfdgf";
+                    TableDescriptionLabel.Text = "ludem ipsumludem ipsumludem ipsumludem ipsumvludem ipsum";
+                    break;
+                case "salesDetails":
+                    CurrentTableLabel.Text = "Sales details";
+                    TableDescriptionLabel.Text = "ludem ipsum";
                     break;
                 case "category":
                     CurrentTableLabel.Text = "Category";
-                    TableDescriptionLabel.Text = "dfsdfrgfedgfedgfedgfefdfggdfdgfsdfesgdfgdfgdgf    ff";
+                    TableDescriptionLabel.Text = "ludem ipsum ludem ipsum  ludem ipsum ";
                     break;
                 case "subcategory":
                     CurrentTableLabel.Text = "Subcategory";
-                    TableDescriptionLabel.Text = "T8T8UDGFUDGFJUDSGFSKGHKJGHKJDFSHGKJDSHJ";
+                    TableDescriptionLabel.Text = "ludem ipsumludem ipsum ludem ipsum ludem ipsum";
                     break;
                 case "storage":
                     CurrentTableLabel.Text = "Storage";
-                    TableDescriptionLabel.Text = "sdfsdfsdfsdffds  sdfsdfsdfsdfdsfsdsd";
+                    TableDescriptionLabel.Text = "ludem ipsum ludem ipsum ludem ipsum";
                     break;
                 case "detailstorage":
                     CurrentTableLabel.Text = "Detail storage";
-                    TableDescriptionLabel.Text = "sdfsdfsdfsdffds  sdfsdfsdfsdfdsfsdsd";
+                    TableDescriptionLabel.Text = "ludem ipsum ludem ipsum ludem ipsum ludem ipsum";
                     break;
             }
             
@@ -980,13 +1008,11 @@ namespace Gestion
             dataClass.check_onlynumbersWithComa(sender, e);
         }
 
-
         private void onlyNumbers(object sender, KeyPressEventArgs e)
         {
             dataClass.check_onlynumbers(sender, e);
         }
      
-  
 
         //Verificador
         private void chek_Tick(object sender, EventArgs e)
@@ -1050,6 +1076,8 @@ namespace Gestion
             }
         }//tick end
 
+
+        //Limpiador
         private void cleanData()
         {
             //- Limpiar usuario
@@ -1073,7 +1101,14 @@ namespace Gestion
             idSubcategories.Clear();
         }
 
+        private void clearFilter(string [] Filtertable) {
 
+            where1TextBox.Clear();
+            where2Textbox.Clear();
+            FilterCombobox.Items.Clear();
+            FilterCombobox.Items.AddRange(Filtertable);
+            FilterCombobox.SelectedIndex = 0;
+        }
 
 
         //Enable and disable:
