@@ -45,13 +45,6 @@ namespace Gestion
             }
         }
 
-
-        public bool verificar(string user, string pwd) {
-
-            
-            return true;
-        }
-
         public string hashpwd(string contra, string fecha)
         {
 
@@ -60,25 +53,15 @@ namespace Gestion
             fechaHash = fechaHash.Trim();
             fechaHash = fechaHash.Replace(":", "");
             fechaHash = fechaHash.Replace("/", "");
-
-            //-----------
             string hashDate = mD5(fechaHash);
-
-            //-----------
             string hashpass = mD5(contra);
-
             string salContra = mD5(hashDate + hashpass);
-            //-----------
 
-            string pebre = salContra;
-
-           
+            string pebre = salContra;     
             string sSubCadena = pebre.Substring(0, (int)(pebre.Length / 2));
             string sSubCadena2 = pebre.Substring((int)(pebre.Length / 2), (int)(pebre.Length / 2));
             string Contrapebre = sSubCadena2 + sSubCadena;
 
-            //lengh conocer la lingtud de la string luego lo separamos por X numero y cambiarlo de posicion 
-            //pebreee
 
             string contraFinal = mD5(salContra + Contrapebre);
             return contraFinal;

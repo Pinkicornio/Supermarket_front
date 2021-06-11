@@ -13,12 +13,6 @@ namespace Gestion
         public Login_Form()
         {
             InitializeComponent();
-            
-        }
-
-        private void record_user_event(object sender, EventArgs e)
-        {
-            
         }
 
         private void loginbutton_Click(object sender, EventArgs e)
@@ -27,50 +21,49 @@ namespace Gestion
             string userInput = userfield.Text;
             string pwdInput = passwordfield.Text;
 
-
-            try {
+            if (!string.IsNullOrWhiteSpace(userInput) && !string.IsNullOrWhiteSpace(pwdInput))
+            {
+                try {
 
                 List<string> datainfo = db.getLoginInfo(userInput);
 
+                
 
-
-                if (datainfo[1].Equals(data_class.hashpwd(pwdInput, datainfo[2])))
-                {
-
-                    if (datainfo[3].Equals("ADMIN"))
+                    if (datainfo[1].Equals(data_class.hashpwd(pwdInput, datainfo[2])))
                     {
+                        if (datainfo[3].Equals("ADMIN"))
+                        {
+                            Data_class.admin = true;
+                            Data_class.currentUser = userInput;
+                            this.Hide();
+                            gestion_form = new Gestion_Form();
+                            gestion_form.Show();
 
-                        Data_class.admin = true;
-                        Data_class.currentUser = userInput;
-                        this.Hide();
-                        gestion_form = new Gestion_Form();
-                        gestion_form.Show();
+                        }
+                        else
+                        {
+                            Data_class.admin = false;
+                            Data_class.currentUser = userInput;
+                            this.Hide();
+                            gestion_form = new Gestion_Form();
+                            gestion_form.Show();
 
+                        }
                     }
-
-                    else
-                    {
-                        Data_class.admin = false;
-                        Data_class.currentUser = userInput;
-                        this.Hide();
-                        gestion_form = new Gestion_Form();
-                        gestion_form.Show();
-
+                    else {
+                        MessageBox.Show("WRONG PASSWORD");
                     }
 
                 }
-                else {
-                    MessageBox.Show("WRONG PASSWORD");
-                }
-              
-            }
             catch
             {
                 MessageBox.Show("LOG FAILED, USERNAME NOT EXIST");
             }
+        }else MessageBox.Show("ALL FIELDS MUST BE FULL");
+            
 
 
-        }
+    }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         { 

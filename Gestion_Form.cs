@@ -95,8 +95,6 @@ namespace Gestion
             comboboxSubcategory.ValueMember = "SUBCATEGORY_ID";
 
         }
-     
-
         //FILTRO:
         private void loadUserFilterCombobox()
         {
@@ -118,7 +116,6 @@ namespace Gestion
             string[] Filtertable = new string[] {"SALE_ID", "PRICE", "PRODUCT_ID", "AMOUNT"};
             clearFilter(Filtertable);
         }
-
         private void LoadCategoriesFilterCombobox()
         {
             string[] Filtertable = new string[] {"CATEGORY_ID", "NAME" };
@@ -129,7 +126,6 @@ namespace Gestion
             string[] Filtertable = new string[] { "SUBCATEGORY_ID", "NAME" };
             clearFilter(Filtertable);
         }
-
         private void LoadStorageFilterCombobox()
         {
             string[] Filtertable = new string[] { "USER_ID", "HOUSE_ID" };
@@ -137,11 +133,9 @@ namespace Gestion
         }
         private void LoadStorageDetailsilterCombobox()
         {
-            string[] Filtertable = new string[] { "PRODUCT_ID", "HOUSE_ID", "STOCK", "ADQUISITION_DATE","MIN_STOCK","NAME","BRAND","TOTAL_PRICE" };
-     
+            string[] Filtertable = new string[] { "PRODUCT_ID", "HOUSE_ID", "STOCK", "ADQUISITION_DATE","NAME","BRAND","TOTAL_PRICE" };
             clearFilter(Filtertable);
         }
-
         private void FilterCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (FilterCombobox.SelectedItem.ToString().Contains("PRICE"))
@@ -184,14 +178,13 @@ namespace Gestion
                 DateLabel1.Visible = false;
                 DataLabel2.Visible = false;
             }
-
-
         }
 
         private void FilterValidatorString(object sender, KeyPressEventArgs e)
         {
             if (FilterCombobox.SelectedItem.ToString().Contains("PRICE")) dataClass.check_onlynumbersWithComa(sender, e);
-            if (FilterCombobox.SelectedItem.ToString().Equals("STOCK")|| FilterCombobox.SelectedItem.ToString().Contains("ID")) dataClass.check_onlynumbers(sender, e);
+            if (FilterCombobox.SelectedItem.ToString().Equals("STOCK")
+               || FilterCombobox.SelectedItem.ToString().Contains("ID")) dataClass.check_onlynumbers(sender, e);
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -204,7 +197,10 @@ namespace Gestion
                         if (FilterCombobox.SelectedItem.ToString().Contains("DATE")) {
                             LoadUsers(FilterCombobox.SelectedItem.ToString(), dateTimePicker1.Value.ToString("dd/MM/yyyy"), dateTimePicker2.Value.ToString("dd/MM/yyyy"));
                         }
-                       LoadUsers(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
+                        else
+                        {
+                            LoadUsers(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
+                        }
                         break;
                     case "products":
                         LoadProducts(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
@@ -214,21 +210,20 @@ namespace Gestion
                         {
                             LoadSales(FilterCombobox.SelectedItem.ToString(), dateTimePicker1.Value.ToString("dd/MM/yyyy"), dateTimePicker2.Value.ToString("dd/MM/yyyy"));
                         }
-                        LoadSales(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
+                        else {
+                            LoadSales(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
+                        }
                         break;
                     case "salesDetails":  
                        LoadSalesDetail(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
                         break;
                     case "category":
-
                         LoadCategories(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text);
                         break;
                     case "subcategory":
-
                         LoadSubCategories(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text);
                         break;
                     case "storage":
-
                         LoadStorage(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
                         break;
                     case "detailstorage":
@@ -236,13 +231,15 @@ namespace Gestion
                         {
                             LoadStorageDetails(FilterCombobox.SelectedItem.ToString(), dateTimePicker1.Value.ToString("dd/MM/yyyy"), dateTimePicker2.Value.ToString("dd/MM/yyyy"));
                         }
-                        LoadStorageDetails(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
+                        else {
+                            LoadStorageDetails(FilterCombobox.SelectedItem.ToString(), where1TextBox.Text, where2Textbox.Text);
+                        }  
                         break;
                 }
             }
             catch
             {
-                
+                MessageBox.Show("ERROR");   
             }
         }
         //FIN FILTRO
@@ -286,6 +283,7 @@ namespace Gestion
             comboboxSubcategory.SelectedIndex = 0;
             Roles.SelectedIndex = 0;
             userCurrentlabel.Text = Data_class.currentUser;
+
             loadpropietiesCombobox();
 
             if (Data_class.admin)
