@@ -99,7 +99,7 @@ namespace Gestion
         //FILTRO:
         private void loadUserFilterCombobox()
         {
-            string[] Filtertable = new string[] {"USER_ID","USERNAME", "PWD", "EMAIL", "CREATION_DATE", "ROL"};
+            string[] Filtertable = new string[] {"USER_ID","USERNAME", "CREATION_DATE", "ROL"};
             clearFilter(Filtertable);
         }
         private void loadProductFilterCombobox()
@@ -1018,13 +1018,27 @@ namespace Gestion
                     case "user":
                         //user
                         idLabelUser.Visible = true;
-                        idUser.Visible= true;                    
+                        idUser.Visible= true;
+                        if (modify) {
+                            idUser.Enabled = false;
+                        }
+                        if (delete) {
+                            idUser.Enabled = true;
+                        }
                         break;
 
                     case "products":
                         //product
                         idlabelProduct.Visible = true;
-                        idProduct.Visible = true;                 
+                        idProduct.Visible = true;
+                        if (modify)
+                        {
+                            idProduct.Enabled = false;
+                        }
+                        if (delete)
+                        {
+                            idProduct.Enabled = true;
+                        }
                         break;
 
                     case "category":
@@ -1032,12 +1046,28 @@ namespace Gestion
                         idCategories.Visible = true;
                         idLabelSubCategories.Visible = false;
                         idSubcategories.Visible = false;
+                        if (modify)
+                        {
+                            idCategories.Enabled = false;
+                        }
+                        if (delete)
+                        {
+                            idCategories.Enabled = true;
+                        }
                         break;
                     case "subcategory":
                         idLabelSubCategories.Visible = true;
                         idSubcategories.Visible = true;
                         idLabelCategories.Visible = false;
                         idCategories.Visible = false;
+                        if (modify)
+                        {
+                            idSubcategories.Enabled = false;
+                        }
+                        if (delete)
+                        {
+                            idSubcategories.Enabled = true;
+                        }
                         break;
                 }
             }

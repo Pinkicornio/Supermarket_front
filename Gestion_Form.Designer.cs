@@ -111,6 +111,7 @@ namespace Gestion
             this.panel4 = new System.Windows.Forms.Panel();
             this.userCurrentlabel = new System.Windows.Forms.Label();
             this.panelTable = new System.Windows.Forms.Panel();
+            this.label26 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label25 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -131,6 +132,7 @@ namespace Gestion
             this.CurrentTableLabel = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelStorage.SuspendLayout();
             this.panelCategoryMenuLeft.SuspendLayout();
@@ -648,7 +650,7 @@ namespace Gestion
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1405, 16);
+            this.label1.Location = new System.Drawing.Point(1547, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(136, 29);
             this.label1.TabIndex = 14;
@@ -681,18 +683,18 @@ namespace Gestion
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(25, 73);
+            this.label13.Location = new System.Drawing.Point(27, 69);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(494, 24);
+            this.label13.Size = new System.Drawing.Size(549, 24);
             this.label13.TabIndex = 18;
-            this.label13.Text = "____________________________________________";
+            this.label13.Text = "_________________________________________________";
             // 
             // idUser
             // 
             this.idUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.idUser.Location = new System.Drawing.Point(147, 345);
             this.idUser.Name = "idUser";
-            this.idUser.Size = new System.Drawing.Size(358, 35);
+            this.idUser.Size = new System.Drawing.Size(408, 35);
             this.idUser.TabIndex = 17;
             this.idUser.Visible = false;
             this.idUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers);
@@ -755,6 +757,7 @@ namespace Gestion
             this.Roles.Items.AddRange(new object[] {
             "ADMIN",
             "USER",
+            "APP",
             "NO_SELECTED"});
             this.Roles.Location = new System.Drawing.Point(147, 294);
             this.Roles.Name = "Roles";
@@ -823,7 +826,7 @@ namespace Gestion
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(204, 21);
+            this.label6.Location = new System.Drawing.Point(247, 13);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(148, 46);
             this.label6.TabIndex = 0;
@@ -850,25 +853,25 @@ namespace Gestion
             this.panelProduct.Controls.Add(this.label9);
             this.panelProduct.Controls.Add(this.label10);
             this.panelProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panelProduct.Location = new System.Drawing.Point(415, 218);
+            this.panelProduct.Location = new System.Drawing.Point(415, 211);
             this.panelProduct.Name = "panelProduct";
-            this.panelProduct.Size = new System.Drawing.Size(586, 784);
+            this.panelProduct.Size = new System.Drawing.Size(586, 791);
             this.panelProduct.TabIndex = 8;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(22, 74);
+            this.label12.Location = new System.Drawing.Point(46, 81);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(494, 24);
+            this.label12.Size = new System.Drawing.Size(516, 24);
             this.label12.TabIndex = 16;
-            this.label12.Text = "____________________________________________";
+            this.label12.Text = "______________________________________________";
             // 
             // idProduct
             // 
             this.idProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.idProduct.Location = new System.Drawing.Point(152, 450);
+            this.idProduct.Location = new System.Drawing.Point(178, 476);
             this.idProduct.Name = "idProduct";
             this.idProduct.Size = new System.Drawing.Size(350, 35);
             this.idProduct.TabIndex = 15;
@@ -879,7 +882,7 @@ namespace Gestion
             // 
             this.idlabelProduct.AutoSize = true;
             this.idlabelProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.idlabelProduct.Location = new System.Drawing.Point(88, 456);
+            this.idlabelProduct.Location = new System.Drawing.Point(114, 482);
             this.idlabelProduct.Name = "idlabelProduct";
             this.idlabelProduct.Size = new System.Drawing.Size(33, 29);
             this.idlabelProduct.TabIndex = 14;
@@ -889,7 +892,7 @@ namespace Gestion
             // pricebox
             // 
             this.pricebox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.pricebox.Location = new System.Drawing.Point(152, 277);
+            this.pricebox.Location = new System.Drawing.Point(178, 303);
             this.pricebox.Name = "pricebox";
             this.pricebox.ShortcutsEnabled = false;
             this.pricebox.Size = new System.Drawing.Size(350, 35);
@@ -900,7 +903,7 @@ namespace Gestion
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(52, 280);
+            this.label16.Location = new System.Drawing.Point(78, 306);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(69, 29);
             this.label16.TabIndex = 12;
@@ -909,7 +912,7 @@ namespace Gestion
             // brandbox
             // 
             this.brandbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.brandbox.Location = new System.Drawing.Point(152, 221);
+            this.brandbox.Location = new System.Drawing.Point(178, 247);
             this.brandbox.Name = "brandbox";
             this.brandbox.Size = new System.Drawing.Size(350, 35);
             this.brandbox.TabIndex = 11;
@@ -918,7 +921,7 @@ namespace Gestion
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(41, 227);
+            this.label17.Location = new System.Drawing.Point(67, 253);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(77, 29);
             this.label17.TabIndex = 10;
@@ -931,7 +934,7 @@ namespace Gestion
             this.comboboxSubcategory.FormattingEnabled = true;
             this.comboboxSubcategory.Items.AddRange(new object[] {
             "NO_DATA"});
-            this.comboboxSubcategory.Location = new System.Drawing.Point(152, 392);
+            this.comboboxSubcategory.Location = new System.Drawing.Point(178, 418);
             this.comboboxSubcategory.Name = "comboboxSubcategory";
             this.comboboxSubcategory.Size = new System.Drawing.Size(350, 37);
             this.comboboxSubcategory.TabIndex = 9;
@@ -940,7 +943,7 @@ namespace Gestion
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(27, 400);
+            this.label15.Location = new System.Drawing.Point(53, 426);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(94, 29);
             this.label15.TabIndex = 8;
@@ -952,7 +955,7 @@ namespace Gestion
             this.butonProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butonProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.butonProduct.ForeColor = System.Drawing.Color.White;
-            this.butonProduct.Location = new System.Drawing.Point(324, 531);
+            this.butonProduct.Location = new System.Drawing.Point(350, 557);
             this.butonProduct.Name = "butonProduct";
             this.butonProduct.Size = new System.Drawing.Size(178, 35);
             this.butonProduct.TabIndex = 7;
@@ -967,7 +970,7 @@ namespace Gestion
             this.comboboxCategory.FormattingEnabled = true;
             this.comboboxCategory.Items.AddRange(new object[] {
             "NO_SELECTED"});
-            this.comboboxCategory.Location = new System.Drawing.Point(152, 335);
+            this.comboboxCategory.Location = new System.Drawing.Point(178, 361);
             this.comboboxCategory.Name = "comboboxCategory";
             this.comboboxCategory.Size = new System.Drawing.Size(350, 37);
             this.comboboxCategory.TabIndex = 6;
@@ -976,7 +979,7 @@ namespace Gestion
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(11, 343);
+            this.label7.Location = new System.Drawing.Point(37, 369);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 29);
             this.label7.TabIndex = 5;
@@ -985,7 +988,7 @@ namespace Gestion
             // stokbox
             // 
             this.stokbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.stokbox.Location = new System.Drawing.Point(152, 165);
+            this.stokbox.Location = new System.Drawing.Point(178, 191);
             this.stokbox.Name = "stokbox";
             this.stokbox.ShortcutsEnabled = false;
             this.stokbox.Size = new System.Drawing.Size(350, 35);
@@ -996,7 +999,7 @@ namespace Gestion
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(48, 171);
+            this.label8.Location = new System.Drawing.Point(74, 197);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(73, 29);
             this.label8.TabIndex = 3;
@@ -1005,7 +1008,7 @@ namespace Gestion
             // nameProduct
             // 
             this.nameProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.nameProduct.Location = new System.Drawing.Point(152, 112);
+            this.nameProduct.Location = new System.Drawing.Point(178, 138);
             this.nameProduct.Name = "nameProduct";
             this.nameProduct.Size = new System.Drawing.Size(350, 35);
             this.nameProduct.TabIndex = 2;
@@ -1014,7 +1017,7 @@ namespace Gestion
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(43, 118);
+            this.label9.Location = new System.Drawing.Point(69, 144);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(78, 29);
             this.label9.TabIndex = 1;
@@ -1024,7 +1027,7 @@ namespace Gestion
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(162, 27);
+            this.label10.Location = new System.Drawing.Point(201, 35);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(225, 46);
             this.label10.TabIndex = 0;
@@ -1216,7 +1219,7 @@ namespace Gestion
             this.userCurrentlabel.AutoSize = true;
             this.userCurrentlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.userCurrentlabel.ForeColor = System.Drawing.Color.White;
-            this.userCurrentlabel.Location = new System.Drawing.Point(1547, 16);
+            this.userCurrentlabel.Location = new System.Drawing.Point(1689, 12);
             this.userCurrentlabel.Name = "userCurrentlabel";
             this.userCurrentlabel.Size = new System.Drawing.Size(0, 29);
             this.userCurrentlabel.TabIndex = 16;
@@ -1224,6 +1227,8 @@ namespace Gestion
             // panelTable
             // 
             this.panelTable.BackColor = System.Drawing.Color.White;
+            this.panelTable.Controls.Add(this.button1);
+            this.panelTable.Controls.Add(this.label26);
             this.panelTable.Controls.Add(this.dataGridView1);
             this.panelTable.Controls.Add(this.label25);
             this.panelTable.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -1232,15 +1237,25 @@ namespace Gestion
             this.panelTable.Size = new System.Drawing.Size(863, 825);
             this.panelTable.TabIndex = 12;
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label26.Location = new System.Drawing.Point(381, 28);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(131, 46);
+            this.label26.TabIndex = 32;
+            this.label26.Text = "DATA";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(36, 111);
+            this.dataGridView1.Location = new System.Drawing.Point(35, 108);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(799, 673);
+            this.dataGridView1.Size = new System.Drawing.Size(799, 647);
             this.dataGridView1.TabIndex = 31;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rowSelected);
             // 
@@ -1395,16 +1410,16 @@ namespace Gestion
             // DefaultPanel
             // 
             this.DefaultPanel.BackColor = System.Drawing.Color.White;
-            this.DefaultPanel.Location = new System.Drawing.Point(392, 211);
+            this.DefaultPanel.Location = new System.Drawing.Point(403, 1033);
             this.DefaultPanel.Name = "DefaultPanel";
-            this.DefaultPanel.Size = new System.Drawing.Size(619, 832);
+            this.DefaultPanel.Size = new System.Drawing.Size(619, 10);
             this.DefaultPanel.TabIndex = 10;
             // 
             // TableDescriptionLabel
             // 
             this.TableDescriptionLabel.AutoSize = true;
             this.TableDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.TableDescriptionLabel.Location = new System.Drawing.Point(616, 89);
+            this.TableDescriptionLabel.Location = new System.Drawing.Point(675, 87);
             this.TableDescriptionLabel.Name = "TableDescriptionLabel";
             this.TableDescriptionLabel.Size = new System.Drawing.Size(0, 25);
             this.TableDescriptionLabel.TabIndex = 18;
@@ -1436,6 +1451,19 @@ namespace Gestion
             this.label24.Size = new System.Drawing.Size(1502, 15);
             this.label24.TabIndex = 21;
             this.label24.Text = resources.GetString("label24.Text");
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ControlText;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(656, 761);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(178, 35);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Reload";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // Gestion_Form
             // 
@@ -1587,5 +1615,7 @@ namespace Gestion
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button button1;
     }
 }

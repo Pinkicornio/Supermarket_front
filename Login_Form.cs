@@ -53,6 +53,7 @@ namespace Gestion
                         }
                     }
                     else {
+                      //  MessageBox.Show(pwdInput);
                         MessageBox.Show("WRONG PASSWORD");
                     }
 

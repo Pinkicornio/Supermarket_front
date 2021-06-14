@@ -129,3 +129,4 @@ E:\DAM-2\Proyecto_final\frontsuper\Supermarket_front\bin\Debug\netcoreapp3.1\NPO
 E:\DAM-2\Proyecto_final\frontsuper\Supermarket_front\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 E:\DAM-2\Proyecto_final\frontsuper\Supermarket_front\bin\Debug\netcoreapp3.1\ICSharpCode.SharpZipLib.dll
 E:\DAM-2\Proyecto_final\frontsuper\Supermarket_front\obj\Debug\netcoreapp3.1\Gestion.Load_Form.resources
+G:\Proyecto_final\Supermarket_front\obj\Debug\netcoreapp3.1\Gestion.Load_Form.resources
