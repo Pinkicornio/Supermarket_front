@@ -339,7 +339,7 @@ namespace Gestion
                     break;
                 case "Modify":
 
-                    MessageBox.Show("REMEMBER CHANGE PASWORD");
+                  
                     if (string.IsNullOrWhiteSpace(userUsername.Text) && string.IsNullOrWhiteSpace(userPassword.Text) && string.IsNullOrWhiteSpace(emailUser.Text))
                     {
                         MessageBox.Show("Fields can't be empty!");
@@ -639,6 +639,7 @@ namespace Gestion
         private void buttonModifyUsers_Click(object sender, EventArgs e)
         {
             userButon.Text = "Modify";
+            MessageBox.Show("REMEMBER CHANGE PASWORD");
             userPanelvisisble();
             enableUsers();
             LoadUsers("", "","");
