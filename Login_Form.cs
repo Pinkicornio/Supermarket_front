@@ -17,7 +17,7 @@ namespace Gestion
 
         private void loginbutton_Click(object sender, EventArgs e)
         {
-            Gestion_Form gestion_form;
+            Load_Form load_form;
             string userInput = userfield.Text;
             string pwdInput = passwordfield.Text;
 
@@ -27,8 +27,7 @@ namespace Gestion
 
                 List<string> datainfo = db.getLoginInfo(userInput);
 
-                
-
+               
                     if (datainfo[1].Equals(data_class.hashpwd(pwdInput, datainfo[2])))
                     {
                         if (datainfo[3].Equals("ADMIN"))
@@ -36,18 +35,21 @@ namespace Gestion
                             Data_class.admin = true;
                             Data_class.currentUser = userInput;
                             this.Hide();
-                            gestion_form = new Gestion_Form();
-                            gestion_form.Show();
+                            load_form = new Load_Form();
+                            load_form.Show();
 
                         }
-                        else
+                        else if (datainfo[3].Equals("USER"))
                         {
                             Data_class.admin = false;
                             Data_class.currentUser = userInput;
                             this.Hide();
-                            gestion_form = new Gestion_Form();
-                            gestion_form.Show();
+                            load_form = new Load_Form();
+                            load_form.Show();
 
+                        }
+                        else {
+                            MessageBox.Show("THIS APP IS FOR COMPANY");
                         }
                     }
                     else {
@@ -88,6 +90,7 @@ namespace Gestion
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             conectionDb();
+         
         }
         private void conectionDb()
         {
@@ -102,5 +105,35 @@ namespace Gestion
             }
         }
 
+        private void userfield_Enter(object sender, EventArgs e)
+        {
+            if (userfield.Text.Equals("username")) {
+                userfield.Clear();
+            }
+        }
+        private void userfield_Leave(object sender, EventArgs e)
+        {
+            if (userfield.Text.Equals(""))
+            {
+                userfield.Text = "username";
+            }
+        }
+
+        private void passwordfield_Enter(object sender, EventArgs e)
+        {
+            if (passwordfield.Text.Equals("pasword"))
+            {
+                passwordfield.Clear();
+            }
+
+        }
+
+        private void passwordfield_Leave(object sender, EventArgs e)
+        {
+            if (passwordfield.Text.Equals(""))
+            {
+                passwordfield.Text = "pasword";
+            }
+        }
     }
 }

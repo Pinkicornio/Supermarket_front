@@ -22,10 +22,11 @@ namespace Gestion
 
         private void loadAdminRequirements()
         {
-            buttonModifyProduct.Enabled = true;
-            buttonModifyUsers.Enabled = true;
             buttonDeleteProduct.Enabled = true;
-            buttonDeleteUsers.Enabled = true;
+            buttonusers.Visible = true;
+            storageButtonMenu.Visible = true;
+
+
         }
         //-- Load datos de tabla
         private void LoadUsers(string campo, string where, string where2)
@@ -142,8 +143,8 @@ namespace Gestion
             {
                 where2Textbox.Visible = true;
                 where2label.Visible = true;
-                where1label.Text = "Min Price:";
-                where2label.Text = "Max Price:";
+                where1label.Text = "Min Price";
+                where2label.Text = "Max Price";
                 dateTimePicker1.Visible = false;
                 dateTimePicker2.Visible = false;
                 where1TextBox.Visible = true;
@@ -156,8 +157,8 @@ namespace Gestion
 
                 where2Textbox.Visible = false;
                 where2label.Visible = false;
-                where1label.Text = "Where 1:";
-                where2label.Text = "Where 2:";
+                where1label.Text = "Where 1";
+                where2label.Text = "Where 2";
                 where1TextBox.Visible = false;
                 where1label.Visible = false;
                 dateTimePicker1.Visible = true;
@@ -169,8 +170,8 @@ namespace Gestion
             {
                 where2Textbox.Visible = false;
                 where2label.Visible = false;
-                where1label.Text = "Where 1:";
-                where2label.Text = "Where 2:";
+                where1label.Text = "Where 1";
+                where2label.Text = "Where 2";
                 where1TextBox.Visible = true;
                 where1label.Visible = true;
                 dateTimePicker1.Visible = false;
@@ -277,7 +278,6 @@ namespace Gestion
             panelProductsMenuLeft.Visible = false;
             panelSalesMenuLeft.Visible = false;
             panelCategoryMenuLeft.Visible = false;
-            panelSubcategoryMenuLeft.Visible = false;
             panelStorage.Visible = false;
             comboboxCategory.SelectedIndex = 0;
             comboboxSubcategory.SelectedIndex = 0;
@@ -291,6 +291,9 @@ namespace Gestion
                 loadAdminRequirements();
         
             }
+
+         
+
         }
 
         //user 
@@ -903,13 +906,7 @@ namespace Gestion
 
                         case "user":
                             userUsername.Text = row.Cells["USERNAME"].Value.ToString();
-                           // userPassword.Text = row.Cells["PWD"].Value.ToString();
-                            string password = row.Cells["EMAIL"].Value.ToString();
-                            /*metodo de deshasheo
-                                    I                             
-                                    V
-                             La to transforma y lo expresa
-                            */
+                            string password = row.Cells["EMAIL"].Value.ToString();                       
                             emailUser.Text = password;
                             idUser.Text = row.Cells["USER_ID"].Value.ToString();
                             break;
@@ -968,10 +965,7 @@ namespace Gestion
         {
             showSubmenu(panelCategoryMenuLeft);
         }
-        private void subcategoryButton_Click(object sender, EventArgs e)
-        {
-            showSubmenu(panelSubcategoryMenuLeft);
-        }
+      
         private void storageButtonMenu_Click(object sender, EventArgs e)
         {
             showSubmenu(panelStorage);
@@ -1023,10 +1017,7 @@ namespace Gestion
                     case "user":
                         //user
                         idLabelUser.Visible = true;
-                        idUser.Visible= true;
-                        //resto 
-                        //idlabelProduct.Visible = false;
-                       //idProduct.Visible = false;
+                        idUser.Visible= true;                    
                         break;
 
                     case "products":
@@ -1068,10 +1059,12 @@ namespace Gestion
                         break;
                     case "subcategory":
                         idLabelSubCategories.Visible = false;
-                        idCategories.Visible = false;
+                        idSubcategories.Visible = false;
                         break;
                 }
             }
+
+          
         }//tick end
 
 
@@ -1179,7 +1172,16 @@ namespace Gestion
         {
 
         }
-      
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {

@@ -6,7 +6,7 @@ namespace Gestion
 {
     class Data_class
     {
-        public static bool  admin=true;
+        public static bool admin;
         public static string currentUser;
 
 
