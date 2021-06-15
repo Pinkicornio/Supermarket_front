@@ -34,7 +34,6 @@ namespace Gestion
         }
         private void Load_Form_Load(object sender, EventArgs e)
         {
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -46,13 +45,12 @@ namespace Gestion
             if (progressBar1.Value == progressBar1.Maximum)
             {
                 timer1.Stop();
-
                 gestion_form = new Gestion_Form();
                 gestion_form.Show();
+                this.Hide();
             }
 
-
-        }
+            }
 
         private void progressBar1_Click(object sender, EventArgs e)
         {

@@ -31,6 +31,7 @@ namespace Gestion
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gestion_Form));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.close = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelStorage = new System.Windows.Forms.Panel();
@@ -111,6 +112,7 @@ namespace Gestion
             this.panel4 = new System.Windows.Forms.Panel();
             this.userCurrentlabel = new System.Windows.Forms.Label();
             this.panelTable = new System.Windows.Forms.Panel();
+            this.ReloadTable = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label25 = new System.Windows.Forms.Label();
@@ -132,7 +134,6 @@ namespace Gestion
             this.CurrentTableLabel = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelStorage.SuspendLayout();
             this.panelCategoryMenuLeft.SuspendLayout();
@@ -169,7 +170,6 @@ namespace Gestion
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.panelStorage);
             this.panel1.Controls.Add(this.storageButtonMenu);
             this.panel1.Controls.Add(this.panelCategoryMenuLeft);
@@ -195,7 +195,7 @@ namespace Gestion
             this.panelStorage.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelStorage.Location = new System.Drawing.Point(0, 935);
             this.panelStorage.Name = "panelStorage";
-            this.panelStorage.Size = new System.Drawing.Size(384, 81);
+            this.panelStorage.Size = new System.Drawing.Size(386, 81);
             this.panelStorage.TabIndex = 14;
             this.panelStorage.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -203,6 +203,7 @@ namespace Gestion
             // 
             this.storageDetailButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.storageDetailButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.storageDetailButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.storageDetailButton.FlatAppearance.BorderSize = 0;
             this.storageDetailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.storageDetailButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -210,7 +211,7 @@ namespace Gestion
             this.storageDetailButton.Location = new System.Drawing.Point(0, 40);
             this.storageDetailButton.Name = "storageDetailButton";
             this.storageDetailButton.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.storageDetailButton.Size = new System.Drawing.Size(384, 41);
+            this.storageDetailButton.Size = new System.Drawing.Size(386, 41);
             this.storageDetailButton.TabIndex = 14;
             this.storageDetailButton.Text = "Storage detail";
             this.storageDetailButton.UseVisualStyleBackColor = false;
@@ -218,16 +219,18 @@ namespace Gestion
             // 
             // storageSelectButton
             // 
-            this.storageSelectButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.storageSelectButton.BackColor = System.Drawing.Color.White;
             this.storageSelectButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.storageSelectButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.storageSelectButton.FlatAppearance.BorderSize = 0;
+            this.storageSelectButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.storageSelectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.storageSelectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.storageSelectButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.storageSelectButton.Location = new System.Drawing.Point(0, 0);
             this.storageSelectButton.Name = "storageSelectButton";
             this.storageSelectButton.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.storageSelectButton.Size = new System.Drawing.Size(384, 40);
+            this.storageSelectButton.Size = new System.Drawing.Size(386, 40);
             this.storageSelectButton.TabIndex = 13;
             this.storageSelectButton.Text = "Storage";
             this.storageSelectButton.UseVisualStyleBackColor = false;
@@ -246,7 +249,7 @@ namespace Gestion
             this.storageButtonMenu.Location = new System.Drawing.Point(0, 890);
             this.storageButtonMenu.Name = "storageButtonMenu";
             this.storageButtonMenu.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.storageButtonMenu.Size = new System.Drawing.Size(384, 45);
+            this.storageButtonMenu.Size = new System.Drawing.Size(386, 45);
             this.storageButtonMenu.TabIndex = 11;
             this.storageButtonMenu.Text = "              STORAGE";
             this.storageButtonMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -266,13 +269,14 @@ namespace Gestion
             this.panelCategoryMenuLeft.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCategoryMenuLeft.Location = new System.Drawing.Point(0, 695);
             this.panelCategoryMenuLeft.Name = "panelCategoryMenuLeft";
-            this.panelCategoryMenuLeft.Size = new System.Drawing.Size(384, 195);
+            this.panelCategoryMenuLeft.Size = new System.Drawing.Size(386, 195);
             this.panelCategoryMenuLeft.TabIndex = 8;
             // 
             // deleteSubcategory
             // 
             this.deleteSubcategory.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.deleteSubcategory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.deleteSubcategory.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.deleteSubcategory.FlatAppearance.BorderSize = 0;
             this.deleteSubcategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteSubcategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -280,7 +284,7 @@ namespace Gestion
             this.deleteSubcategory.Location = new System.Drawing.Point(0, 154);
             this.deleteSubcategory.Name = "deleteSubcategory";
             this.deleteSubcategory.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.deleteSubcategory.Size = new System.Drawing.Size(384, 35);
+            this.deleteSubcategory.Size = new System.Drawing.Size(386, 35);
             this.deleteSubcategory.TabIndex = 6;
             this.deleteSubcategory.Text = "Delete a subcategory";
             this.deleteSubcategory.UseVisualStyleBackColor = false;
@@ -290,6 +294,7 @@ namespace Gestion
             // 
             this.modifySubcategory.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.modifySubcategory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modifySubcategory.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.modifySubcategory.FlatAppearance.BorderSize = 0;
             this.modifySubcategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.modifySubcategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -297,7 +302,7 @@ namespace Gestion
             this.modifySubcategory.Location = new System.Drawing.Point(0, 120);
             this.modifySubcategory.Name = "modifySubcategory";
             this.modifySubcategory.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.modifySubcategory.Size = new System.Drawing.Size(384, 34);
+            this.modifySubcategory.Size = new System.Drawing.Size(386, 34);
             this.modifySubcategory.TabIndex = 5;
             this.modifySubcategory.Text = "Modify a category";
             this.modifySubcategory.UseVisualStyleBackColor = false;
@@ -307,6 +312,7 @@ namespace Gestion
             // 
             this.createSubcategory.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.createSubcategory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.createSubcategory.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.createSubcategory.FlatAppearance.BorderSize = 0;
             this.createSubcategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createSubcategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -314,7 +320,7 @@ namespace Gestion
             this.createSubcategory.Location = new System.Drawing.Point(0, 90);
             this.createSubcategory.Name = "createSubcategory";
             this.createSubcategory.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.createSubcategory.Size = new System.Drawing.Size(384, 30);
+            this.createSubcategory.Size = new System.Drawing.Size(386, 30);
             this.createSubcategory.TabIndex = 4;
             this.createSubcategory.Text = "Create a subcategory";
             this.createSubcategory.UseVisualStyleBackColor = false;
@@ -324,6 +330,7 @@ namespace Gestion
             // 
             this.deleteCategory.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.deleteCategory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.deleteCategory.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.deleteCategory.FlatAppearance.BorderSize = 0;
             this.deleteCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -331,7 +338,7 @@ namespace Gestion
             this.deleteCategory.Location = new System.Drawing.Point(0, 60);
             this.deleteCategory.Name = "deleteCategory";
             this.deleteCategory.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.deleteCategory.Size = new System.Drawing.Size(384, 30);
+            this.deleteCategory.Size = new System.Drawing.Size(386, 30);
             this.deleteCategory.TabIndex = 3;
             this.deleteCategory.Text = "Delete a category";
             this.deleteCategory.UseVisualStyleBackColor = false;
@@ -341,6 +348,7 @@ namespace Gestion
             // 
             this.modifyCategory.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.modifyCategory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.modifyCategory.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.modifyCategory.FlatAppearance.BorderSize = 0;
             this.modifyCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.modifyCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -348,7 +356,7 @@ namespace Gestion
             this.modifyCategory.Location = new System.Drawing.Point(0, 30);
             this.modifyCategory.Name = "modifyCategory";
             this.modifyCategory.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.modifyCategory.Size = new System.Drawing.Size(384, 30);
+            this.modifyCategory.Size = new System.Drawing.Size(386, 30);
             this.modifyCategory.TabIndex = 1;
             this.modifyCategory.Text = "Modify a category";
             this.modifyCategory.UseVisualStyleBackColor = false;
@@ -365,7 +373,7 @@ namespace Gestion
             this.createCategory.Location = new System.Drawing.Point(0, 0);
             this.createCategory.Name = "createCategory";
             this.createCategory.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.createCategory.Size = new System.Drawing.Size(384, 30);
+            this.createCategory.Size = new System.Drawing.Size(386, 30);
             this.createCategory.TabIndex = 0;
             this.createCategory.Text = "Create a category";
             this.createCategory.UseVisualStyleBackColor = false;
@@ -384,7 +392,7 @@ namespace Gestion
             this.categoryButton.Location = new System.Drawing.Point(0, 650);
             this.categoryButton.Name = "categoryButton";
             this.categoryButton.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.categoryButton.Size = new System.Drawing.Size(384, 45);
+            this.categoryButton.Size = new System.Drawing.Size(386, 45);
             this.categoryButton.TabIndex = 7;
             this.categoryButton.Text = "           CATEGORIES";
             this.categoryButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -399,13 +407,14 @@ namespace Gestion
             this.panelSalesMenuLeft.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSalesMenuLeft.Location = new System.Drawing.Point(0, 586);
             this.panelSalesMenuLeft.Name = "panelSalesMenuLeft";
-            this.panelSalesMenuLeft.Size = new System.Drawing.Size(384, 64);
+            this.panelSalesMenuLeft.Size = new System.Drawing.Size(386, 64);
             this.panelSalesMenuLeft.TabIndex = 6;
             // 
             // buttonDetailSalesSelect
             // 
             this.buttonDetailSalesSelect.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonDetailSalesSelect.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonDetailSalesSelect.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonDetailSalesSelect.FlatAppearance.BorderSize = 0;
             this.buttonDetailSalesSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDetailSalesSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -413,7 +422,7 @@ namespace Gestion
             this.buttonDetailSalesSelect.Location = new System.Drawing.Point(0, 30);
             this.buttonDetailSalesSelect.Name = "buttonDetailSalesSelect";
             this.buttonDetailSalesSelect.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.buttonDetailSalesSelect.Size = new System.Drawing.Size(384, 30);
+            this.buttonDetailSalesSelect.Size = new System.Drawing.Size(386, 30);
             this.buttonDetailSalesSelect.TabIndex = 2;
             this.buttonDetailSalesSelect.Text = "Detail sales";
             this.buttonDetailSalesSelect.UseVisualStyleBackColor = false;
@@ -423,6 +432,7 @@ namespace Gestion
             // 
             this.buttonSalesSelect.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonSalesSelect.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonSalesSelect.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonSalesSelect.FlatAppearance.BorderSize = 0;
             this.buttonSalesSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -430,7 +440,7 @@ namespace Gestion
             this.buttonSalesSelect.Location = new System.Drawing.Point(0, 0);
             this.buttonSalesSelect.Name = "buttonSalesSelect";
             this.buttonSalesSelect.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.buttonSalesSelect.Size = new System.Drawing.Size(384, 30);
+            this.buttonSalesSelect.Size = new System.Drawing.Size(386, 30);
             this.buttonSalesSelect.TabIndex = 1;
             this.buttonSalesSelect.Text = "Select sales";
             this.buttonSalesSelect.UseVisualStyleBackColor = false;
@@ -449,7 +459,7 @@ namespace Gestion
             this.salesButton.Location = new System.Drawing.Point(0, 541);
             this.salesButton.Name = "salesButton";
             this.salesButton.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.salesButton.Size = new System.Drawing.Size(384, 45);
+            this.salesButton.Size = new System.Drawing.Size(386, 45);
             this.salesButton.TabIndex = 5;
             this.salesButton.Text = "                 SALES";
             this.salesButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -465,7 +475,7 @@ namespace Gestion
             this.panelProductsMenuLeft.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelProductsMenuLeft.Location = new System.Drawing.Point(0, 442);
             this.panelProductsMenuLeft.Name = "panelProductsMenuLeft";
-            this.panelProductsMenuLeft.Size = new System.Drawing.Size(384, 99);
+            this.panelProductsMenuLeft.Size = new System.Drawing.Size(386, 99);
             this.panelProductsMenuLeft.TabIndex = 4;
             // 
             // buttonDeleteProduct
@@ -473,6 +483,7 @@ namespace Gestion
             this.buttonDeleteProduct.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonDeleteProduct.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonDeleteProduct.Enabled = false;
+            this.buttonDeleteProduct.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonDeleteProduct.FlatAppearance.BorderSize = 0;
             this.buttonDeleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -480,7 +491,7 @@ namespace Gestion
             this.buttonDeleteProduct.Location = new System.Drawing.Point(0, 60);
             this.buttonDeleteProduct.Name = "buttonDeleteProduct";
             this.buttonDeleteProduct.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.buttonDeleteProduct.Size = new System.Drawing.Size(384, 30);
+            this.buttonDeleteProduct.Size = new System.Drawing.Size(386, 30);
             this.buttonDeleteProduct.TabIndex = 3;
             this.buttonDeleteProduct.Text = "Delete a product";
             this.buttonDeleteProduct.UseVisualStyleBackColor = false;
@@ -490,6 +501,7 @@ namespace Gestion
             // 
             this.buttonModifyProduct.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonModifyProduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonModifyProduct.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonModifyProduct.FlatAppearance.BorderSize = 0;
             this.buttonModifyProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModifyProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -497,7 +509,7 @@ namespace Gestion
             this.buttonModifyProduct.Location = new System.Drawing.Point(0, 30);
             this.buttonModifyProduct.Name = "buttonModifyProduct";
             this.buttonModifyProduct.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.buttonModifyProduct.Size = new System.Drawing.Size(384, 30);
+            this.buttonModifyProduct.Size = new System.Drawing.Size(386, 30);
             this.buttonModifyProduct.TabIndex = 1;
             this.buttonModifyProduct.Text = "Modify a product";
             this.buttonModifyProduct.UseVisualStyleBackColor = false;
@@ -507,6 +519,7 @@ namespace Gestion
             // 
             this.buttonCreateProduct.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonCreateProduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonCreateProduct.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonCreateProduct.FlatAppearance.BorderSize = 0;
             this.buttonCreateProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCreateProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -514,7 +527,7 @@ namespace Gestion
             this.buttonCreateProduct.Location = new System.Drawing.Point(0, 0);
             this.buttonCreateProduct.Name = "buttonCreateProduct";
             this.buttonCreateProduct.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.buttonCreateProduct.Size = new System.Drawing.Size(384, 30);
+            this.buttonCreateProduct.Size = new System.Drawing.Size(386, 30);
             this.buttonCreateProduct.TabIndex = 0;
             this.buttonCreateProduct.Text = "Create a product";
             this.buttonCreateProduct.UseVisualStyleBackColor = false;
@@ -533,7 +546,7 @@ namespace Gestion
             this.productsButton.Location = new System.Drawing.Point(0, 397);
             this.productsButton.Name = "productsButton";
             this.productsButton.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.productsButton.Size = new System.Drawing.Size(384, 45);
+            this.productsButton.Size = new System.Drawing.Size(386, 45);
             this.productsButton.TabIndex = 3;
             this.productsButton.Text = "              PRODUCT";
             this.productsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -549,13 +562,14 @@ namespace Gestion
             this.panelUsersMenuLeft.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelUsersMenuLeft.Location = new System.Drawing.Point(0, 297);
             this.panelUsersMenuLeft.Name = "panelUsersMenuLeft";
-            this.panelUsersMenuLeft.Size = new System.Drawing.Size(384, 100);
+            this.panelUsersMenuLeft.Size = new System.Drawing.Size(386, 100);
             this.panelUsersMenuLeft.TabIndex = 2;
             // 
             // buttonDeleteUsers
             // 
             this.buttonDeleteUsers.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonDeleteUsers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonDeleteUsers.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonDeleteUsers.FlatAppearance.BorderSize = 0;
             this.buttonDeleteUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -563,7 +577,7 @@ namespace Gestion
             this.buttonDeleteUsers.Location = new System.Drawing.Point(0, 60);
             this.buttonDeleteUsers.Name = "buttonDeleteUsers";
             this.buttonDeleteUsers.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.buttonDeleteUsers.Size = new System.Drawing.Size(384, 30);
+            this.buttonDeleteUsers.Size = new System.Drawing.Size(386, 30);
             this.buttonDeleteUsers.TabIndex = 3;
             this.buttonDeleteUsers.Text = "Delete an user";
             this.buttonDeleteUsers.UseVisualStyleBackColor = false;
@@ -573,6 +587,7 @@ namespace Gestion
             // 
             this.buttonModifyUsers.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonModifyUsers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonModifyUsers.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonModifyUsers.FlatAppearance.BorderSize = 0;
             this.buttonModifyUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModifyUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -580,7 +595,7 @@ namespace Gestion
             this.buttonModifyUsers.Location = new System.Drawing.Point(0, 30);
             this.buttonModifyUsers.Name = "buttonModifyUsers";
             this.buttonModifyUsers.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.buttonModifyUsers.Size = new System.Drawing.Size(384, 30);
+            this.buttonModifyUsers.Size = new System.Drawing.Size(386, 30);
             this.buttonModifyUsers.TabIndex = 1;
             this.buttonModifyUsers.Text = "Modify an user";
             this.buttonModifyUsers.UseVisualStyleBackColor = false;
@@ -590,6 +605,7 @@ namespace Gestion
             // 
             this.buttonCreateUsers.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonCreateUsers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonCreateUsers.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.buttonCreateUsers.FlatAppearance.BorderSize = 0;
             this.buttonCreateUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCreateUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -597,7 +613,7 @@ namespace Gestion
             this.buttonCreateUsers.Location = new System.Drawing.Point(0, 0);
             this.buttonCreateUsers.Name = "buttonCreateUsers";
             this.buttonCreateUsers.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.buttonCreateUsers.Size = new System.Drawing.Size(384, 30);
+            this.buttonCreateUsers.Size = new System.Drawing.Size(386, 30);
             this.buttonCreateUsers.TabIndex = 0;
             this.buttonCreateUsers.Text = "Create an user";
             this.buttonCreateUsers.UseVisualStyleBackColor = false;
@@ -616,7 +632,7 @@ namespace Gestion
             this.buttonusers.Location = new System.Drawing.Point(0, 252);
             this.buttonusers.Name = "buttonusers";
             this.buttonusers.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.buttonusers.Size = new System.Drawing.Size(384, 45);
+            this.buttonusers.Size = new System.Drawing.Size(386, 45);
             this.buttonusers.TabIndex = 1;
             this.buttonusers.Text = "                USERS";
             this.buttonusers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -631,7 +647,7 @@ namespace Gestion
             this.panelLogin.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogin.Location = new System.Drawing.Point(0, 0);
             this.panelLogin.Name = "panelLogin";
-            this.panelLogin.Size = new System.Drawing.Size(384, 252);
+            this.panelLogin.Size = new System.Drawing.Size(386, 252);
             this.panelLogin.TabIndex = 0;
             this.panelLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLogin_Paint);
             // 
@@ -752,6 +768,7 @@ namespace Gestion
             // 
             this.Roles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Roles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Roles.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Roles.FormattingEnabled = true;
             this.Roles.Items.AddRange(new object[] {
@@ -1227,21 +1244,35 @@ namespace Gestion
             // panelTable
             // 
             this.panelTable.BackColor = System.Drawing.Color.White;
-            this.panelTable.Controls.Add(this.button1);
+            this.panelTable.Controls.Add(this.ReloadTable);
             this.panelTable.Controls.Add(this.label26);
             this.panelTable.Controls.Add(this.dataGridView1);
             this.panelTable.Controls.Add(this.label25);
             this.panelTable.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panelTable.Location = new System.Drawing.Point(1029, 218);
             this.panelTable.Name = "panelTable";
-            this.panelTable.Size = new System.Drawing.Size(863, 825);
+            this.panelTable.Size = new System.Drawing.Size(879, 825);
             this.panelTable.TabIndex = 12;
+            // 
+            // ReloadTable
+            // 
+            this.ReloadTable.BackColor = System.Drawing.SystemColors.ControlText;
+            this.ReloadTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReloadTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ReloadTable.ForeColor = System.Drawing.Color.White;
+            this.ReloadTable.Location = new System.Drawing.Point(685, 761);
+            this.ReloadTable.Name = "ReloadTable";
+            this.ReloadTable.Size = new System.Drawing.Size(178, 35);
+            this.ReloadTable.TabIndex = 22;
+            this.ReloadTable.Text = "Reload";
+            this.ReloadTable.UseVisualStyleBackColor = false;
+            this.ReloadTable.Click += new System.EventHandler(this.ReloadTable_Click);
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(381, 28);
+            this.label26.Location = new System.Drawing.Point(413, 28);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(131, 46);
             this.label26.TabIndex = 32;
@@ -1249,13 +1280,31 @@ namespace Gestion
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.GridColor = System.Drawing.Color.White;
             this.dataGridView1.Location = new System.Drawing.Point(35, 108);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(799, 647);
+            this.dataGridView1.Size = new System.Drawing.Size(828, 647);
             this.dataGridView1.TabIndex = 31;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rowSelected);
             // 
@@ -1265,9 +1314,9 @@ namespace Gestion
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label25.Location = new System.Drawing.Point(33, 74);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(802, 24);
+            this.label25.Size = new System.Drawing.Size(846, 24);
             this.label25.TabIndex = 30;
-            this.label25.Text = "________________________________________________________________________";
+            this.label25.Text = "____________________________________________________________________________";
             // 
             // panel10
             // 
@@ -1410,9 +1459,9 @@ namespace Gestion
             // DefaultPanel
             // 
             this.DefaultPanel.BackColor = System.Drawing.Color.White;
-            this.DefaultPanel.Location = new System.Drawing.Point(403, 1033);
+            this.DefaultPanel.Location = new System.Drawing.Point(403, 201);
             this.DefaultPanel.Name = "DefaultPanel";
-            this.DefaultPanel.Size = new System.Drawing.Size(619, 10);
+            this.DefaultPanel.Size = new System.Drawing.Size(619, 842);
             this.DefaultPanel.TabIndex = 10;
             // 
             // TableDescriptionLabel
@@ -1452,19 +1501,6 @@ namespace Gestion
             this.label24.TabIndex = 21;
             this.label24.Text = resources.GetString("label24.Text");
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlText;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(656, 761);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(178, 35);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Reload";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // Gestion_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1483,9 +1519,10 @@ namespace Gestion
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelCategories);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Gestion_Form";
             this.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.Text = "DELETE PRODUCT";
+            this.Text = "Gestion";
             this.Load += new System.EventHandler(this.Gestion_Form_Load_1);
             this.panel1.ResumeLayout(false);
             this.panelStorage.ResumeLayout(false);
@@ -1616,6 +1653,6 @@ namespace Gestion
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ReloadTable;
     }
 }

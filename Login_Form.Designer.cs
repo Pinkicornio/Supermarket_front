@@ -60,12 +60,12 @@ namespace Gestion
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(847, 382);
+            this.label1.Location = new System.Drawing.Point(852, 382);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(240, 42);
+            this.label1.Size = new System.Drawing.Size(229, 42);
             this.label1.TabIndex = 1;
-            this.label1.Text = "¡WELCOME!";
+            this.label1.Text = "WELCOME!";
             // 
             // passwordfield
             // 
@@ -138,9 +138,10 @@ namespace Gestion
             this.Controls.Add(this.passwordfield);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.loginbutton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login_Form";
-            this.Text = "Form1";
+            this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

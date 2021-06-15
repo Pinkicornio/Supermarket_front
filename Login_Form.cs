@@ -27,8 +27,8 @@ namespace Gestion
 
                 List<string> datainfo = db.getLoginInfo(userInput);
 
-               
                     if (datainfo[1].Equals(data_class.hashpwd(pwdInput, datainfo[2])))
+                     
                     {
                         if (datainfo[3].Equals("ADMIN"))
                         {
